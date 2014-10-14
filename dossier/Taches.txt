@@ -1,0 +1,28 @@
+Intranet : (template sera basé sur celui de open-school)
+	Administrateur 
+		- Gestion des étudiants
+		- Gestion des utilisateurs
+		- Gestion des cours
+		- Gestion des emplois de temps
+		- Gestion de paiement
+	
+	Professeur
+		- Gestion de son cours
+		- publication de suppport numerique de cours
+		- publication d'information (pour un groupe spécifique d'étudiants)
+		- gestion des évaluations (notes)
+	
+	Etudiant
+		- consultation
+			- emploi de temps
+			- état de paiement
+			- information publiée lui concernant
+			- consulter ses informations
+			- modifier son compte
+		- accès au forum
+
+Site internet : (à partir d'un template | bien beau et attractif)
+	reprenant toutes les fonctionnalités de l'ancien site en y ajoutant d'autre fonctionnalités
+	
+	
+	
