@@ -33,22 +33,22 @@ class __TwigTemplate_343f91d577bad72689099c266a6de6c0535313fe47d78aca3057fa2a1e6
 \t\t<td>Username</td>
 \t\t<td>";
         // line 7
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "username"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "username", array()), "html", null, true);
         echo "</td>
 \t</tr>
 \t<tr>
 \t\t<td>Password</td>
 \t\t<td>";
         // line 11
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "password"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "password", array()), "html", null, true);
         echo "</td>
 \t</tr>
 </table>
 Bonjour ";
         // line 14
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user"), "username"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array()), "html", null, true);
         echo " - ";
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user"), "password"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "password", array()), "html", null, true);
         echo "
 <a href=\"";
         // line 15
@@ -70,6 +70,10 @@ Bonjour ";
         // line 23
         echo $this->env->getExtension('routing')->getPath("intranet_admin_accueil");
         echo "\">Administrateur</a>
+";
+        // line 24
+        echo $this->env->getExtension('routing')->getPath("intranet_admin_accueil");
+        echo "
 
 ";
     }
@@ -86,6 +90,6 @@ Bonjour ";
 
     public function getDebugInfo()
     {
-        return array (  71 => 23,  68 => 22,  62 => 20,  60 => 19,  55 => 15,  49 => 14,  43 => 11,  36 => 7,  31 => 4,  28 => 3,);
+        return array (  75 => 24,  71 => 23,  68 => 22,  62 => 20,  60 => 19,  55 => 15,  49 => 14,  43 => 11,  36 => 7,  31 => 4,  28 => 3,);
     }
 }

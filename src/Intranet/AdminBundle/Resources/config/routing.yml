@@ -6,5 +6,5 @@ intranet_admin_auteur:
     path:     /les-auteurs
     defaults: { _controller: IntranetAdminBundle:Default:auteur }
 intranet_admin_accueil:
-    path:     /admin/accueil
+    path:     /accueil
     defaults: { _controller: IntranetAdminBundle:Default:accueil }

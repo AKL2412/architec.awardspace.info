@@ -1,6 +1,6 @@
 <?php
 
-/* @WebProfiler/Profiler/profiler.css.twig */
+/* WebProfilerBundle:Profiler:profiler.css.twig */
 class __TwigTemplate_7717d7704dcf5c991cfa1c42329c5ab0ef6f13ccf5901833d237ecd363fc92af extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -423,11 +423,11 @@ td.main, td.menu {
 
     public function getTemplateName()
     {
-        return "@WebProfiler/Profiler/profiler.css.twig";
+        return "WebProfilerBundle:Profiler:profiler.css.twig";
     }
 
     public function getDebugInfo()
     {
-        return array (  19 => 1,  102 => 33,  96 => 30,  92 => 28,  85 => 23,  78 => 18,  71 => 13,  68 => 12,  65 => 11,  57 => 39,  55 => 38,  51 => 37,  46 => 34,  44 => 11,  37 => 6,  35 => 5,  32 => 4,  29 => 3,);
+        return array (  19 => 1,);
     }
 }

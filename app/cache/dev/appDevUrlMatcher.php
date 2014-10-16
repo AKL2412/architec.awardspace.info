@@ -122,14 +122,14 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/test-')) {
+        if (0 === strpos($pathinfo, '/espace-')) {
             // intranet_professeur_homepage
-            if (0 === strpos($pathinfo, '/test-prof') && preg_match('#^/test\\-prof/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/espace-professeur/test-prof') && preg_match('#^/espace\\-professeur/test\\-prof/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'intranet_professeur_homepage')), array (  '_controller' => 'Intranet\\ProfesseurBundle\\Controller\\DefaultController::indexAction',));
             }
 
             // intranet_etudiant_homepage
-            if (0 === strpos($pathinfo, '/test-etud') && preg_match('#^/test\\-etud/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/espace-etudiant/test-etud') && preg_match('#^/espace\\-etudiant/test\\-etud/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'intranet_etudiant_homepage')), array (  '_controller' => 'Intranet\\EtudiantBundle\\Controller\\DefaultController::indexAction',));
             }
 
@@ -140,19 +140,22 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'internetsite_homepage')), array (  '_controller' => 'Internet\\siteBundle\\Controller\\DefaultController::indexAction',));
         }
 
-        // intranet_admin_homepage
-        if ($pathinfo === '/test-admin') {
-            return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::indexAction',  '_route' => 'intranet_admin_homepage',);
-        }
+        if (0 === strpos($pathinfo, '/admin')) {
+            // intranet_admin_homepage
+            if ($pathinfo === '/admin/test-admin') {
+                return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::indexAction',  '_route' => 'intranet_admin_homepage',);
+            }
 
-        // intranet_admin_auteur
-        if ($pathinfo === '/les-auteurs') {
-            return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::auteurAction',  '_route' => 'intranet_admin_auteur',);
-        }
+            // intranet_admin_auteur
+            if ($pathinfo === '/admin/les-auteurs') {
+                return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::auteurAction',  '_route' => 'intranet_admin_auteur',);
+            }
 
-        // intranet_admin_accueil
-        if ($pathinfo === '/admin/accueil') {
-            return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::accueilAction',  '_route' => 'intranet_admin_accueil',);
+            // intranet_admin_accueil
+            if ($pathinfo === '/admin/accueil') {
+                return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::accueilAction',  '_route' => 'intranet_admin_accueil',);
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/log')) {
@@ -174,6 +177,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array('_route' => 'logout');
             }
 
+        }
+
+        // accueil_intranet
+        if ($pathinfo === '/intranet') {
+            return array (  '_controller' => 'OC\\UserBundle\\Controller\\SecurityController::accueilSiteAction',  '_route' => 'accueil_intranet',);
         }
 
         // _welcome

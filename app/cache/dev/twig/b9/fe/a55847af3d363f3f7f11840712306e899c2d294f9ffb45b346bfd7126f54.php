@@ -1,6 +1,6 @@
 <?php
 
-/* @WebProfiler/Profiler/search.html.twig */
+/* WebProfilerBundle:Profiler:search.html.twig */
 class __TwigTemplate_b9fea55847af3d363f3f7f11840712306e899c2d294f9ffb45b346bfd7126f54 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -112,7 +112,7 @@ class __TwigTemplate_b9fea55847af3d363f3f7f11840712306e899c2d294f9ffb45b346bfd71
 
     public function getTemplateName()
     {
-        return "@WebProfiler/Profiler/search.html.twig";
+        return "WebProfilerBundle:Profiler:search.html.twig";
     }
 
     public function isTraitable()
@@ -122,6 +122,6 @@ class __TwigTemplate_b9fea55847af3d363f3f7f11840712306e899c2d294f9ffb45b346bfd71
 
     public function getDebugInfo()
     {
-        return array (  98 => 34,  87 => 32,  83 => 31,  76 => 27,  70 => 24,  64 => 21,  58 => 18,  53 => 15,  42 => 13,  38 => 12,  31 => 8,  26 => 6,  19 => 1,  102 => 33,  96 => 30,  92 => 28,  85 => 23,  78 => 18,  71 => 13,  68 => 12,  65 => 11,  57 => 39,  55 => 38,  51 => 37,  46 => 34,  44 => 11,  37 => 6,  35 => 5,  32 => 4,  29 => 3,);
+        return array (  98 => 34,  87 => 32,  83 => 31,  76 => 27,  70 => 24,  64 => 21,  58 => 18,  53 => 15,  42 => 13,  38 => 12,  31 => 8,  26 => 6,  19 => 1,);
     }
 }

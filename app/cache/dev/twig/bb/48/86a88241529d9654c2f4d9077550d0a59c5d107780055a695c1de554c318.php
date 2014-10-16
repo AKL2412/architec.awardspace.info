@@ -1,6 +1,6 @@
 <?php
 
-/* @WebProfiler/Profiler/admin.html.twig */
+/* WebProfilerBundle:Profiler:admin.html.twig */
 class __TwigTemplate_bb4886a88241529d9654c2f4d9077550d0a59c5d107780055a695c1de554c318 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -35,7 +35,7 @@ class __TwigTemplate_bb4886a88241529d9654c2f4d9077550d0a59c5d107780055a695c1de55
 
     public function getTemplateName()
     {
-        return "@WebProfiler/Profiler/admin.html.twig";
+        return "WebProfilerBundle:Profiler:admin.html.twig";
     }
 
     public function isTraitable()
@@ -45,6 +45,6 @@ class __TwigTemplate_bb4886a88241529d9654c2f4d9077550d0a59c5d107780055a695c1de55
 
     public function getDebugInfo()
     {
-        return array (  21 => 2,  98 => 34,  87 => 32,  83 => 31,  76 => 27,  70 => 24,  64 => 21,  58 => 18,  53 => 15,  42 => 13,  38 => 12,  31 => 8,  26 => 6,  19 => 1,  102 => 33,  96 => 30,  92 => 28,  85 => 23,  78 => 18,  71 => 13,  68 => 12,  65 => 11,  57 => 39,  55 => 38,  51 => 37,  46 => 34,  44 => 11,  37 => 6,  35 => 5,  32 => 4,  29 => 8,);
+        return array (  29 => 8,  21 => 2,  19 => 1,);
     }
 }

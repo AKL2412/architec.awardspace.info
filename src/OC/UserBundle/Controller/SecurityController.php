@@ -14,7 +14,7 @@ class SecurityController extends Controller
     $manager = $this->getDoctrine()
               ->getManager();
     // Les noms d'utilisateurs à créer
-    $listNames = array('Alexandre', 'Marine', 'Anna');
+    $listNames = array('etudiant');
 
     foreach ($listNames as $name) {
       // On crée l'utilisateur
@@ -27,7 +27,7 @@ class SecurityController extends Controller
       // On ne se sert pas du sel pour l'instant
       $user->setSalt('');
       // On définit uniquement le role ROLE_USER qui est le role de base
-      $user->setRoles(array('ROLE_USER'));
+      $user->setRoles(array('ROLE_ETUDIANT'));
 
       // On le persiste
       $manager->persist($user);
@@ -60,5 +60,12 @@ class SecurityController extends Controller
       'last_username' => $session->get(SecurityContext::LAST_USERNAME),
       'error'         => $error,
     ));
+  }
+
+  public function accueilSiteAction()
+  {
+    $url = $this->get('router')->generate('intranet_admin_accueil');
+    
+    return new RedirectResponse($url);
   }
 }

@@ -30,9 +30,9 @@ class __TwigTemplate_b19ec1d03e83e2c7a1ee297c8ba44c81da200feed66347ab5d2be663b29
             echo "]</small></span>
             ";
             // line 5
-            echo $this->env->getExtension('code')->abbrClass($this->getAttribute((isset($context["exception"]) ? $context["exception"] : $this->getContext($context, "exception")), "class"));
+            echo $this->env->getExtension('code')->abbrClass($this->getAttribute((isset($context["exception"]) ? $context["exception"] : $this->getContext($context, "exception")), "class", array()));
             echo ": ";
-            echo $this->env->getExtension('code')->formatFileFromText(nl2br(twig_escape_filter($this->env, $this->getAttribute((isset($context["exception"]) ? $context["exception"] : $this->getContext($context, "exception")), "message"), "html", null, true)));
+            echo $this->env->getExtension('code')->formatFileFromText(nl2br(twig_escape_filter($this->env, $this->getAttribute((isset($context["exception"]) ? $context["exception"] : $this->getContext($context, "exception")), "message", array()), "html", null, true)));
             echo "&nbsp;
             ";
             // line 6
@@ -83,7 +83,7 @@ class __TwigTemplate_b19ec1d03e83e2c7a1ee297c8ba44c81da200feed66347ab5d2be663b29
         ";
         // line 19
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["exception"]) ? $context["exception"] : $this->getContext($context, "exception")), "trace"));
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["exception"]) ? $context["exception"] : $this->getContext($context, "exception")), "trace", array()));
         foreach ($context['_seq'] as $context["i"] => $context["trace"]) {
             // line 20
             echo "            <li>
@@ -115,6 +115,6 @@ class __TwigTemplate_b19ec1d03e83e2c7a1ee297c8ba44c81da200feed66347ab5d2be663b29
 
     public function getDebugInfo()
     {
-        return array (  94 => 22,  92 => 21,  89 => 20,  85 => 19,  79 => 18,  75 => 17,  72 => 16,  68 => 14,  64 => 12,  56 => 9,  50 => 8,  41 => 7,  24 => 3,  201 => 92,  199 => 91,  196 => 90,  187 => 84,  183 => 82,  173 => 74,  171 => 73,  168 => 72,  166 => 71,  163 => 70,  158 => 67,  156 => 66,  151 => 63,  142 => 59,  138 => 57,  136 => 56,  133 => 55,  123 => 47,  121 => 46,  117 => 44,  115 => 43,  112 => 42,  105 => 40,  101 => 24,  91 => 31,  86 => 28,  69 => 25,  66 => 24,  62 => 23,  51 => 20,  49 => 19,  39 => 6,  19 => 1,  98 => 40,  93 => 9,  88 => 6,  80 => 41,  78 => 40,  46 => 10,  44 => 9,  36 => 7,  32 => 12,  27 => 4,  22 => 2,  57 => 12,  54 => 21,  43 => 8,  40 => 8,  33 => 5,  30 => 3,);
+        return array (  101 => 24,  94 => 22,  92 => 21,  89 => 20,  85 => 19,  79 => 18,  75 => 17,  72 => 16,  68 => 14,  64 => 12,  56 => 9,  50 => 8,  41 => 7,  39 => 6,  33 => 5,  27 => 4,  24 => 3,  22 => 2,  19 => 1,);
     }
 }

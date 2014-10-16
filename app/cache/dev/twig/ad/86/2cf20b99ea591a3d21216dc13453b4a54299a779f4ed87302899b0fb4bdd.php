@@ -71,7 +71,7 @@ class __TwigTemplate_ad862cf20b99ea591a3d21216dc13453b4a54299a779f4ed87302899b0f
         </div>
         ";
         // line 27
-        if (($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "environment") == "dev")) {
+        if (($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "environment", array()) == "dev")) {
             // line 28
             echo "            <div class=\"block-configure\">
                 <div class=\"illustration\">

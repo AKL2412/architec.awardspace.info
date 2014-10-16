@@ -34,9 +34,9 @@ class __TwigTemplate_4d15bca0bac6fb3a5f8a8f7a7ea16f649ba3c76819ac15b2a2983b94ef8
   <p>...</p>
   <p class=\"btn btn-primary btn-lg\"> ";
         // line 8
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user"), "username"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array()), "html", null, true);
         echo " - ";
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user"), "password"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "password", array()), "html", null, true);
         echo "</p>
 </div>
 ";

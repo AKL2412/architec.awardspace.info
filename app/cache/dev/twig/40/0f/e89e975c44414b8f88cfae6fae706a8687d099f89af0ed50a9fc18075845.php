@@ -35,7 +35,7 @@ class __TwigTemplate_400fe89e975c44414b8f88cfae6fae706a8687d099f89af0ed50a9fc180
         if ((isset($context["error"]) ? $context["error"] : $this->getContext($context, "error"))) {
             // line 9
             echo "    <div class=\"alert alert-danger\">";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["error"]) ? $context["error"] : $this->getContext($context, "error")), "message"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["error"]) ? $context["error"] : $this->getContext($context, "error")), "message", array()), "html", null, true);
             echo "</div>
   ";
         }
