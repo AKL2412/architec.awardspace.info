@@ -1,0 +1,27 @@
+
+
+intranet_professeur:
+    resource: "@IntranetProfesseurBundle/Resources/config/routing.yml"
+    prefix:   /
+
+intranet_etudiant:
+    resource: "@IntranetEtudiantBundle/Resources/config/routing.yml"
+    prefix:   /
+
+internetsite:
+    resource: "@InternetsiteBundle/Resources/config/routing.yml"
+    prefix:   /
+
+intranet_admin:
+    resource: "@IntranetAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+login:
+    pattern:   /login
+    defaults:  { _controller: OCUserBundle:Security:login }
+
+login_check:
+    pattern:   /login_check
+
+logout:
+    pattern:   /logout

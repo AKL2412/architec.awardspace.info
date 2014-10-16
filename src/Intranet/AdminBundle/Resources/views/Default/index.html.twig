@@ -1,0 +1,25 @@
+{% extends "IntranetAdminBundle::layout.html.twig" %}
+
+{%block body%}
+<table class="table">
+	<tr>
+		<td>Username</td>
+		<td>{{ name.username }}</td>
+	</tr>
+	<tr>
+		<td>Password</td>
+		<td>{{ name.password }}</td>
+	</tr>
+</table>
+Bonjour {{ app.user.username }} - {{ app.user.password }}
+<a href="{{path('intranet_admin_auteur')}}" class="btn-link">les auteurs</a>
+<br>
+{# On n'affiche le lien « Ajouter une annonce » qu'aux auteurs
+  (et admins, qui héritent du rôle auteur) #}
+{% if is_granted('ROLE_AUTEUR') %}
+  <li><a href="{{ path('intranet_admin_auteur') }}">Ajouter une annonce</a></li>
+{% endif %}
+
+<a href="{{ path('intranet_admin_accueil') }}">Administrateur</a>
+
+{%endblock%}

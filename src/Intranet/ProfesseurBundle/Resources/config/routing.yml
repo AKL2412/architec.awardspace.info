@@ -1,0 +1,3 @@
+intranet_professeur_homepage:
+    path:     /test-prof/{name}
+    defaults: { _controller: IntranetProfesseurBundle:Default:index }

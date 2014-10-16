@@ -1,0 +1,127 @@
+{% extends "::intranet-layout.html.twig" %}
+{%block title%}Accueil de l'administrateur{%endblock%}
+
+{%block menu%}
+
+<div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a>
+                    </li>
+                    
+
+                    <li >
+                        <a href="javascript:;" data-toggle="collapse" data-target="#etudiantsBlock"><i class="fa fa-fw fa-user fa-1x"></i> Etudiants <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="etudiantsBlock" class="collapse">
+                        	<li>
+                                <a href="#"> <i class="fa fa-fw fa-plus"></i> Nouvel étudiant
+								<span class="details">Ajouter les détails d'un étudiant</span>
+                                </a>
+
+                            </li>
+                            <li>
+                                <a href="#"> <i class="fa fa-fw fa-list"></i> liste étudiants</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="javascript:;" data-toggle="collapse" data-target="#professeurBlock"><i class="fa fa-fw fa-user"></i> Professeurs <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="professeurBlock" class="collapse">
+                        	<li>
+                                <a href="#"> <i class="fa fa-fw fa-plus"></i> Nouvelle évaluation</a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="fa fa-fw fa-list"></i> liste évaluations</a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="fa fa-fw fa-bookmark"></i> type évaluations</a>
+                            </li>
+                        </ul>
+                    </li>
+                     <li >
+                        <a href="javascript:;" data-toggle="collapse" data-target="#coursBlock"><i class="fa fa-fw fa-book"></i> Cours <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="coursBlock" class="collapse">
+                        	<li>
+                                <a href="#"> <i class="fa fa-fw fa-plus"></i> Nouveau cours</a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="fa fa-fw fa-list"></i> liste cours</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="javascript:;" data-toggle="collapse" data-target="#evaluationBlock"><i class="fa fa-fw fa-edit"></i> Evaluations <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="evaluationBlock" class="collapse">
+                        	<li>
+                                <a href="#"> <i class="fa fa-fw fa-plus"></i> Nouvelle évaluation</a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="fa fa-fw fa-list"></i> liste évaluations</a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="fa fa-fw fa-bookmark"></i> type évaluations</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="javascript:;" data-toggle="collapse" data-target="#emploidetempsBlock"><i class="fa fa-fw fa-calendar"></i> Emplois de temps <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="emploidetempsBlock" class="collapse">
+                        	<li>
+                                <a href="#"> <i class="fa fa-fw fa-plus-circle"></i> Nouvelle évaluation</a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="fa fa-fw fa-list"></i> liste évaluations</a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="fa fa-fw fa-bookmark"></i> type évaluations</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="javascript:;" data-toggle="collapse" data-target="#comptabiliteBlock"><i class="fa fa-fw fa-money"></i> Comptabilité <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="comptabiliteBlock" class="collapse">
+                        	<li>
+                                <a href="#"> <i class="fa fa-fw fa-plus"></i> Nouvelle évaluation</a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="fa fa-fw fa-list"></i> liste évaluations</a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="fa fa-fw fa-bookmark"></i> type évaluations</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="javascript:;" data-toggle="collapse" data-target="#librairieBlock"><i class="fa fa-fw fa-bank"></i> Librairie <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="librairieBlock" class="collapse">
+                        	<li>
+                                <a href="#"> <i class="fa fa-fw fa-plus"></i> Nouvelle évaluation</a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="fa fa-fw fa-list"></i> liste évaluations</a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="fa fa-fw fa-bookmark"></i> type évaluations</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="javascript:;" data-toggle="collapse" data-target="#gerercompteblock"><i class="fa fa-fw fa-users"></i> Gérer compte <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="gerercompteblock" class="collapse">
+                        	<li>
+                                <a href="#"> <i class="fa fa-fw fa-plus-square"></i> Nouvelle évaluation</a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="fa fa-fw fa-list"></i> liste évaluations</a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="fa fa-fw fa-bookmark"></i> type évaluations</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="blank-page.html"><i class="fa fa-fw fa-comments-o"></i> Forum</a>
+                    </li>
+                </ul>
+            </div>
+     {%endblock%}

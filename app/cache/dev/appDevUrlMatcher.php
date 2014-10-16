@@ -122,6 +122,60 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/test-')) {
+            // intranet_professeur_homepage
+            if (0 === strpos($pathinfo, '/test-prof') && preg_match('#^/test\\-prof/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'intranet_professeur_homepage')), array (  '_controller' => 'Intranet\\ProfesseurBundle\\Controller\\DefaultController::indexAction',));
+            }
+
+            // intranet_etudiant_homepage
+            if (0 === strpos($pathinfo, '/test-etud') && preg_match('#^/test\\-etud/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'intranet_etudiant_homepage')), array (  '_controller' => 'Intranet\\EtudiantBundle\\Controller\\DefaultController::indexAction',));
+            }
+
+        }
+
+        // internetsite_homepage
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'internetsite_homepage')), array (  '_controller' => 'Internet\\siteBundle\\Controller\\DefaultController::indexAction',));
+        }
+
+        // intranet_admin_homepage
+        if ($pathinfo === '/test-admin') {
+            return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::indexAction',  '_route' => 'intranet_admin_homepage',);
+        }
+
+        // intranet_admin_auteur
+        if ($pathinfo === '/les-auteurs') {
+            return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::auteurAction',  '_route' => 'intranet_admin_auteur',);
+        }
+
+        // intranet_admin_accueil
+        if ($pathinfo === '/admin/accueil') {
+            return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::accueilAction',  '_route' => 'intranet_admin_accueil',);
+        }
+
+        if (0 === strpos($pathinfo, '/log')) {
+            if (0 === strpos($pathinfo, '/login')) {
+                // login
+                if ($pathinfo === '/login') {
+                    return array (  '_controller' => 'OC\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'login',);
+                }
+
+                // login_check
+                if ($pathinfo === '/login_check') {
+                    return array('_route' => 'login_check');
+                }
+
+            }
+
+            // logout
+            if ($pathinfo === '/logout') {
+                return array('_route' => 'logout');
+            }
+
+        }
+
         // _welcome
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {

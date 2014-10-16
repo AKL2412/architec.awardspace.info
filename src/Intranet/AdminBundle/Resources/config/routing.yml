@@ -1,0 +1,10 @@
+intranet_admin_homepage:
+    path:     /test-admin
+    defaults: { _controller: IntranetAdminBundle:Default:index }
+
+intranet_admin_auteur:
+    path:     /les-auteurs
+    defaults: { _controller: IntranetAdminBundle:Default:auteur }
+intranet_admin_accueil:
+    path:     /admin/accueil
+    defaults: { _controller: IntranetAdminBundle:Default:accueil }
