@@ -11,6 +11,7 @@ class __TwigTemplate_cace36dd4714bef5bf2db733171b32ba17a2b7dc2e8072c894b09d2344c
 
         $this->blocks = array(
             'title' => array($this, 'block_title'),
+            'connected' => array($this, 'block_connected'),
             'menu' => array($this, 'block_menu'),
         );
     }
@@ -32,9 +33,149 @@ class __TwigTemplate_cace36dd4714bef5bf2db733171b32ba17a2b7dc2e8072c894b09d2344c
     }
 
     // line 4
-    public function block_menu($context, array $blocks = array())
+    public function block_connected($context, array $blocks = array())
     {
         // line 5
+        echo "
+";
+        // line 6
+        if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
+            // line 7
+            echo "    
+    
+
+     <ul class=\"nav navbar-right top-nav\">
+                <li class=\"dropdown\">
+                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-envelope\"></i> <b class=\"caret\"></b></a>
+                    <ul class=\"dropdown-menu message-dropdown\">
+                        <li class=\"message-preview\">
+                            <a href=\"#\">
+                                <div class=\"media\">
+                                    <span class=\"pull-left\">
+                                        <img class=\"media-object\" src=\"http://placehold.it/50x50\" alt=\"\">
+                                    </span>
+                                    <div class=\"media-body\">
+                                        <h5 class=\"media-heading\"><strong>John Smith</strong>
+                                        </h5>
+                                        <p class=\"small text-muted\"><i class=\"fa fa-clock-o\"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class=\"message-preview\">
+                            <a href=\"#\">
+                                <div class=\"media\">
+                                    <span class=\"pull-left\">
+                                        <img class=\"media-object\" src=\"http://placehold.it/50x50\" alt=\"\">
+                                    </span>
+                                    <div class=\"media-body\">
+                                        <h5 class=\"media-heading\"><strong>John Smith</strong>
+                                        </h5>
+                                        <p class=\"small text-muted\"><i class=\"fa fa-clock-o\"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class=\"message-preview\">
+                            <a href=\"#\">
+                                <div class=\"media\">
+                                    <span class=\"pull-left\">
+                                        <img class=\"media-object\" src=\"http://placehold.it/50x50\" alt=\"\">
+                                    </span>
+                                    <div class=\"media-body\">
+                                        <h5 class=\"media-heading\"><strong>John Smith</strong>
+                                        </h5>
+                                        <p class=\"small text-muted\"><i class=\"fa fa-clock-o\"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class=\"message-footer\">
+                            <a href=\"#\">Read All New Messages</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=\"dropdown\">
+                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-bell\"></i> <b class=\"caret\"></b></a>
+                    <ul class=\"dropdown-menu alert-dropdown\">
+                        <li>
+                            <a href=\"#\">Alert Name <span class=\"label label-default\">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href=\"#\">Alert Name <span class=\"label label-primary\">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href=\"#\">Alert Name <span class=\"label label-success\">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href=\"#\">Alert Name <span class=\"label label-info\">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href=\"#\">Alert Name <span class=\"label label-warning\">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href=\"#\">Alert Name <span class=\"label label-danger\">Alert Badge</span></a>
+                        </li>
+                        <li class=\"divider\"></li>
+                        <li>
+                            <a href=\"#\">View All</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=\"dropdown\">
+                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> ";
+            // line 92
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array()), "html", null, true);
+            echo " <b class=\"caret\"></b></a>
+                    <ul class=\"dropdown-menu\">
+                        <li>
+                            <a href=\"#\"><i class=\"fa fa-fw fa-user\"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a href=\"#\"><i class=\"fa fa-fw fa-envelope\"></i> Inbox</a>
+                        </li>
+                        <li>
+                            <a href=\"#\"><i class=\"fa fa-fw fa-gear\"></i> Settings</a>
+                        </li>
+                        <li class=\"divider\"></li>
+                        <li>
+                            <a href=\"";
+            // line 105
+            echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
+            echo "\">Déconnexion</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+
+";
+        } else {
+            // line 114
+            echo "<ul class=\"nav navbar-right top-nav\">
+<li><a href=\"";
+            // line 115
+            echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
+            echo "\">Connexion</a></li>
+</ul>
+    
+";
+        }
+        // line 119
+        echo "
+   
+
+";
+    }
+
+    // line 124
+    public function block_menu($context, array $blocks = array())
+    {
+        // line 125
         echo "
 <div class=\"collapse navbar-collapse navbar-ex1-collapse\">
                 <ul class=\"nav navbar-nav side-nav\">
@@ -87,6 +228,6 @@ class __TwigTemplate_cace36dd4714bef5bf2db733171b32ba17a2b7dc2e8072c894b09d2344c
 
     public function getDebugInfo()
     {
-        return array (  38 => 5,  35 => 4,  29 => 2,);
+        return array (  179 => 125,  176 => 124,  169 => 119,  162 => 115,  159 => 114,  147 => 105,  131 => 92,  44 => 7,  42 => 6,  39 => 5,  36 => 4,  30 => 2,);
     }
 }

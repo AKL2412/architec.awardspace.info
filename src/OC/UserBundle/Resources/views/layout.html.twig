@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+        <style type="text/css">
+        body{
+        	background-color: rgba(0,0,0,0.3);
+        }
+		#form{
+			box-shadow: 0 0 8px rgba(0,0,0,0.9);
+			padding: 8px;
+			margin-top: 10%;
+			background-color: #fff;
+			/*border-left: 2px solid #000162;
+			border-top: 2px solid #000162;
+			border-bottom: 2px solid #CD000D;
+			border-right: 2px solid #CD000D;*/
+		}
+		.image img{
+			display: block;
+			width: 70%;
+		}
+		.connection{
+			margin-top: 8px;
+			border-top: 1px solid #fff;
+			padding-top: 8px;
+		}
+        </style>
+    </head>
+    <body>
+     {% for key, message in app.session.flashbag.all() %}
+    <div class="alert alert-{{ key }}">
+      {{ message|trans({}, 'FOSUserBundle') }}
+    </div>
+  {% endfor %}
+
+        
+
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message }}
+                </div>
+          {% endfor %}
+        {% endfor %}
+
+        <div>
+        <div class="row">
+        	
+        <div id="form" class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3"  >
+	        <div class="detail col-md-4 col-xs-12 col-sm-5">
+	        	<div class="image col-md-12 col-xs-12 col-sm-12" >
+	        		<img src=" {{asset('img/logo.JPG')}} " class="thumbnail circle">
+	        	</div>
+	        	<div class="connection col-md-12" >
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a class="btn btn-warning btn-xs" href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                <a class="btn btn-info  btn-xs" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }} </a>
+            {% endif %}
+        </div>
+	        </div>
+	        <div class="col-md-8 col-xs-12 col-sm-7">
+	        	{% block fos_user_content %}
+	  			{% endblock fos_user_content %}
+
+	        </div>
+        	
+
+        </div>
+
+        </div>
+            
+        </div>
+    </body>
+</html>

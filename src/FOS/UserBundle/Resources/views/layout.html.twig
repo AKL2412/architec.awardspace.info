@@ -1,9 +1,13 @@
+
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" />
+        <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     </head>
     <body>
+
         <div>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |

@@ -16,9 +16,28 @@ class DefaultController extends Controller
     }
     public function accueilAction()
     {
-    	$user = $this->getUser();
+        /*
+        // Pour récupérer le service UserManager du bundle
+$userManager = $this->get('fos_user.user_manager');
 
-        return $this->render('IntranetAdminBundle:Default:accueil.html.twig', array('name' => $user));
+// Pour charger un utilisateur
+$user = $userManager->findUserBy(array('username' => 'riouk'));
+
+// Pour modifier un utilisateur
+//$user->setEmail('cetemail@nexiste.pas');
+$user->setRoles(array('ROLE_ETUDIANT'));
+$userManager->updateUser($user); // Pas besoin de faire un flush avec l'EntityManager, cette méthode le fait toute seule !
+
+// Pour supprimer un utilisateur
+//$userManager->deleteUser($user);
+
+// Pour récupérer la liste de tous les utilisateurs
+//$users = $userManager->findUsers();
+
+//*/
+    $user = $this->getUser();
+
+        return $this->render('IntranetAdminBundle:Default:accueil.html.twig', array('user' => $user));
     }
 
     /**

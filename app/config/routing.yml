@@ -16,19 +16,19 @@ intranet_admin:
     resource: "@IntranetAdminBundle/Resources/config/routing.yml"
     prefix:   /admin
 
-login:
-    pattern:   /login
-    defaults:  { _controller: OCUserBundle:Security:login }
+#login:
+ #   pattern:   /login
+  #  defaults:  { _controller: OCUserBundle:Security:login }
 
-login_check:
-    pattern:   /login_check
+# login_check:
+#     pattern:   /login_check
 
-logout:
-    pattern:   /logout
+# logout:
+#     pattern:   /logout
 
 accueil_intranet:
     pattern:   /intranet
-    defaults:  { _controller: OCUserBundle:Security:accueilSite }
+    defaults:  { _controller: OCUserBundle:Info:redirect }
 
 
 fos_user_security:

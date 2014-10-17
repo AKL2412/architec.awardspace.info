@@ -1,6 +1,7 @@
 {% extends "IntranetAdminBundle::layout.html.twig" %}
 
 {%block body%}
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 <table class="table">
 	<tr>
 		<td>Username</td>
@@ -22,5 +23,9 @@ Bonjour {{ app.user.username }} - {{ app.user.password }}
 
 <a href="{{ path('intranet_admin_accueil') }}">Administrateur</a>
 {{ path('intranet_admin_accueil') }}
+
+{% else %}
+   Accueil | not connecté
+{% endif %}
 
 {%endblock%}

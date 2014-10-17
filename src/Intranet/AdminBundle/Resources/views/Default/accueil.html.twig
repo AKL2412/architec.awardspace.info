@@ -1,10 +1,13 @@
 {% extends "IntranetAdminBundle::layout.html.twig" %}
 
 {%block body%}
-
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 <div class="jumbotron">
   <h1>Accueil Admin</h1>
   <p>...</p>
-  <p class="btn btn-primary btn-lg"> {{ app.user.username }} - {{ app.user.password }}</p>
+  <p class="btn btn-primary btn-lg"> {{ user.username }} </p>
 </div>
+{% else %}
+   Accueil | not connecté
+{% endif %}
 {%endblock%}

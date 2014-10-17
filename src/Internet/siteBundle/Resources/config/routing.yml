@@ -1,3 +1,3 @@
 internetsite_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: InternetsiteBundle:Default:index }
+    path:     /
+    defaults: { _controller: InternetsiteBundle:Site:index }

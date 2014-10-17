@@ -1,3 +1,3 @@
 intranet_etudiant_homepage:
-    path:     /test-etud/{name}
+    path:     /accueil
     defaults: { _controller: IntranetEtudiantBundle:Default:index }

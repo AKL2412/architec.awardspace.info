@@ -7,19 +7,20 @@ class __TwigTemplate_a7ce83cb52e0009f2a0f7997998c883402deb1508fff574409a8066422a
     {
         parent::__construct($env);
 
-        $this->parent = false;
+        $this->parent = $this->env->loadTemplate("::internet-layout.html.twig");
 
         $this->blocks = array(
         );
     }
 
+    protected function doGetParent(array $context)
+    {
+        return "::internet-layout.html.twig";
+    }
+
     protected function doDisplay(array $context, array $blocks = array())
     {
-        // line 1
-        echo "Hello ";
-        echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "html", null, true);
-        echo "!
-";
+        $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
     public function getTemplateName()
@@ -34,6 +35,6 @@ class __TwigTemplate_a7ce83cb52e0009f2a0f7997998c883402deb1508fff574409a8066422a
 
     public function getDebugInfo()
     {
-        return array (  19 => 1,);
+        return array ();
     }
 }

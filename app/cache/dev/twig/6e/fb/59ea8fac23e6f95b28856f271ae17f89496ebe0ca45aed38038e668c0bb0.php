@@ -11,6 +11,7 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
 
         $this->blocks = array(
             'title' => array($this, 'block_title'),
+            'connected' => array($this, 'block_connected'),
             'menu' => array($this, 'block_menu'),
             'body' => array($this, 'block_body'),
         );
@@ -29,7 +30,10 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
     <meta name=\"description\" content=\"\">
     <meta name=\"author\" content=\"\">
-
+    <link rel=\"shortcut icon\" href=\" ";
+        // line 11
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("img/logo.JPG"), "html", null, true);
+        echo " \" />
     <title>";
         // line 12
         $this->displayBlock('title', $context, $blocks);
@@ -78,7 +82,9 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
         <!--   les liens de navigation -->
             <div class=\"positionUrl hidden-xs\" >
             \t<a href=\"#\">home</a>
+                <i class=\" fa fa-angle-right\"></i>
             \t<a href=\"#\">Sotir</a>
+                <i class=\" fa fa-angle-right\"></i>
             \t<a href=\"#\" class=\"active\">enter</a>
            \t</div>
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -89,118 +95,25 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
                     <span class=\"icon-bar\"></span>
                     <span class=\"icon-bar\"></span>
                 </button>
-                <a class=\"navbar-brand\" href=\"index.html\">Architec AwardSpace</a>
+
+                <a class=\"navbar-brand\" href=\" ";
+        // line 59
+        echo $this->env->getExtension('routing')->getPath("internetsite_homepage");
+        echo " \">Architec AwardSpace</a>
             </div>
 
             <!-- Top Menu Items -->
-            <ul class=\"nav navbar-right top-nav\">
-                <li class=\"dropdown\">
-                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-envelope\"></i> <b class=\"caret\"></b></a>
-                    <ul class=\"dropdown-menu message-dropdown\">
-                        <li class=\"message-preview\">
-                            <a href=\"#\">
-                                <div class=\"media\">
-                                    <span class=\"pull-left\">
-                                        <img class=\"media-object\" src=\"http://placehold.it/50x50\" alt=\"\">
-                                    </span>
-                                    <div class=\"media-body\">
-                                        <h5 class=\"media-heading\"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class=\"small text-muted\"><i class=\"fa fa-clock-o\"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class=\"message-preview\">
-                            <a href=\"#\">
-                                <div class=\"media\">
-                                    <span class=\"pull-left\">
-                                        <img class=\"media-object\" src=\"http://placehold.it/50x50\" alt=\"\">
-                                    </span>
-                                    <div class=\"media-body\">
-                                        <h5 class=\"media-heading\"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class=\"small text-muted\"><i class=\"fa fa-clock-o\"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class=\"message-preview\">
-                            <a href=\"#\">
-                                <div class=\"media\">
-                                    <span class=\"pull-left\">
-                                        <img class=\"media-object\" src=\"http://placehold.it/50x50\" alt=\"\">
-                                    </span>
-                                    <div class=\"media-body\">
-                                        <h5 class=\"media-heading\"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class=\"small text-muted\"><i class=\"fa fa-clock-o\"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class=\"message-footer\">
-                            <a href=\"#\">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class=\"dropdown\">
-                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-bell\"></i> <b class=\"caret\"></b></a>
-                    <ul class=\"dropdown-menu alert-dropdown\">
-                        <li>
-                            <a href=\"#\">Alert Name <span class=\"label label-default\">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href=\"#\">Alert Name <span class=\"label label-primary\">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href=\"#\">Alert Name <span class=\"label label-success\">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href=\"#\">Alert Name <span class=\"label label-info\">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href=\"#\">Alert Name <span class=\"label label-warning\">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href=\"#\">Alert Name <span class=\"label label-danger\">Alert Badge</span></a>
-                        </li>
-                        <li class=\"divider\"></li>
-                        <li>
-                            <a href=\"#\">View All</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class=\"dropdown\">
-                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> John Smith <b class=\"caret\"></b></a>
-                    <ul class=\"dropdown-menu\">
-                        <li>
-                            <a href=\"#\"><i class=\"fa fa-fw fa-user\"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href=\"#\"><i class=\"fa fa-fw fa-envelope\"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href=\"#\"><i class=\"fa fa-fw fa-gear\"></i> Settings</a>
-                        </li>
-                        <li class=\"divider\"></li>
-                        <li>
-                            <a href=\"#\"><i class=\"fa fa-fw fa-power-off\"></i> Log Out</a>
-                        </li>
-                    </ul>
-                </li>
-
-            </ul>
-            
+            ";
+        // line 63
+        $this->displayBlock('connected', $context, $blocks);
+        // line 68
+        echo "            
              
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             ";
-        // line 164
+        // line 71
         $this->displayBlock('menu', $context, $blocks);
-        // line 165
+        // line 72
         echo "            <!-- /.navbar-collapse -->
         </nav>
 
@@ -208,8 +121,10 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
 
             <div class=\"container-fluid\">
 
+                
+
                 <!-- Page Heading -->
-                <div class=\"row\">
+                <!-- <div class=\"row\">
                     <div class=\"col-lg-12\">
                         <h1 class=\"page-header\">
                             Dashboard <small>Statistics Overview</small>
@@ -220,18 +135,12 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
                             </li>
                         </ol>
                     </div>
-                </div>
+                </div> -->
                 <!-- /.row -->
-                <a href=\"";
-        // line 186
-        echo $this->env->getExtension('routing')->getPath("logout");
-        echo "\" class=\"label label-danger\"> 
-                        logout
-                </a>
                 ";
-        // line 189
+        // line 95
         $this->displayBlock('body', $context, $blocks);
-        // line 190
+        // line 96
         echo "
             </div>
             <!-- /.container-fluid -->
@@ -244,27 +153,27 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
 
     <!-- jQuery Version 1.11.0 -->
     <script src=\"";
-        // line 201
+        // line 107
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery-1.11.0.js"), "html", null, true);
         echo "\"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src=\"";
-        // line 204
+        // line 110
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
 
     <!-- Morris Charts JavaScript -->
     <script src=\"";
-        // line 207
+        // line 113
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/plugins/morris/raphael.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 208
+        // line 114
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/plugins/morris/morris.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 209
+        // line 115
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/plugins/morris/morris-data.js"), "html", null, true);
         echo "\"></script>
 
@@ -279,12 +188,25 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
     {
     }
 
-    // line 164
+    // line 63
+    public function block_connected($context, array $blocks = array())
+    {
+        // line 64
+        echo "            <ul class=\"nav navbar-right top-nav\">
+<li><a href=\"";
+        // line 65
+        echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
+        echo "\">Connexion</a></li>
+</ul>
+            ";
+    }
+
+    // line 71
     public function block_menu($context, array $blocks = array())
     {
     }
 
-    // line 189
+    // line 95
     public function block_body($context, array $blocks = array())
     {
     }
@@ -301,6 +223,6 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
 
     public function getDebugInfo()
     {
-        return array (  288 => 189,  283 => 164,  278 => 12,  268 => 209,  264 => 208,  260 => 207,  254 => 204,  248 => 201,  235 => 190,  233 => 189,  227 => 186,  204 => 165,  202 => 164,  59 => 24,  53 => 21,  47 => 18,  41 => 15,  35 => 12,  22 => 1,);
+        return array (  210 => 95,  205 => 71,  198 => 65,  195 => 64,  192 => 63,  187 => 12,  177 => 115,  173 => 114,  169 => 113,  163 => 110,  157 => 107,  144 => 96,  142 => 95,  117 => 72,  115 => 71,  110 => 68,  108 => 63,  101 => 59,  63 => 24,  57 => 21,  51 => 18,  45 => 15,  39 => 12,  35 => 11,  23 => 1,);
     }
 }

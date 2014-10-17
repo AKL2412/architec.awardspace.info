@@ -28,18 +28,22 @@ class __TwigTemplate_7830aac795d9feb7c1af6b7479b990f91097292bd4bf3192e53feba9aa2
     public function block_body($context, array $blocks = array())
     {
         // line 4
-        echo "
-<div class=\"jumbotron\">
+        if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
+            // line 5
+            echo "<div class=\"jumbotron\">
   <h1>Accueil Admin</h1>
   <p>...</p>
   <p class=\"btn btn-primary btn-lg\"> ";
-        // line 8
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array()), "html", null, true);
-        echo " - ";
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "password", array()), "html", null, true);
-        echo "</p>
+            // line 8
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "username", array()), "html", null, true);
+            echo " </p>
 </div>
 ";
+        } else {
+            // line 11
+            echo "   Accueil | not connecté
+";
+        }
     }
 
     public function getTemplateName()
@@ -54,6 +58,6 @@ class __TwigTemplate_7830aac795d9feb7c1af6b7479b990f91097292bd4bf3192e53feba9aa2
 
     public function getDebugInfo()
     {
-        return array (  37 => 8,  31 => 4,  28 => 3,);
+        return array (  44 => 11,  38 => 8,  33 => 5,  31 => 4,  28 => 3,);
     }
 }
