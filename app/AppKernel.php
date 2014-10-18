@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Intranet\EtudiantBundle\IntranetEtudiantBundle(),
             new Intranet\ProfesseurBundle\IntranetProfesseurBundle(),
             new OC\UserBundle\OCUserBundle(),
+            new Outil\ServiceBundle\OutilServiceBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -126,22 +126,25 @@
 
 <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a>
+                    <li >
+                        <a href=" {{path('intranet_admin_accueil')}} "><i class="fa fa-fw fa-home"></i> Home </a>
                     </li>
                     
 
-                    <li >
+                    <li class="active-">
                         <a href="javascript:;" data-toggle="collapse" data-target="#etudiantsBlock"><i class="fa fa-fw fa-user fa-1x"></i> Etudiants <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="etudiantsBlock" class="collapse">
                         	<li>
-                                <a href="#"> <i class="fa fa-fw fa-plus"></i> Nouvel étudiant
+                                <a href=" {{path('intranet_admin_ajout_etudiant')}} "> 
+                                <i class="fa fa-fw fa-plus"></i> Nouvel étudiant
 								<span class="details">Ajouter les détails d'un étudiant</span>
                                 </a>
 
                             </li>
-                            <li>
-                                <a href="#"> <i class="fa fa-fw fa-list"></i> liste étudiants</a>
+                            <li class="active">
+                                <a href=" {{path('intranet_admin_liste_etudiant')}} "> <i class="fa fa-fw fa-list"></i> liste étudiants
+                                <span class="details">Voir les détails des étudiants</span>
+                                </a>
                             </li>
                         </ul>
                     </li>

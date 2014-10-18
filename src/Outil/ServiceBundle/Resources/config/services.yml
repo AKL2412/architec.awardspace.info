@@ -1,0 +1,7 @@
+services:
+#    outil_service.example:
+#        class: Outil\ServiceBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    outil_service.antispam:
+        class: Outil\ServiceBundle\Antispam\Antispam
+        arguments: [@mailer, %locale%, 50]

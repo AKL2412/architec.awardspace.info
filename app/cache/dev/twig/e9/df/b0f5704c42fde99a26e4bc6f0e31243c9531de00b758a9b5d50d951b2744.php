@@ -179,22 +179,34 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
         echo "
 <div class=\"collapse navbar-collapse navbar-ex1-collapse\">
                 <ul class=\"nav navbar-nav side-nav\">
-                    <li class=\"active\">
-                        <a href=\"index.html\"><i class=\"fa fa-fw fa-home\"></i> Home</a>
+                    <li >
+                        <a href=\" ";
+        // line 130
+        echo $this->env->getExtension('routing')->getPath("intranet_admin_accueil");
+        echo " \"><i class=\"fa fa-fw fa-home\"></i> Home </a>
                     </li>
                     
 
-                    <li >
+                    <li class=\"active-\">
                         <a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#etudiantsBlock\"><i class=\"fa fa-fw fa-user fa-1x\"></i> Etudiants <i class=\"fa fa-fw fa-caret-down\"></i></a>
                         <ul id=\"etudiantsBlock\" class=\"collapse\">
                         \t<li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-plus\"></i> Nouvel étudiant
+                                <a href=\" ";
+        // line 138
+        echo $this->env->getExtension('routing')->getPath("intranet_admin_ajout_etudiant");
+        echo " \"> 
+                                <i class=\"fa fa-fw fa-plus\"></i> Nouvel étudiant
 \t\t\t\t\t\t\t\t<span class=\"details\">Ajouter les détails d'un étudiant</span>
                                 </a>
 
                             </li>
-                            <li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-list\"></i> liste étudiants</a>
+                            <li class=\"active\">
+                                <a href=\" ";
+        // line 145
+        echo $this->env->getExtension('routing')->getPath("intranet_admin_liste_etudiant");
+        echo " \"> <i class=\"fa fa-fw fa-list\"></i> liste étudiants
+                                <span class=\"details\">Voir les détails des étudiants</span>
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -313,6 +325,6 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
 
     public function getDebugInfo()
     {
-        return array (  179 => 126,  176 => 125,  169 => 119,  162 => 115,  159 => 114,  147 => 105,  131 => 92,  44 => 7,  42 => 6,  39 => 5,  36 => 4,  30 => 2,);
+        return array (  206 => 145,  196 => 138,  185 => 130,  179 => 126,  176 => 125,  169 => 119,  162 => 115,  159 => 114,  147 => 105,  131 => 92,  44 => 7,  42 => 6,  39 => 5,  36 => 4,  30 => 2,);
     }
 }

@@ -1,0 +1,92 @@
+{% extends "IntranetAdminBundle::layout.html.twig" %}
+{%block title%}ajout un étudiant{%endblock%}
+{%block body%}
+<h3>Ajout d'un étudiant</h3>
+
+<div class="well">
+  {{ form_start(form, {'attr': {'role':'form'}}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+    <div class="form-group col-md-6">
+	    {# Génération du label. #}
+	    {{ form_label(form.nom, "Nom de l'étudiant") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.nom) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(form.nom, {'attr': {'class': 'form-control','placeholder':'Nom de l\'étudiant'}}) }}
+    </div>
+
+    <div class="form-group col-md-6">
+	    {# Génération du label. #}
+	    {{ form_label(form.prenom, "Prenom de l'étudiant") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.prenom) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(form.prenom, {'attr': {'class': 'form-control','placeholder':'Prenom de l\'étudiant'}}) }}
+    </div>
+    <div class="form-group col-md-3">
+	    {# Génération du label. #}
+	    {{ form_label(form.datenaissance, "La date naissance de l'étudiant") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.datenaissance) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(form.datenaissance, {'attr': {'class': 'form-control-','placeholder':'La date naissance de l\'étudiant'}}) }}
+    </div>
+    <div class="form-group col-md-3">
+	    {# Génération du label. #}
+	    {{ form_label(form.email, "L'email de l'étudiant") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.email) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(form.email, {'attr': {'class': 'form-control','placeholder':"L'email de l'étudiant"}}) }}
+    </div>
+    <div class="form-group col-md-3">
+	    {# Génération du label. #}
+	    {{ form_label(form.matricule, "Le matricule de l'étudiant") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.matricule) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(form.matricule, {'attr': {'class': 'form-control','placeholder':"Le matricule de l'étudiant"}}) }}
+    </div>
+    <div class="form-group col-md-3">
+	    {# Génération du label. #}
+	    {{ form_label(form.telephone, "Le telephone de l'étudiant") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.telephone) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(form.telephone, {'attr': {'class': 'form-control','placeholder':"Le telephone de l'étudiant"}}) }}
+    </div>
+
+  
+
+  {# Génération automatique des champs pas encore écrits.
+     Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+     et tous les champs cachés (type « hidden »). #}
+  {{ form_rest(form) }}
+  
+  {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+  {#{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }#}
+  <div class="">
+  	<input type="submit" value="Ajouter" class="btn btn-primary">
+  <input type="reset" value="Annuler" class="btn btn-default">
+
+  </div>
+  
+  {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(form) }}
+</div>
+{%endblock%}

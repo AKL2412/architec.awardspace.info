@@ -1,10 +1,26 @@
 intranet_admin_homepage:
     path:     /test-admin
     defaults: { _controller: IntranetAdminBundle:Default:index }
-
-intranet_admin_auteur:
-    path:     /les-auteurs
-    defaults: { _controller: IntranetAdminBundle:Default:auteur }
 intranet_admin_accueil:
     path:     /accueil
     defaults: { _controller: IntranetAdminBundle:Default:accueil }
+intranet_admin_upload:
+    path:     /upload-file
+    defaults: { _controller: IntranetAdminBundle:Default:add }
+
+#***************** lES LIENS DE : Gestion des étudiants *******************
+intranet_admin_ajout_etudiant:
+    path:     /ajout-etudiant
+    defaults: { _controller: IntranetAdminBundle:Etudiant:ajout }
+intranet_admin_voir_etudiant:
+    path:     /voir-etudiant/{id}
+    defaults: { _controller: IntranetAdminBundle:Etudiant:voir }
+intranet_admin_liste_etudiant:
+    path:     /lister-etudiant
+    defaults: { _controller: IntranetAdminBundle:Etudiant:list }
+
+
+
+# ----------------------------------------------------------
+#			FIN GESION ETUDIANT
+#----------------------------------------------------------

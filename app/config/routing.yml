@@ -1,3 +1,7 @@
+outil_service:
+    resource: "@OutilServiceBundle/Resources/config/routing.yml"
+    prefix:   /
+
 
 
 intranet_professeur:

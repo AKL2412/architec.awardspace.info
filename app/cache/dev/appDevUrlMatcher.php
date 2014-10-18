@@ -122,6 +122,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // outil_service_homepage
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'outil_service_homepage')), array (  '_controller' => 'Outil\\ServiceBundle\\Controller\\DefaultController::indexAction',));
+        }
+
         if (0 === strpos($pathinfo, '/espace-')) {
             // intranet_professeur_homepage
             if ($pathinfo === '/espace-professeur/accueil') {
@@ -150,14 +155,29 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::indexAction',  '_route' => 'intranet_admin_homepage',);
             }
 
-            // intranet_admin_auteur
-            if ($pathinfo === '/admin/les-auteurs') {
-                return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::auteurAction',  '_route' => 'intranet_admin_auteur',);
-            }
-
             // intranet_admin_accueil
             if ($pathinfo === '/admin/accueil') {
                 return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::accueilAction',  '_route' => 'intranet_admin_accueil',);
+            }
+
+            // intranet_admin_upload
+            if ($pathinfo === '/admin/upload-file') {
+                return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::addAction',  '_route' => 'intranet_admin_upload',);
+            }
+
+            // intranet_admin_ajout_etudiant
+            if ($pathinfo === '/admin/ajout-etudiant') {
+                return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\EtudiantController::ajoutAction',  '_route' => 'intranet_admin_ajout_etudiant',);
+            }
+
+            // intranet_admin_voir_etudiant
+            if (0 === strpos($pathinfo, '/admin/voir-etudiant') && preg_match('#^/admin/voir\\-etudiant/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'intranet_admin_voir_etudiant')), array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\EtudiantController::voirAction',));
+            }
+
+            // intranet_admin_liste_etudiant
+            if ($pathinfo === '/admin/lister-etudiant') {
+                return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\EtudiantController::listAction',  '_route' => 'intranet_admin_liste_etudiant',);
             }
 
         }
