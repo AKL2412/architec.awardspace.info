@@ -73,6 +73,7 @@ class Etudiant
     public function __construct()
   {
     $this->date = new \Datetime();
+
   }
 
 

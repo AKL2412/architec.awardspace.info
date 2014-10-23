@@ -39,11 +39,11 @@ class __TwigTemplate_4675874dcd9e23791d7992092839415beff0b6f12efd748048dd5fd38e8
             echo "            <tr>
                 <th>";
             // line 11
-            echo twig_escape_filter($this->env, (isset($context["key"]) ? $context["key"] : $this->getContext($context, "key")), "html", null, true);
+            echo twig_escape_filter($this->env, $context["key"], "html", null, true);
             echo "</th>
                 <td><pre>";
             // line 12
-            echo twig_escape_filter($this->env, $this->env->getExtension('profiler')->dumpValue($this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), (isset($context["key"]) ? $context["key"] : $this->getContext($context, "key")), array(), "array")), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('profiler')->dumpValue($this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), $context["key"], array(), "array")), "html", null, true);
             echo "</pre></td>
             </tr>
         ";

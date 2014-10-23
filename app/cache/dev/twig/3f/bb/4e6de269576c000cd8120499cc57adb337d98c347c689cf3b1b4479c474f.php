@@ -378,9 +378,9 @@ class __TwigTemplate_3fbb4e6de269576c000cd8120499cc57adb337d98c347c689cf3b1b4479
         $context['_seq'] = twig_ensure_traversable((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")));
         foreach ($context['_seq'] as $context["_key"] => $context["child"]) {
             // line 48
-            echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["child"]) ? $context["child"] : $this->getContext($context, "child")), 'widget');
+            echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($context["child"], 'widget');
             // line 49
-            echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["child"]) ? $context["child"] : $this->getContext($context, "child")), 'label');
+            echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($context["child"], 'label');
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['child'], $context['_parent'], $context['loop']);
@@ -460,14 +460,14 @@ class __TwigTemplate_3fbb4e6de269576c000cd8120499cc57adb337d98c347c689cf3b1b4479
         }
         foreach ($context['_seq'] as $context["group_label"] => $context["choice"]) {
             // line 76
-            if (twig_test_iterable((isset($context["choice"]) ? $context["choice"] : $this->getContext($context, "choice")))) {
+            if (twig_test_iterable($context["choice"])) {
                 // line 77
                 echo "<optgroup label=\"";
-                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans((isset($context["group_label"]) ? $context["group_label"] : $this->getContext($context, "group_label")), array(), (isset($context["translation_domain"]) ? $context["translation_domain"] : $this->getContext($context, "translation_domain"))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans($context["group_label"], array(), (isset($context["translation_domain"]) ? $context["translation_domain"] : $this->getContext($context, "translation_domain"))), "html", null, true);
                 echo "\">
                 ";
                 // line 78
-                $context["options"] = (isset($context["choice"]) ? $context["choice"] : $this->getContext($context, "choice"));
+                $context["options"] = $context["choice"];
                 // line 79
                 $this->displayBlock("choice_widget_options", $context, $blocks);
                 // line 80
@@ -475,13 +475,13 @@ class __TwigTemplate_3fbb4e6de269576c000cd8120499cc57adb337d98c347c689cf3b1b4479
             } else {
                 // line 82
                 echo "<option value=\"";
-                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["choice"]) ? $context["choice"] : $this->getContext($context, "choice")), "value", array()), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($context["choice"], "value", array()), "html", null, true);
                 echo "\"";
-                if ($this->env->getExtension('form')->isSelectedChoice((isset($context["choice"]) ? $context["choice"] : $this->getContext($context, "choice")), (isset($context["value"]) ? $context["value"] : $this->getContext($context, "value")))) {
+                if ($this->env->getExtension('form')->isSelectedChoice($context["choice"], (isset($context["value"]) ? $context["value"] : $this->getContext($context, "value")))) {
                     echo " selected=\"selected\"";
                 }
                 echo ">";
-                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans($this->getAttribute((isset($context["choice"]) ? $context["choice"] : $this->getContext($context, "choice")), "label", array()), array(), (isset($context["translation_domain"]) ? $context["translation_domain"] : $this->getContext($context, "translation_domain"))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans($this->getAttribute($context["choice"], "label", array()), array(), (isset($context["translation_domain"]) ? $context["translation_domain"] : $this->getContext($context, "translation_domain"))), "html", null, true);
                 echo "</option>";
             }
             ++$context['loop']['index0'];
@@ -756,9 +756,9 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
             $context['_seq'] = twig_ensure_traversable((isset($context["label_attr"]) ? $context["label_attr"] : $this->getContext($context, "label_attr")));
             foreach ($context['_seq'] as $context["attrname"] => $context["attrvalue"]) {
                 echo " ";
-                echo twig_escape_filter($this->env, (isset($context["attrname"]) ? $context["attrname"] : $this->getContext($context, "attrname")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "=\"";
-                echo twig_escape_filter($this->env, (isset($context["attrvalue"]) ? $context["attrvalue"] : $this->getContext($context, "attrvalue")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["attrvalue"], "html", null, true);
                 echo "\"";
             }
             $_parent = $context['_parent'];
@@ -851,9 +851,9 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
         $context['_seq'] = twig_ensure_traversable((isset($context["attr"]) ? $context["attr"] : $this->getContext($context, "attr")));
         foreach ($context['_seq'] as $context["attrname"] => $context["attrvalue"]) {
             echo " ";
-            echo twig_escape_filter($this->env, (isset($context["attrname"]) ? $context["attrname"] : $this->getContext($context, "attrname")), "html", null, true);
+            echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
             echo "=\"";
-            echo twig_escape_filter($this->env, (isset($context["attrvalue"]) ? $context["attrvalue"] : $this->getContext($context, "attrvalue")), "html", null, true);
+            echo twig_escape_filter($this->env, $context["attrvalue"], "html", null, true);
             echo "\"";
         }
         $_parent = $context['_parent'];
@@ -906,7 +906,7 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
             foreach ($context['_seq'] as $context["_key"] => $context["error"]) {
                 // line 278
                 echo "<li>";
-                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["error"]) ? $context["error"] : $this->getContext($context, "error")), "message", array()), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($context["error"], "message", array()), "html", null, true);
                 echo "</li>";
             }
             $_parent = $context['_parent'];
@@ -925,9 +925,9 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
         $context['_seq'] = twig_ensure_traversable((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")));
         foreach ($context['_seq'] as $context["_key"] => $context["child"]) {
             // line 286
-            if ((!$this->getAttribute((isset($context["child"]) ? $context["child"] : $this->getContext($context, "child")), "rendered", array()))) {
+            if ((!$this->getAttribute($context["child"], "rendered", array()))) {
                 // line 287
-                echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["child"]) ? $context["child"] : $this->getContext($context, "child")), 'row');
+                echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($context["child"], 'row');
             }
         }
         $_parent = $context['_parent'];
@@ -943,7 +943,7 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
         $context['_seq'] = twig_ensure_traversable((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")));
         foreach ($context['_seq'] as $context["_key"] => $context["child"]) {
             // line 296
-            echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["child"]) ? $context["child"] : $this->getContext($context, "child")), 'row');
+            echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($context["child"], 'row');
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['child'], $context['_parent'], $context['loop']);
@@ -978,23 +978,23 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
             // line 306
             echo " ";
             // line 307
-            if (twig_in_filter((isset($context["attrname"]) ? $context["attrname"] : $this->getContext($context, "attrname")), array(0 => "placeholder", 1 => "title"))) {
+            if (twig_in_filter($context["attrname"], array(0 => "placeholder", 1 => "title"))) {
                 // line 308
-                echo twig_escape_filter($this->env, (isset($context["attrname"]) ? $context["attrname"] : $this->getContext($context, "attrname")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "=\"";
-                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans((isset($context["attrvalue"]) ? $context["attrvalue"] : $this->getContext($context, "attrvalue")), array(), (isset($context["translation_domain"]) ? $context["translation_domain"] : $this->getContext($context, "translation_domain"))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans($context["attrvalue"], array(), (isset($context["translation_domain"]) ? $context["translation_domain"] : $this->getContext($context, "translation_domain"))), "html", null, true);
                 echo "\"";
-            } elseif (((isset($context["attrvalue"]) ? $context["attrvalue"] : $this->getContext($context, "attrvalue")) === true)) {
+            } elseif (($context["attrvalue"] === true)) {
                 // line 310
-                echo twig_escape_filter($this->env, (isset($context["attrname"]) ? $context["attrname"] : $this->getContext($context, "attrname")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "=\"";
-                echo twig_escape_filter($this->env, (isset($context["attrname"]) ? $context["attrname"] : $this->getContext($context, "attrname")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "\"";
-            } elseif ((!((isset($context["attrvalue"]) ? $context["attrvalue"] : $this->getContext($context, "attrvalue")) === false))) {
+            } elseif ((!($context["attrvalue"] === false))) {
                 // line 312
-                echo twig_escape_filter($this->env, (isset($context["attrname"]) ? $context["attrname"] : $this->getContext($context, "attrname")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "=\"";
-                echo twig_escape_filter($this->env, (isset($context["attrvalue"]) ? $context["attrvalue"] : $this->getContext($context, "attrvalue")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["attrvalue"], "html", null, true);
                 echo "\"";
             }
         }
@@ -1019,23 +1019,23 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
             // line 320
             echo " ";
             // line 321
-            if (twig_in_filter((isset($context["attrname"]) ? $context["attrname"] : $this->getContext($context, "attrname")), array(0 => "placeholder", 1 => "title"))) {
+            if (twig_in_filter($context["attrname"], array(0 => "placeholder", 1 => "title"))) {
                 // line 322
-                echo twig_escape_filter($this->env, (isset($context["attrname"]) ? $context["attrname"] : $this->getContext($context, "attrname")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "=\"";
-                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans((isset($context["attrvalue"]) ? $context["attrvalue"] : $this->getContext($context, "attrvalue")), array(), (isset($context["translation_domain"]) ? $context["translation_domain"] : $this->getContext($context, "translation_domain"))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans($context["attrvalue"], array(), (isset($context["translation_domain"]) ? $context["translation_domain"] : $this->getContext($context, "translation_domain"))), "html", null, true);
                 echo "\"";
-            } elseif (((isset($context["attrvalue"]) ? $context["attrvalue"] : $this->getContext($context, "attrvalue")) === true)) {
+            } elseif (($context["attrvalue"] === true)) {
                 // line 324
-                echo twig_escape_filter($this->env, (isset($context["attrname"]) ? $context["attrname"] : $this->getContext($context, "attrname")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "=\"";
-                echo twig_escape_filter($this->env, (isset($context["attrname"]) ? $context["attrname"] : $this->getContext($context, "attrname")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "\"";
-            } elseif ((!((isset($context["attrvalue"]) ? $context["attrvalue"] : $this->getContext($context, "attrvalue")) === false))) {
+            } elseif ((!($context["attrvalue"] === false))) {
                 // line 326
-                echo twig_escape_filter($this->env, (isset($context["attrname"]) ? $context["attrname"] : $this->getContext($context, "attrname")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "=\"";
-                echo twig_escape_filter($this->env, (isset($context["attrvalue"]) ? $context["attrvalue"] : $this->getContext($context, "attrvalue")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["attrvalue"], "html", null, true);
                 echo "\"";
             }
         }
@@ -1063,23 +1063,23 @@ $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttri
             // line 334
             echo " ";
             // line 335
-            if (twig_in_filter((isset($context["attrname"]) ? $context["attrname"] : $this->getContext($context, "attrname")), array(0 => "placeholder", 1 => "title"))) {
+            if (twig_in_filter($context["attrname"], array(0 => "placeholder", 1 => "title"))) {
                 // line 336
-                echo twig_escape_filter($this->env, (isset($context["attrname"]) ? $context["attrname"] : $this->getContext($context, "attrname")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "=\"";
-                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans((isset($context["attrvalue"]) ? $context["attrvalue"] : $this->getContext($context, "attrvalue")), array(), (isset($context["translation_domain"]) ? $context["translation_domain"] : $this->getContext($context, "translation_domain"))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans($context["attrvalue"], array(), (isset($context["translation_domain"]) ? $context["translation_domain"] : $this->getContext($context, "translation_domain"))), "html", null, true);
                 echo "\"";
-            } elseif (((isset($context["attrvalue"]) ? $context["attrvalue"] : $this->getContext($context, "attrvalue")) === true)) {
+            } elseif (($context["attrvalue"] === true)) {
                 // line 338
-                echo twig_escape_filter($this->env, (isset($context["attrname"]) ? $context["attrname"] : $this->getContext($context, "attrname")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "=\"";
-                echo twig_escape_filter($this->env, (isset($context["attrname"]) ? $context["attrname"] : $this->getContext($context, "attrname")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "\"";
-            } elseif ((!((isset($context["attrvalue"]) ? $context["attrvalue"] : $this->getContext($context, "attrvalue")) === false))) {
+            } elseif ((!($context["attrvalue"] === false))) {
                 // line 340
-                echo twig_escape_filter($this->env, (isset($context["attrname"]) ? $context["attrname"] : $this->getContext($context, "attrname")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
                 echo "=\"";
-                echo twig_escape_filter($this->env, (isset($context["attrvalue"]) ? $context["attrvalue"] : $this->getContext($context, "attrvalue")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["attrvalue"], "html", null, true);
                 echo "\"";
             }
         }

@@ -28,7 +28,7 @@ class __TwigTemplate_2109ce9dc75dda79355fa6dd46290447feafa678ac159a7a8d470fb5a55
         foreach ($context['_seq'] as $context["_key"] => $context["label"]) {
             // line 7
             echo "                <th>";
-            echo twig_escape_filter($this->env, (isset($context["label"]) ? $context["label"] : $this->getContext($context, "label")), "html", null, true);
+            echo twig_escape_filter($this->env, $context["label"], "html", null, true);
             echo "</th>
             ";
         }
@@ -49,11 +49,11 @@ class __TwigTemplate_2109ce9dc75dda79355fa6dd46290447feafa678ac159a7a8d470fb5a55
             ";
             // line 14
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["row"]) ? $context["row"] : $this->getContext($context, "row")));
+            $context['_seq'] = twig_ensure_traversable($context["row"]);
             foreach ($context['_seq'] as $context["_key"] => $context["item"]) {
                 // line 15
                 echo "                <td>";
-                echo twig_escape_filter($this->env, (isset($context["item"]) ? $context["item"] : $this->getContext($context, "item")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["item"], "html", null, true);
                 echo "</td>
             ";
             }

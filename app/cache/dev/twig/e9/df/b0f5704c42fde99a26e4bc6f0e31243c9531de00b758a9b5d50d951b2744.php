@@ -178,10 +178,29 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
         // line 126
         echo "
 <div class=\"collapse navbar-collapse navbar-ex1-collapse\">
+   
+
                 <ul class=\"nav navbar-nav side-nav\">
+                    <li>
+                        
+                         
+  
+    
+     <form role=\"form\">
+        <div class=\"input-group\">
+           <span class=\"input-group-btn\">
+        <button class=\"btn btn-default\" type=\"button\">Go!</button>
+      </span> 
+      <input type=\"text\" class=\"form-control\">
+       </div>
+     </form>
+   <!-- /input-group -->
+ <!-- /.col-lg-6 -->
+
+                    </li>
                     <li >
                         <a href=\" ";
-        // line 130
+        // line 149
         echo $this->env->getExtension('routing')->getPath("intranet_admin_accueil");
         echo " \"><i class=\"fa fa-fw fa-home\"></i> Home </a>
                     </li>
@@ -192,7 +211,7 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                         <ul id=\"etudiantsBlock\" class=\"collapse\">
                         \t<li>
                                 <a href=\" ";
-        // line 138
+        // line 157
         echo $this->env->getExtension('routing')->getPath("intranet_admin_ajout_etudiant");
         echo " \"> 
                                 <i class=\"fa fa-fw fa-plus\"></i> Nouvel étudiant
@@ -202,7 +221,7 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                             </li>
                             <li class=\"active\">
                                 <a href=\" ";
-        // line 145
+        // line 164
         echo $this->env->getExtension('routing')->getPath("intranet_admin_liste_etudiant");
         echo " \"> <i class=\"fa fa-fw fa-list\"></i> liste étudiants
                                 <span class=\"details\">Voir les détails des étudiants</span>
@@ -325,6 +344,6 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
 
     public function getDebugInfo()
     {
-        return array (  206 => 145,  196 => 138,  185 => 130,  179 => 126,  176 => 125,  169 => 119,  162 => 115,  159 => 114,  147 => 105,  131 => 92,  44 => 7,  42 => 6,  39 => 5,  36 => 4,  30 => 2,);
+        return array (  225 => 164,  215 => 157,  204 => 149,  179 => 126,  176 => 125,  169 => 119,  162 => 115,  159 => 114,  147 => 105,  131 => 92,  44 => 7,  42 => 6,  39 => 5,  36 => 4,  30 => 2,);
     }
 }

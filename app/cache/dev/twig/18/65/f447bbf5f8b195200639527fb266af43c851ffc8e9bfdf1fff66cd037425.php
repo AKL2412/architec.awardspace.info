@@ -446,11 +446,11 @@ class __TwigTemplate_1865f447bbf5f8b195200639527fb266af43c851ffc8e9bfdf1fff66cd0
                 echo "            <tr>
                 <th>";
                 // line 198
-                echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["name"], "html", null, true);
                 echo "</th>
                 <td>";
                 // line 199
-                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["bundles"]) ? $context["bundles"] : $this->getContext($context, "bundles")), (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), array(), "array"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["bundles"]) ? $context["bundles"] : $this->getContext($context, "bundles")), $context["name"], array(), "array"), "html", null, true);
                 echo "</td>
             </tr>
             ";

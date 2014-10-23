@@ -24,17 +24,17 @@ class __TwigTemplate_9cc7533d019036a16c3848a141ff9a5aa5658c59f0893b7f3ceba8b2369
         foreach ($context['_seq'] as $context["_key"] => $context["log"]) {
             // line 3
             echo "        <li";
-            if (($this->getAttribute((isset($context["log"]) ? $context["log"] : $this->getContext($context, "log")), "priority", array()) >= 400)) {
+            if (($this->getAttribute($context["log"], "priority", array()) >= 400)) {
                 echo " class=\"error\"";
-            } elseif (($this->getAttribute((isset($context["log"]) ? $context["log"] : $this->getContext($context, "log")), "priority", array()) >= 300)) {
+            } elseif (($this->getAttribute($context["log"], "priority", array()) >= 300)) {
                 echo " class=\"warning\"";
             }
             echo ">
             ";
             // line 4
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["log"]) ? $context["log"] : $this->getContext($context, "log")), "priorityName", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($context["log"], "priorityName", array()), "html", null, true);
             echo " - ";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["log"]) ? $context["log"] : $this->getContext($context, "log")), "message", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($context["log"], "message", array()), "html", null, true);
             echo "
         </li>
     ";

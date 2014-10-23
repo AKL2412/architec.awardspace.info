@@ -43,7 +43,7 @@ class __TwigTemplate_a61cdb5a0858945bfbde3324c1d935aa7dc3ea90fe1187342e473a0e834
         foreach ($context['_seq'] as $context["_key"] => $context["child"]) {
             // line 8
             echo "        ";
-            echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["child"]) ? $context["child"] : $this->getContext($context, "child")), 'row');
+            echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($context["child"], 'row');
             echo "
     ";
         }

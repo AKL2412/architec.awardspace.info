@@ -15,6 +15,7 @@
 
 <form action=" {{path('intranet_admin_upload')}} " method="post" enctype="multipart/form-data">
   Please choose a file: <input type="file" name="uploadFile"><br>
+  <input type="text" placeholder="dossier" name="dossier"><br>
   <input type="submit" value="Upload File">
 </form> 
 {%if message is defined%}

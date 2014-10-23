@@ -62,16 +62,31 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
    */
     public function addAction()
     {
-        $target_dir = "img/";
+        /*
+        $dir = "/images/";
+
+// Open a directory, and read its contents
+if (is_dir($dir)){
+  if ($dh = opendir($dir)){
+    while (($file = readdir($dh)) !== false){
+      echo "filename:" . $file . "<br>";
+    }
+    closedir($dh);
+  }
+}
+
+        //*/
+        $target_dir = "img/".$_POST['dossier'].'/';
+        if (!is_dir($target_dir))mkdir($target_dir);
         $target_dir = $target_dir . basename( $_FILES["uploadFile"]["name"]);
         $uploadOk=1;
         $msg = '';
         if (move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_dir)) {
             $msg = "The file ". basename( $_FILES["uploadFile"]["name"]). " has been uploaded.";
         } else {
-            $msg = "Sorry, there was an error uploading your file.";
+            $msg = "Sorry, there was an error uploading your file. ";
         }
-
+        $msg .= " -- ".$target_dir;
     	$user = $this->getUser();
         return $this->render('IntranetAdminBundle:Default:accueil.html.twig', 
             array(

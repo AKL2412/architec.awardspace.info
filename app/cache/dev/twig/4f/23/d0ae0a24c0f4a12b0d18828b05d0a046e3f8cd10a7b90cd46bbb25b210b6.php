@@ -47,7 +47,7 @@ class __TwigTemplate_4f23d0ae0a24c0f4a12b0d18828b05d0a046e3f8cd10a7b90cd46bbb25b
             foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
                 // line 12
                 echo "                <li>";
-                echo twig_escape_filter($this->env, (isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["message"], "html", null, true);
                 echo "</li>
             ";
             }
@@ -90,7 +90,7 @@ class __TwigTemplate_4f23d0ae0a24c0f4a12b0d18828b05d0a046e3f8cd10a7b90cd46bbb25b
             foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
                 // line 31
                 echo "                    <li>";
-                echo twig_escape_filter($this->env, (isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["message"], "html", null, true);
                 echo "</li>
                 ";
             }

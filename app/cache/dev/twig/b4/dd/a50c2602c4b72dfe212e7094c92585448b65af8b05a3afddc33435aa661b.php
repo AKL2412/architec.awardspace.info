@@ -33,13 +33,13 @@ class __TwigTemplate_b4dda50c2602c4b72dfe212e7094c92585448b65af8b05a3afddc33435a
         foreach ($context['_seq'] as $context["_key"] => $context["e"]) {
             // line 5
             echo "    <exception class=\"";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["e"]) ? $context["e"] : $this->getContext($context, "e")), "class", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($context["e"], "class", array()), "html", null, true);
             echo "\" message=\"";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["e"]) ? $context["e"] : $this->getContext($context, "e")), "message", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($context["e"], "message", array()), "html", null, true);
             echo "\">
 ";
             // line 6
-            $this->env->loadTemplate("TwigBundle:Exception:traces.xml.twig")->display(array("exception" => (isset($context["e"]) ? $context["e"] : $this->getContext($context, "e"))));
+            $this->env->loadTemplate("TwigBundle:Exception:traces.xml.twig")->display(array("exception" => $context["e"]));
             // line 7
             echo "    </exception>
 ";

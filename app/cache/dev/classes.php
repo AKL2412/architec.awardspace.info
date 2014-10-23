@@ -2899,7 +2899,7 @@ namespace
 {
 class Twig_Environment
 {
-const VERSION ='1.16.1';
+const VERSION ='1.16.2';
 protected $charset;
 protected $loader;
 protected $debug;
@@ -3678,7 +3678,7 @@ new Twig_SimpleFilter('striptags','strip_tags'),
 new Twig_SimpleFilter('trim','trim'),
 new Twig_SimpleFilter('nl2br','nl2br', array('pre_escape'=>'html','is_safe'=> array('html'))),
 new Twig_SimpleFilter('join','twig_join_filter'),
-new Twig_SimpleFilter('split','twig_split_filter'),
+new Twig_SimpleFilter('split','twig_split_filter', array('needs_environment'=> true)),
 new Twig_SimpleFilter('sort','twig_sort_filter'),
 new Twig_SimpleFilter('merge','twig_array_merge'),
 new Twig_SimpleFilter('batch','twig_array_batch'),
@@ -3745,35 +3745,40 @@ return new Twig_Node_Expression_Unary_Not($this->parseTestExpression($parser, $n
 public function parseTestExpression(Twig_Parser $parser, Twig_NodeInterface $node)
 {
 $stream = $parser->getStream();
-$name = $stream->expect(Twig_Token::NAME_TYPE)->getValue();
-$class = $this->getTestNodeClass($parser, $name, $node->getLine());
+$name = $this->getTestName($parser, $node->getLine());
+$class = $this->getTestNodeClass($parser, $name);
 $arguments = null;
 if ($stream->test(Twig_Token::PUNCTUATION_TYPE,'(')) {
 $arguments = $parser->getExpressionParser()->parseArguments(true);
 }
 return new $class($node, $name, $arguments, $parser->getCurrentToken()->getLine());
 }
-protected function getTestNodeClass(Twig_Parser $parser, $name, $line)
+protected function getTestName(Twig_Parser $parser, $line)
 {
+$stream = $parser->getStream();
+$name = $stream->expect(Twig_Token::NAME_TYPE)->getValue();
 $env = $parser->getEnvironment();
 $testMap = $env->getTests();
-$testName = null;
 if (isset($testMap[$name])) {
-$testName = $name;
-} elseif ($parser->getStream()->test(Twig_Token::NAME_TYPE)) {
+return $name;
+}
+if ($stream->test(Twig_Token::NAME_TYPE)) {
 $name = $name.' '.$parser->getCurrentToken()->getValue();
 if (isset($testMap[$name])) {
 $parser->getStream()->next();
-$testName = $name;
+return $name;
 }
 }
-if (null === $testName) {
 $message = sprintf('The test "%s" does not exist', $name);
-if ($alternatives = $env->computeAlternatives($name, array_keys($env->getTests()))) {
+if ($alternatives = $env->computeAlternatives($name, array_keys($testMap))) {
 $message = sprintf('%s. Did you mean "%s"', $message, implode('", "', $alternatives));
 }
 throw new Twig_Error_Syntax($message, $line, $parser->getFilename());
 }
+protected function getTestNodeClass(Twig_Parser $parser, $name)
+{
+$env = $parser->getEnvironment();
+$testMap = $env->getTests();
 if ($testMap[$name] instanceof Twig_SimpleTest) {
 return $testMap[$name]->getNodeClass();
 }
@@ -3841,25 +3846,25 @@ return twig_date_converter($env, $date, $timezone)->format($format);
 function twig_date_modify_filter(Twig_Environment $env, $date, $modifier)
 {
 $date = twig_date_converter($env, $date, false);
-$date->modify($modifier);
-return $date;
+$resultDate = $date->modify($modifier);
+return null === $resultDate ? $date : $resultDate;
 }
 function twig_date_converter(Twig_Environment $env, $date = null, $timezone = null)
 {
-if (!$timezone) {
-$defaultTimezone = $env->getExtension('core')->getTimezone();
+if (false !== $timezone) {
+if (null === $timezone) {
+$timezone = $env->getExtension('core')->getTimezone();
 } elseif (!$timezone instanceof DateTimeZone) {
-$defaultTimezone = new DateTimeZone($timezone);
-} else {
-$defaultTimezone = $timezone;
+$timezone = new DateTimeZone($timezone);
+}
 }
 if ($date instanceof DateTimeImmutable) {
-return false !== $timezone ? $date->setTimezone($defaultTimezone) : $date;
+return false !== $timezone ? $date->setTimezone($timezone) : $date;
 }
 if ($date instanceof DateTime || $date instanceof DateTimeInterface) {
 $date = clone $date;
 if (false !== $timezone) {
-$date->setTimezone($defaultTimezone);
+$date->setTimezone($timezone);
 }
 return $date;
 }
@@ -3867,9 +3872,9 @@ $asString = (string) $date;
 if (ctype_digit($asString) || (!empty($asString) &&'-'=== $asString[0] && ctype_digit(substr($asString, 1)))) {
 $date ='@'.$date;
 }
-$date = new DateTime($date, $defaultTimezone);
+$date = new DateTime($date, $env->getExtension('core')->getTimezone());
 if (false !== $timezone) {
-$date->setTimezone($defaultTimezone);
+$date->setTimezone($timezone);
 }
 return $date;
 }
@@ -3948,7 +3953,7 @@ if ($item instanceof IteratorAggregate) {
 $item = $item->getIterator();
 }
 if ($start >= 0 && $length >= 0) {
-return iterator_to_array(new LimitIterator($item, $start, $length), $preserveKeys);
+return iterator_to_array(new LimitIterator($item, $start, $length === null ? -1 : $length), $preserveKeys);
 }
 $item = iterator_to_array($item, $preserveKeys);
 }
@@ -3978,12 +3983,26 @@ $value = iterator_to_array($value, false);
 }
 return implode($glue, (array) $value);
 }
-function twig_split_filter($value, $delimiter, $limit = null)
+function twig_split_filter(Twig_Environment $env, $value, $delimiter, $limit = null)
 {
-if (empty($delimiter)) {
+if (!empty($delimiter)) {
+return null === $limit ? explode($delimiter, $value) : explode($delimiter, $value, $limit);
+}
+if (!function_exists('mb_get_info') || null === $charset = $env->getCharset()) {
 return str_split($value, null === $limit ? 1 : $limit);
 }
-return null === $limit ? explode($delimiter, $value) : explode($delimiter, $value, $limit);
+if ($limit <= 1) {
+return preg_split('/(?<!^)(?!$)/u', $value);
+}
+$length = mb_strlen($value, $charset);
+if ($length < $limit) {
+return array($value);
+}
+$r = array();
+for ($i = 0; $i < $length; $i += $limit) {
+$r[] = mb_substr($value, $i, $limit, $charset);
+}
+return $r;
 }
 function _twig_default_filter($value, $default ='')
 {
@@ -4032,14 +4051,14 @@ return $array;
 function twig_in_filter($value, $compare)
 {
 if (is_array($compare)) {
-return in_array($value, $compare, true);
+return in_array($value, $compare, is_object($value));
 } elseif (is_string($compare)) {
-if (!is_string($value)) {
-return false;
+if (!strlen($value)) {
+return empty($compare);
 }
-return''=== $value || false !== strpos($compare, $value);
+return false !== strpos($compare, (string) $value);
 } elseif ($compare instanceof Traversable) {
-return in_array($value, iterator_to_array($compare, false), true);
+return in_array($value, iterator_to_array($compare, false), is_object($value));
 }
 return false;
 }

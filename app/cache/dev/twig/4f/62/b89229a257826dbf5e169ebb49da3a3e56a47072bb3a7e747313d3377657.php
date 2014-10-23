@@ -114,21 +114,21 @@ class __TwigTemplate_4f62b89229a257826dbf5e169ebb49da3a3e56a47072bb3a7e747313d33
                 // line 39
                 echo "                                ";
                 ob_start();
-                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["template"]) ? $context["template"] : $this->getContext($context, "template")), "renderBlock", array(0 => "menu", 1 => array("collector" => $this->getAttribute((isset($context["profile"]) ? $context["profile"] : $this->getContext($context, "profile")), "getcollector", array(0 => (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name"))), "method"))), "method"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($context["template"], "renderBlock", array(0 => "menu", 1 => array("collector" => $this->getAttribute((isset($context["profile"]) ? $context["profile"] : $this->getContext($context, "profile")), "getcollector", array(0 => $context["name"]), "method"))), "method"), "html", null, true);
                 $context["menu"] = ('' === $tmp = ob_get_clean()) ? '' : new Twig_Markup($tmp, $this->env->getCharset());
                 // line 40
                 echo "                                ";
                 if (((isset($context["menu"]) ? $context["menu"] : $this->getContext($context, "menu")) != "")) {
                     // line 41
                     echo "                                    <li class=\"";
-                    echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "html", null, true);
-                    if (((isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")) == (isset($context["panel"]) ? $context["panel"] : $this->getContext($context, "panel")))) {
+                    echo twig_escape_filter($this->env, $context["name"], "html", null, true);
+                    if (($context["name"] == (isset($context["panel"]) ? $context["panel"] : $this->getContext($context, "panel")))) {
                         echo " selected";
                     }
                     echo "\">
                                         <a href=\"";
                     // line 42
-                    echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("_profiler", array("token" => (isset($context["token"]) ? $context["token"] : $this->getContext($context, "token")), "panel" => (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")))), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("_profiler", array("token" => (isset($context["token"]) ? $context["token"] : $this->getContext($context, "token")), "panel" => $context["name"])), "html", null, true);
                     echo "\">";
                     echo (isset($context["menu"]) ? $context["menu"] : $this->getContext($context, "menu"));
                     echo "</a>

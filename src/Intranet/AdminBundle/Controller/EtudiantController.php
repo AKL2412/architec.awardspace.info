@@ -72,6 +72,25 @@ class EtudiantController extends Controller{
 		  ->getRepository('IntranetAdminBundle:Etudiant')
 		  ->findAll()
 		;
+		/*
+		$this->container->get('knp_snappy.image')->generate(
+			$this->generateUrl('intranet_admin_voir_etudiant', 
+      	array('id' => 1))
+			, 'img/image.jpg');
+		//*/
+/*
+
+$this->get('knp_snappy.pdf')->generateFromHtml(
+    $this->renderView(
+        'IntranetAdminBundle:Etudiant:list.html.twig',
+        array(
+            'etudiants' => $etud
+        )
+    ),
+    'file.pdf'
+);
+//*/
+
     	return $this->render('IntranetAdminBundle:Etudiant:list.html.twig', array(
       'etudiants' => $etud
     ));

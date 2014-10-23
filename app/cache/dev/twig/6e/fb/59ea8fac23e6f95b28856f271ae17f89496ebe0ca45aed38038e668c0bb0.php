@@ -80,13 +80,13 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
         <nav class=\"navbar navbar-inverse navbar-fixed-top\" role=\"navigation\">
 
         <!--   les liens de navigation -->
-            <div class=\"positionUrl hidden-xs\" >
+            <!-- div class=\"positionUrl hidden-xs\" >
             \t<a href=\"#\">home</a>
                 <i class=\" fa fa-angle-right\"></i>
             \t<a href=\"#\">Sotir</a>
                 <i class=\" fa fa-angle-right\"></i>
             \t<a href=\"#\" class=\"active\">enter</a>
-           \t</div>
+           \t</div --> 
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class=\"navbar-header\">
                 <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-ex1-collapse\">
@@ -193,11 +193,11 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
     {
         // line 64
         echo "            <ul class=\"nav navbar-right top-nav\">
-<li><a href=\"";
+                <li><a href=\"";
         // line 65
         echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
         echo "\">Connexion</a></li>
-</ul>
+            </ul>
             ";
     }
 

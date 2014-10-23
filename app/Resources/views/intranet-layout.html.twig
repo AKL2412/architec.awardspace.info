@@ -40,13 +40,13 @@
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
         <!--   les liens de navigation -->
-            <div class="positionUrl hidden-xs" >
+            <!-- div class="positionUrl hidden-xs" >
             	<a href="#">home</a>
                 <i class=" fa fa-angle-right"></i>
             	<a href="#">Sotir</a>
                 <i class=" fa fa-angle-right"></i>
             	<a href="#" class="active">enter</a>
-           	</div>
+           	</div --> 
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -62,8 +62,8 @@
             <!-- Top Menu Items -->
             {%block connected %}
             <ul class="nav navbar-right top-nav">
-<li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
-</ul>
+                <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+            </ul>
             {%endblock%}
             
              

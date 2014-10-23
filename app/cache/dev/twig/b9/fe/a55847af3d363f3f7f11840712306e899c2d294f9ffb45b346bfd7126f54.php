@@ -1,6 +1,6 @@
 <?php
 
-/* @WebProfiler/Profiler/search.html.twig */
+/* WebProfilerBundle:Profiler:search.html.twig */
 class __TwigTemplate_b9fea55847af3d363f3f7f11840712306e899c2d294f9ffb45b346bfd7126f54 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -40,9 +40,9 @@ class __TwigTemplate_b9fea55847af3d363f3f7f11840712306e899c2d294f9ffb45b346bfd71
         foreach ($context['_seq'] as $context["_key"] => $context["m"]) {
             // line 13
             echo "                <option";
-            echo ((((isset($context["m"]) ? $context["m"] : $this->getContext($context, "m")) == (isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")))) ? (" selected=\"selected\"") : (""));
+            echo ((($context["m"] == (isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")))) ? (" selected=\"selected\"") : (""));
             echo ">";
-            echo twig_escape_filter($this->env, (isset($context["m"]) ? $context["m"] : $this->getContext($context, "m")), "html", null, true);
+            echo twig_escape_filter($this->env, $context["m"], "html", null, true);
             echo "</option>
             ";
         }
@@ -85,9 +85,9 @@ class __TwigTemplate_b9fea55847af3d363f3f7f11840712306e899c2d294f9ffb45b346bfd71
         foreach ($context['_seq'] as $context["_key"] => $context["l"]) {
             // line 32
             echo "                <option";
-            echo ((((isset($context["l"]) ? $context["l"] : $this->getContext($context, "l")) == (isset($context["limit"]) ? $context["limit"] : $this->getContext($context, "limit")))) ? (" selected=\"selected\"") : (""));
+            echo ((($context["l"] == (isset($context["limit"]) ? $context["limit"] : $this->getContext($context, "limit")))) ? (" selected=\"selected\"") : (""));
             echo ">";
-            echo twig_escape_filter($this->env, (isset($context["l"]) ? $context["l"] : $this->getContext($context, "l")), "html", null, true);
+            echo twig_escape_filter($this->env, $context["l"], "html", null, true);
             echo "</option>
             ";
         }
@@ -112,7 +112,7 @@ class __TwigTemplate_b9fea55847af3d363f3f7f11840712306e899c2d294f9ffb45b346bfd71
 
     public function getTemplateName()
     {
-        return "@WebProfiler/Profiler/search.html.twig";
+        return "WebProfilerBundle:Profiler:search.html.twig";
     }
 
     public function isTraitable()

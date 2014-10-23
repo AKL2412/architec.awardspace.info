@@ -61,7 +61,7 @@ class __TwigTemplate_e1a12f5a38af0a4753853ed71637747501119cda3fb44fe6da9c973c8d5
             echo "        <div class=\"flash-message\">
             <em>Notice</em>: ";
             // line 13
-            echo twig_escape_filter($this->env, (isset($context["flashMessage"]) ? $context["flashMessage"] : $this->getContext($context, "flashMessage")), "html", null, true);
+            echo twig_escape_filter($this->env, $context["flashMessage"], "html", null, true);
             echo "
         </div>
     ";

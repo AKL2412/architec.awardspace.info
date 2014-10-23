@@ -26,16 +26,16 @@ class __TwigTemplate_d3cb36338edea82c7a6eec66cae353f6cd6f49616f420651b1c740bffc5
             echo "
       ";
             // line 4
-            if (((isset($context["i"]) ? $context["i"] : $this->getContext($context, "i")) == ((isset($context["index"]) ? $context["index"] : $this->getContext($context, "index")) + 1))) {
+            if (($context["i"] == ((isset($context["index"]) ? $context["index"] : $this->getContext($context, "index")) + 1))) {
                 // line 5
                 echo "          <span class=\"selected\">Step ";
-                echo twig_escape_filter($this->env, (isset($context["i"]) ? $context["i"] : $this->getContext($context, "i")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["i"], "html", null, true);
                 echo "</span>
       ";
             } else {
                 // line 7
                 echo "          <span>Step ";
-                echo twig_escape_filter($this->env, (isset($context["i"]) ? $context["i"] : $this->getContext($context, "i")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["i"], "html", null, true);
                 echo "</span>
       ";
             }
@@ -43,7 +43,7 @@ class __TwigTemplate_d3cb36338edea82c7a6eec66cae353f6cd6f49616f420651b1c740bffc5
             echo "
       ";
             // line 10
-            if (((isset($context["i"]) ? $context["i"] : $this->getContext($context, "i")) != (isset($context["count"]) ? $context["count"] : $this->getContext($context, "count")))) {
+            if (($context["i"] != (isset($context["count"]) ? $context["count"] : $this->getContext($context, "count")))) {
                 // line 11
                 echo "        &gt;
       ";

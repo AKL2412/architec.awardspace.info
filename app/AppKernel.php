@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Intranet\ProfesseurBundle\IntranetProfesseurBundle(),
             new OC\UserBundle\OCUserBundle(),
             new Outil\ServiceBundle\OutilServiceBundle(),
+           new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

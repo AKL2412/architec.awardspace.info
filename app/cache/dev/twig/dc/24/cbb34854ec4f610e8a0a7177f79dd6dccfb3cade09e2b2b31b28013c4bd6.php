@@ -66,15 +66,15 @@ class __TwigTemplate_dc24cbb34854ec4f610e8a0a7177f79dd6dccfb3cade09e2b2b31b28013
                 echo "                            <li>
                                 ";
                 // line 25
-                echo $this->env->getExtension('code')->abbrClass($this->getAttribute((isset($context["previous"]) ? $context["previous"] : $this->getContext($context, "previous")), "class", array()));
+                echo $this->env->getExtension('code')->abbrClass($this->getAttribute($context["previous"], "class", array()));
                 echo " <a href=\"#traces-link-";
-                echo twig_escape_filter($this->env, ((isset($context["i"]) ? $context["i"] : $this->getContext($context, "i")) + 1), "html", null, true);
+                echo twig_escape_filter($this->env, ($context["i"] + 1), "html", null, true);
                 echo "\" onclick=\"toggle('traces-";
-                echo twig_escape_filter($this->env, ((isset($context["i"]) ? $context["i"] : $this->getContext($context, "i")) + 1), "html", null, true);
+                echo twig_escape_filter($this->env, ($context["i"] + 1), "html", null, true);
                 echo "', 'traces'); switchIcons('icon-traces-";
-                echo twig_escape_filter($this->env, ((isset($context["i"]) ? $context["i"] : $this->getContext($context, "i")) + 1), "html", null, true);
+                echo twig_escape_filter($this->env, ($context["i"] + 1), "html", null, true);
                 echo "-open', 'icon-traces-";
-                echo twig_escape_filter($this->env, ((isset($context["i"]) ? $context["i"] : $this->getContext($context, "i")) + 1), "html", null, true);
+                echo twig_escape_filter($this->env, ($context["i"] + 1), "html", null, true);
                 echo "-close');\">&#187;</a>
                             </li>
                         ";
@@ -103,7 +103,7 @@ class __TwigTemplate_dc24cbb34854ec4f610e8a0a7177f79dd6dccfb3cade09e2b2b31b28013
         foreach ($context['_seq'] as $context["position"] => $context["e"]) {
             // line 40
             echo "    ";
-            $this->env->loadTemplate("TwigBundle:Exception:traces.html.twig")->display(array("exception" => (isset($context["e"]) ? $context["e"] : $this->getContext($context, "e")), "position" => (isset($context["position"]) ? $context["position"] : $this->getContext($context, "position")), "count" => (isset($context["previous_count"]) ? $context["previous_count"] : $this->getContext($context, "previous_count"))));
+            $this->env->loadTemplate("TwigBundle:Exception:traces.html.twig")->display(array("exception" => $context["e"], "position" => $context["position"], "count" => (isset($context["previous_count"]) ? $context["previous_count"] : $this->getContext($context, "previous_count"))));
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['position'], $context['e'], $context['_parent'], $context['loop']);

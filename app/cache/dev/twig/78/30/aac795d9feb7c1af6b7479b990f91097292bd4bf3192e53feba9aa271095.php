@@ -57,12 +57,13 @@ class __TwigTemplate_7830aac795d9feb7c1af6b7479b990f91097292bd4bf3192e53feba9aa2
         echo $this->env->getExtension('routing')->getPath("intranet_admin_upload");
         echo " \" method=\"post\" enctype=\"multipart/form-data\">
   Please choose a file: <input type=\"file\" name=\"uploadFile\"><br>
+  <input type=\"text\" placeholder=\"dossier\" name=\"dossier\"><br>
   <input type=\"submit\" value=\"Upload File\">
 </form> 
 ";
-        // line 20
+        // line 21
         if (array_key_exists("message", $context)) {
-            // line 21
+            // line 22
             echo twig_escape_filter($this->env, (isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "html", null, true);
             echo "
 ";
@@ -81,6 +82,6 @@ class __TwigTemplate_7830aac795d9feb7c1af6b7479b990f91097292bd4bf3192e53feba9aa2
 
     public function getDebugInfo()
     {
-        return array (  66 => 21,  64 => 20,  57 => 16,  54 => 15,  50 => 13,  46 => 11,  40 => 9,  38 => 8,  33 => 5,  31 => 4,  28 => 3,);
+        return array (  67 => 22,  65 => 21,  57 => 16,  54 => 15,  50 => 13,  46 => 11,  40 => 9,  38 => 8,  33 => 5,  31 => 4,  28 => 3,);
     }
 }

@@ -24,7 +24,7 @@ class __TwigTemplate_aeb3d972295cdc60b4b6e9f6011be81992e25533f29de2f3487b537d7b6
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 3
-        $context["__internal_7f92d144e72b6804b4089931444218308fa545f0567d53282c4aab6dd2423819"] = $this;
+        $context["__internal_2c633ad8071aaae78598967265b4bfb9319874e84dbb0ca68669489e28db8332"] = $this;
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
@@ -80,11 +80,11 @@ class __TwigTemplate_aeb3d972295cdc60b4b6e9f6011be81992e25533f29de2f3487b537d7b6
             echo "            <tr>
                 <td><code>";
             // line 33
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["listener"]) ? $context["listener"] : $this->getContext($context, "listener")), "event", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($context["listener"], "event", array()), "html", null, true);
             echo "</code></td>
                 <td><code>";
             // line 34
-            echo $context["__internal_7f92d144e72b6804b4089931444218308fa545f0567d53282c4aab6dd2423819"]->getdisplay_listener((isset($context["listener"]) ? $context["listener"] : $this->getContext($context, "listener")));
+            echo $context["__internal_2c633ad8071aaae78598967265b4bfb9319874e84dbb0ca68669489e28db8332"]->getdisplay_listener($context["listener"]);
             echo "</code></td>
             </tr>
         ";
@@ -118,11 +118,11 @@ class __TwigTemplate_aeb3d972295cdc60b4b6e9f6011be81992e25533f29de2f3487b537d7b6
                 echo "                <tr>
                     <td><code>";
                 // line 50
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["listeners"]) ? $context["listeners"] : $this->getContext($context, "listeners")), (isset($context["listener"]) ? $context["listener"] : $this->getContext($context, "listener")), array(), "array"), "event", array()), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["listeners"]) ? $context["listeners"] : $this->getContext($context, "listeners")), $context["listener"], array(), "array"), "event", array()), "html", null, true);
                 echo "</code></td>
                     <td><code>";
                 // line 51
-                echo $context["__internal_7f92d144e72b6804b4089931444218308fa545f0567d53282c4aab6dd2423819"]->getdisplay_listener($this->getAttribute((isset($context["listeners"]) ? $context["listeners"] : $this->getContext($context, "listeners")), (isset($context["listener"]) ? $context["listener"] : $this->getContext($context, "listener")), array(), "array"));
+                echo $context["__internal_2c633ad8071aaae78598967265b4bfb9319874e84dbb0ca68669489e28db8332"]->getdisplay_listener($this->getAttribute((isset($context["listeners"]) ? $context["listeners"] : $this->getContext($context, "listeners")), $context["listener"], array(), "array"));
                 echo "</code></td>
                 </tr>
             ";
@@ -150,10 +150,10 @@ class __TwigTemplate_aeb3d972295cdc60b4b6e9f6011be81992e25533f29de2f3487b537d7b6
     }
 
     // line 69
-    public function getdisplay_listener($_listener = null)
+    public function getdisplay_listener($__listener__ = null)
     {
         $context = $this->env->mergeGlobals(array(
-            "listener" => $_listener,
+            "listener" => $__listener__,
         ));
 
         $blocks = array();

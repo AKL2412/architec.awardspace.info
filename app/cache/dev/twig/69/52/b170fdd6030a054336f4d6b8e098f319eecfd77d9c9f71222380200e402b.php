@@ -1,6 +1,6 @@
 <?php
 
-/* @WebProfiler/Profiler/bag.html.twig */
+/* WebProfilerBundle:Profiler:bag.html.twig */
 class __TwigTemplate_6952b170fdd6030a054336f4d6b8e098f319eecfd77d9c9f71222380200e402b extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -39,11 +39,11 @@ class __TwigTemplate_6952b170fdd6030a054336f4d6b8e098f319eecfd77d9c9f71222380200
             echo "            <tr>
                 <th>";
             // line 11
-            echo twig_escape_filter($this->env, (isset($context["key"]) ? $context["key"] : $this->getContext($context, "key")), "html", null, true);
+            echo twig_escape_filter($this->env, $context["key"], "html", null, true);
             echo "</th>
                 <td><pre>";
             // line 12
-            echo twig_escape_filter($this->env, $this->env->getExtension('profiler')->dumpValue($this->getAttribute((isset($context["bag"]) ? $context["bag"] : $this->getContext($context, "bag")), "get", array(0 => (isset($context["key"]) ? $context["key"] : $this->getContext($context, "key"))), "method")), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('profiler')->dumpValue($this->getAttribute((isset($context["bag"]) ? $context["bag"] : $this->getContext($context, "bag")), "get", array(0 => $context["key"]), "method")), "html", null, true);
             echo "</pre></td>
             </tr>
         ";
@@ -59,7 +59,7 @@ class __TwigTemplate_6952b170fdd6030a054336f4d6b8e098f319eecfd77d9c9f71222380200
 
     public function getTemplateName()
     {
-        return "@WebProfiler/Profiler/bag.html.twig";
+        return "WebProfilerBundle:Profiler:bag.html.twig";
     }
 
     public function isTraitable()

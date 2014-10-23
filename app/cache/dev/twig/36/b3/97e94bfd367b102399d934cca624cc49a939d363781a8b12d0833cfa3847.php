@@ -89,19 +89,19 @@ class __TwigTemplate_36b397e94bfd367b102399d934cca624cc49a939d363781a8b12d0833cf
         foreach ($context['_seq'] as $context["_key"] => $context["trace"]) {
             // line 34
             echo "                <tr class=\"";
-            echo (((1 == $this->getAttribute((isset($context["trace"]) ? $context["trace"] : $this->getContext($context, "trace")), "level", array()))) ? ("almost") : ((((2 == $this->getAttribute((isset($context["trace"]) ? $context["trace"] : $this->getContext($context, "trace")), "level", array()))) ? ("matches") : (""))));
+            echo (((1 == $this->getAttribute($context["trace"], "level", array()))) ? ("almost") : ((((2 == $this->getAttribute($context["trace"], "level", array()))) ? ("matches") : (""))));
             echo "\">
                     <td>";
             // line 35
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["trace"]) ? $context["trace"] : $this->getContext($context, "trace")), "name", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($context["trace"], "name", array()), "html", null, true);
             echo "</td>
                     <td>";
             // line 36
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["trace"]) ? $context["trace"] : $this->getContext($context, "trace")), "path", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($context["trace"], "path", array()), "html", null, true);
             echo "</td>
                     <td>";
             // line 37
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["trace"]) ? $context["trace"] : $this->getContext($context, "trace")), "log", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($context["trace"], "log", array()), "html", null, true);
             echo "</td>
                 </tr>
             ";

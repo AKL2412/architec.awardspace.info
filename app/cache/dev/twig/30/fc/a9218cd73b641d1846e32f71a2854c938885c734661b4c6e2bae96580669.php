@@ -40,15 +40,15 @@ class __TwigTemplate_30fca9218cd73b641d1846e32f71a2854c938885c734661b4c6e2bae965
         foreach ($context['_seq'] as $context["i"] => $context["e"]) {
             // line 14
             echo "[";
-            echo twig_escape_filter($this->env, ((isset($context["i"]) ? $context["i"] : $this->getContext($context, "i")) + 1), "html", null, true);
+            echo twig_escape_filter($this->env, ($context["i"] + 1), "html", null, true);
             echo "] ";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["e"]) ? $context["e"] : $this->getContext($context, "e")), "class", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($context["e"], "class", array()), "html", null, true);
             echo ": ";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["e"]) ? $context["e"] : $this->getContext($context, "e")), "message", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($context["e"], "message", array()), "html", null, true);
             echo "
 ";
             // line 15
-            $this->env->loadTemplate("TwigBundle:Exception:traces.txt.twig")->display(array("exception" => (isset($context["e"]) ? $context["e"] : $this->getContext($context, "e"))));
+            $this->env->loadTemplate("TwigBundle:Exception:traces.txt.twig")->display(array("exception" => $context["e"]));
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['i'], $context['e'], $context['_parent'], $context['loop']);

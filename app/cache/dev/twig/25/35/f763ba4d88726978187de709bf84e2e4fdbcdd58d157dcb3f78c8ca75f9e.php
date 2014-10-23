@@ -64,18 +64,18 @@ class __TwigTemplate_2535f763ba4d88726978187de709bf84e2e4fdbcdd58d157dcb3f78c8ca
                 <div class=\"sf-toolbar-info-piece\">
                     <b>";
                 // line 17
-                echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["name"], "html", null, true);
                 echo "</b>
                     <span>";
                 // line 18
-                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "messageCount", array(0 => (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name"))), "method"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "messageCount", array(0 => $context["name"]), "method"), "html", null, true);
                 echo "</span>
                 </div>
                 <div class=\"sf-toolbar-info-piece\">
                     <b>Is spooled ?</b>
                     <span>";
                 // line 22
-                echo (($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "isSpool", array(0 => (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name"))), "method")) ? ("yes") : ("no"));
+                echo (($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "isSpool", array(0 => $context["name"]), "method")) ? ("yes") : ("no"));
                 echo "</span>
                 </div>
             ";
@@ -135,14 +135,14 @@ class __TwigTemplate_2535f763ba4d88726978187de709bf84e2e4fdbcdd58d157dcb3f78c8ca
             echo "                <tr>
                     <th>";
             // line 54
-            echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "html", null, true);
-            echo (($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "isDefaultMailer", array(0 => (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name"))), "method")) ? (" (default mailer)") : (""));
+            echo twig_escape_filter($this->env, $context["name"], "html", null, true);
+            echo (($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "isDefaultMailer", array(0 => $context["name"]), "method")) ? (" (default mailer)") : (""));
             echo "</th>
                     <td>";
             // line 55
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "messageCount", array(0 => (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name"))), "method"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "messageCount", array(0 => $context["name"]), "method"), "html", null, true);
             echo " ";
-            echo (($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "isSpool", array(0 => (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name"))), "method")) ? ("spooled") : ("sent"));
+            echo (($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "isSpool", array(0 => $context["name"]), "method")) ? ("spooled") : ("sent"));
             echo "</td>
                 </tr>
             ";
@@ -161,14 +161,14 @@ class __TwigTemplate_2535f763ba4d88726978187de709bf84e2e4fdbcdd58d157dcb3f78c8ca
         foreach ($context['_seq'] as $context["_key"] => $context["name"]) {
             // line 62
             echo "        <h3>Mailer <em>";
-            echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "html", null, true);
+            echo twig_escape_filter($this->env, $context["name"], "html", null, true);
             echo "</em>";
-            echo (($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "isDefaultMailer", array(0 => (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name"))), "method")) ? (" (default mailer)") : (""));
+            echo (($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "isDefaultMailer", array(0 => $context["name"]), "method")) ? (" (default mailer)") : (""));
             echo "</h3>
 
         ";
             // line 64
-            if ((!$this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "messages", array(0 => (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name"))), "method"))) {
+            if ((!$this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "messages", array(0 => $context["name"]), "method"))) {
                 // line 65
                 echo "            <p>
                 <em>No message sent.</em>
@@ -180,7 +180,7 @@ class __TwigTemplate_2535f763ba4d88726978187de709bf84e2e4fdbcdd58d157dcb3f78c8ca
                 ";
                 // line 70
                 $context['_parent'] = (array) $context;
-                $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "messages", array(0 => (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name"))), "method"));
+                $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "messages", array(0 => $context["name"]), "method"));
                 $context['loop'] = array(
                   'parent' => $context['_parent'],
                   'index0' => 0,
@@ -197,16 +197,16 @@ class __TwigTemplate_2535f763ba4d88726978187de709bf84e2e4fdbcdd58d157dcb3f78c8ca
                 foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
                     // line 71
                     echo "                    <li class=\"";
-                    echo twig_escape_filter($this->env, twig_cycle(array(0 => "odd", 1 => "even"), $this->getAttribute((isset($context["loop"]) ? $context["loop"] : $this->getContext($context, "loop")), "index", array())), "html", null, true);
+                    echo twig_escape_filter($this->env, twig_cycle(array(0 => "odd", 1 => "even"), $this->getAttribute($context["loop"], "index", array())), "html", null, true);
                     echo "\">
                         ";
                     // line 72
                     $context['_parent'] = (array) $context;
-                    $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute((isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "headers", array()), "all", array()));
+                    $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($context["message"], "headers", array()), "all", array()));
                     foreach ($context['_seq'] as $context["_key"] => $context["header"]) {
                         // line 73
                         echo "                            <pre>";
-                        echo twig_escape_filter($this->env, (isset($context["header"]) ? $context["header"] : $this->getContext($context, "header")), "html", null, true);
+                        echo twig_escape_filter($this->env, $context["header"], "html", null, true);
                         echo "</pre>
                         ";
                     }
@@ -216,31 +216,31 @@ class __TwigTemplate_2535f763ba4d88726978187de709bf84e2e4fdbcdd58d157dcb3f78c8ca
                     // line 75
                     echo "                        <pre>";
                     // line 76
-                    if (($this->getAttribute((isset($context["messagePart"]) ? $context["messagePart"] : null), "charset", array(), "any", true, true) && $this->getAttribute((isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "charset", array()))) {
+                    if (($this->getAttribute((isset($context["messagePart"]) ? $context["messagePart"] : null), "charset", array(), "any", true, true) && $this->getAttribute($context["message"], "charset", array()))) {
                         // line 77
-                        echo twig_escape_filter($this->env, twig_convert_encoding(twig_escape_filter($this->env, $this->getAttribute((isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "body", array()), "html", $this->getAttribute((isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "charset", array())), "UTF-8", $this->getAttribute((isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "charset", array())), "html", null, true);
+                        echo twig_escape_filter($this->env, twig_convert_encoding(twig_escape_filter($this->env, $this->getAttribute($context["message"], "body", array()), "html", $this->getAttribute($context["message"], "charset", array())), "UTF-8", $this->getAttribute($context["message"], "charset", array())), "html", null, true);
                     } else {
                         // line 79
-                        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "body", array()), "html");
+                        echo twig_escape_filter($this->env, $this->getAttribute($context["message"], "body", array()), "html");
                     }
                     // line 81
                     echo "</pre>
                         ";
                     // line 82
                     $context['_parent'] = (array) $context;
-                    $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "children", array()));
+                    $context['_seq'] = twig_ensure_traversable($this->getAttribute($context["message"], "children", array()));
                     foreach ($context['_seq'] as $context["_key"] => $context["messagePart"]) {
-                        if ((($this->getAttribute((isset($context["messagePart"]) ? $context["messagePart"] : $this->getContext($context, "messagePart")), "contentType", array()) == "text/plain") || ($this->getAttribute((isset($context["messagePart"]) ? $context["messagePart"] : $this->getContext($context, "messagePart")), "contentType", array()) == "text/html"))) {
+                        if ((($this->getAttribute($context["messagePart"], "contentType", array()) == "text/plain") || ($this->getAttribute($context["messagePart"], "contentType", array()) == "text/html"))) {
                             // line 83
                             echo "                            <h4>Alternative part</h4>
                             <pre>";
                             // line 85
-                            if ($this->getAttribute((isset($context["messagePart"]) ? $context["messagePart"] : $this->getContext($context, "messagePart")), "charset", array())) {
+                            if ($this->getAttribute($context["messagePart"], "charset", array())) {
                                 // line 86
-                                echo twig_escape_filter($this->env, twig_convert_encoding(twig_escape_filter($this->env, $this->getAttribute((isset($context["messagePart"]) ? $context["messagePart"] : $this->getContext($context, "messagePart")), "body", array()), "html", $this->getAttribute((isset($context["messagePart"]) ? $context["messagePart"] : $this->getContext($context, "messagePart")), "charset", array())), "UTF-8", $this->getAttribute((isset($context["messagePart"]) ? $context["messagePart"] : $this->getContext($context, "messagePart")), "charset", array())), "html", null, true);
+                                echo twig_escape_filter($this->env, twig_convert_encoding(twig_escape_filter($this->env, $this->getAttribute($context["messagePart"], "body", array()), "html", $this->getAttribute($context["messagePart"], "charset", array())), "UTF-8", $this->getAttribute($context["messagePart"], "charset", array())), "html", null, true);
                             } else {
                                 // line 88
-                                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["messagePart"]) ? $context["messagePart"] : $this->getContext($context, "messagePart")), "body", array()), "html");
+                                echo twig_escape_filter($this->env, $this->getAttribute($context["messagePart"], "body", array()), "html");
                             }
                             // line 90
                             echo "</pre>

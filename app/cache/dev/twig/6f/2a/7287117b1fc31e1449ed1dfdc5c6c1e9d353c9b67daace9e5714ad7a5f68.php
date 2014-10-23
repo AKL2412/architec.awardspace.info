@@ -59,11 +59,11 @@ class __TwigTemplate_6f2a7287117b1fc31e1449ed1dfdc5c6c1e9d353c9b67daace9e5714ad7
         foreach ($context['_seq'] as $context["key"] => $context["message"]) {
             // line 34
             echo "    <div class=\"alert alert-";
-            echo twig_escape_filter($this->env, (isset($context["key"]) ? $context["key"] : $this->getContext($context, "key")), "html", null, true);
+            echo twig_escape_filter($this->env, $context["key"], "html", null, true);
             echo "\">
       ";
             // line 35
-            echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans((isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), array(), "FOSUserBundle"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans($context["message"], array(), "FOSUserBundle"), "html", null, true);
             echo "
     </div>
   ";
@@ -83,15 +83,15 @@ class __TwigTemplate_6f2a7287117b1fc31e1449ed1dfdc5c6c1e9d353c9b67daace9e5714ad7
             // line 42
             echo "            ";
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["messages"]) ? $context["messages"] : $this->getContext($context, "messages")));
+            $context['_seq'] = twig_ensure_traversable($context["messages"]);
             foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
                 // line 43
                 echo "                <div class=\"flash-";
-                echo twig_escape_filter($this->env, (isset($context["type"]) ? $context["type"] : $this->getContext($context, "type")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["type"], "html", null, true);
                 echo "\">
                     ";
                 // line 44
-                echo twig_escape_filter($this->env, (isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "html", null, true);
+                echo twig_escape_filter($this->env, $context["message"], "html", null, true);
                 echo "
                 </div>
           ";
@@ -146,13 +146,18 @@ class __TwigTemplate_6f2a7287117b1fc31e1449ed1dfdc5c6c1e9d353c9b67daace9e5714ad7
             ";
         }
         // line 66
-        echo "        </div>
+        echo "            <br>
+            <a class=\"btn-link btn\" href=\" ";
+        // line 67
+        echo $this->env->getExtension('routing')->getPath("internetsite_homepage");
+        echo " \">Architec AwardSpace</a>
+        </div>
 \t        </div>
 \t        <div class=\"col-md-8 col-xs-12 col-sm-7\">
 \t        \t";
-        // line 69
-        $this->displayBlock('fos_user_content', $context, $blocks);
         // line 71
+        $this->displayBlock('fos_user_content', $context, $blocks);
+        // line 73
         echo "
 \t        </div>
         \t
@@ -167,10 +172,10 @@ class __TwigTemplate_6f2a7287117b1fc31e1449ed1dfdc5c6c1e9d353c9b67daace9e5714ad7
 ";
     }
 
-    // line 69
+    // line 71
     public function block_fos_user_content($context, array $blocks = array())
     {
-        // line 70
+        // line 72
         echo "\t  \t\t\t";
     }
 
@@ -186,6 +191,6 @@ class __TwigTemplate_6f2a7287117b1fc31e1449ed1dfdc5c6c1e9d353c9b67daace9e5714ad7
 
     public function getDebugInfo()
     {
-        return array (  174 => 70,  171 => 69,  156 => 71,  154 => 69,  149 => 66,  141 => 64,  135 => 61,  131 => 60,  126 => 59,  124 => 58,  118 => 55,  109 => 48,  103 => 47,  94 => 44,  89 => 43,  84 => 42,  80 => 41,  75 => 38,  66 => 35,  61 => 34,  57 => 33,  27 => 6,  20 => 1,);
+        return array (  179 => 72,  176 => 71,  161 => 73,  159 => 71,  152 => 67,  149 => 66,  141 => 64,  135 => 61,  131 => 60,  126 => 59,  124 => 58,  118 => 55,  109 => 48,  103 => 47,  94 => 44,  89 => 43,  84 => 42,  80 => 41,  75 => 38,  66 => 35,  61 => 34,  57 => 33,  27 => 6,  20 => 1,);
     }
 }
