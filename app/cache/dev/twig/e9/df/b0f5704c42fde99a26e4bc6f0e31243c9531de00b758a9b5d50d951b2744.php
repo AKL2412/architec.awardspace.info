@@ -186,12 +186,15 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                          
   
     
-     <form role=\"form\">
+     <form role=\"form\" method=\"get\" action=\" ";
+        // line 136
+        echo $this->env->getExtension('routing')->getPath("intranet_admin_recherche");
+        echo " \">
         <div class=\"input-group\">
            <span class=\"input-group-btn\">
-        <button class=\"btn btn-default\" type=\"button\">Go!</button>
+        <button class=\"btn btn-default\" type=\"submit\">Go!</button>
       </span> 
-      <input type=\"text\" class=\"form-control\">
+      <input type=\"text\" name=\"q\" class=\"form-control\">
        </div>
      </form>
    <!-- /input-group -->
@@ -209,9 +212,19 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                     <li class=\"active-\">
                         <a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#etudiantsBlock\"><i class=\"fa fa-fw fa-user fa-1x\"></i> Etudiants <i class=\"fa fa-fw fa-caret-down\"></i></a>
                         <ul id=\"etudiantsBlock\" class=\"collapse\">
-                        \t<li>
+                        <li>
                                 <a href=\" ";
         // line 157
+        echo $this->env->getExtension('routing')->getPath("intranet_admin_stat_etudiant");
+        echo " \"> 
+                                <i class=\"fa fa-fw fa-bar-chart-o\"></i> Détails étudiants
+                                <span class=\"details\">Les statistiques des étudiants</span>
+                                </a>
+
+                            </li>
+                        \t<li>
+                                <a href=\" ";
+        // line 164
         echo $this->env->getExtension('routing')->getPath("intranet_admin_ajout_etudiant");
         echo " \"> 
                                 <i class=\"fa fa-fw fa-plus\"></i> Nouvel étudiant
@@ -221,7 +234,7 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                             </li>
                             <li class=\"active\">
                                 <a href=\" ";
-        // line 164
+        // line 171
         echo $this->env->getExtension('routing')->getPath("intranet_admin_liste_etudiant");
         echo " \"> <i class=\"fa fa-fw fa-list\"></i> liste étudiants
                                 <span class=\"details\">Voir les détails des étudiants</span>
@@ -229,17 +242,54 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                             </li>
                         </ul>
                     </li>
+
+                    <li class=\"active-\">
+                        <a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#classBlock\"><i class=\"fa fa-fw fa-university fa-1x\"></i> Les classes <i class=\"fa fa-fw fa-caret-down\"></i></a>
+                        <ul id=\"classBlock\" class=\"collapse\">
+                            <li>
+                                <a href=\" ";
+        // line 182
+        echo $this->env->getExtension('routing')->getPath("intranet_admin_ajout_classe");
+        echo " \"> 
+                                <i class=\"fa fa-fw fa-plus\"></i> Nouvelle classe
+                                <span class=\"details\">Ajouter une classe </span>
+                                </a>
+
+                            </li>
+                            <li class=\"active\">
+                                <a href=\" ";
+        // line 189
+        echo $this->env->getExtension('routing')->getPath("intranet_admin_liste_classe");
+        echo " \"> <i class=\"fa fa-fw fa-list\"></i> liste des classe
+                                <span class=\"details\">Voir les détails des classes</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li >
                         <a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#professeurBlock\"><i class=\"fa fa-fw fa-user\"></i> Professeurs <i class=\"fa fa-fw fa-caret-down\"></i></a>
                         <ul id=\"professeurBlock\" class=\"collapse\">
                         \t<li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-plus\"></i> Nouvelle évaluation</a>
+                                <a href=\" ";
+        // line 200
+        echo $this->env->getExtension('routing')->getPath("intranet_admin_ajout_professeur");
+        echo " \">
+                                 <i class=\"fa fa-fw fa-plus\"></i> Nouveau professeur
+                                <span class=\"details\">Ajouter les détails d'un professeur</span>
+                                 </a>
                             </li>
                             <li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-list\"></i> liste évaluations</a>
+                                <a href=\"";
+        // line 206
+        echo $this->env->getExtension('routing')->getPath("intranet_admin_liste_professeur");
+        echo "\"> 
+                                <i class=\"fa fa-fw fa-list\"></i> liste évaluations
+<span class=\"details\">Liste des professeurs</span>
+                                </a>
                             </li>
                             <li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-bookmark\"></i> type évaluations</a>
+                                <a href=\"\"> <i class=\"fa fa-fw fa-bookmark\"></i> type évaluations</a>
                             </li>
                         </ul>
                     </li>
@@ -325,6 +375,12 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                         </ul>
                     </li>
                     <li>
+                        <a href=\" ";
+        // line 298
+        echo $this->env->getExtension('routing')->getPath("intranet_admin_parametage");
+        echo " \"><i class=\"fa fa-fw fa-gears\"></i> Parametrage</a>
+                    </li>
+                    <li>
                         <a href=\"blank-page.html\"><i class=\"fa fa-fw fa-comments-o\"></i> Forum</a>
                     </li>
                 </ul>
@@ -344,6 +400,6 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
 
     public function getDebugInfo()
     {
-        return array (  225 => 164,  215 => 157,  204 => 149,  179 => 126,  176 => 125,  169 => 119,  162 => 115,  159 => 114,  147 => 105,  131 => 92,  44 => 7,  42 => 6,  39 => 5,  36 => 4,  30 => 2,);
+        return array (  380 => 298,  285 => 206,  276 => 200,  262 => 189,  252 => 182,  238 => 171,  228 => 164,  218 => 157,  207 => 149,  191 => 136,  179 => 126,  176 => 125,  169 => 119,  162 => 115,  159 => 114,  147 => 105,  131 => 92,  44 => 7,  42 => 6,  39 => 5,  36 => 4,  30 => 2,);
     }
 }

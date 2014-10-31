@@ -1,0 +1,75 @@
+{% extends "IntranetAdminBundle::layout.html.twig" %}
+{%block title%}Liste des classes{%endblock%}
+{%block body%}
+	<div class="row">
+		<div class="well col-md-4">
+		<div class="form-group ">
+			<label>Choisir une année scolaire : </label>
+			<select id="select-annee" class="form-control">
+				<option value=""> Année scolaire</option>
+				{%for an in annees %}
+					<option 
+						{%if an.annee == annee.annee%} selected="selected" {%endif%} 
+					value="{{an.annee}}">{{an.annee}}</option>
+				{%endfor%}
+			</select>
+		</div>
+	</div>
+	</div>
+	 {%if classes|length > 0 %}
+
+	 <div class="panel panel-default">
+	 	<div class="panel-heading">
+	 		Les classes de l'année scolaire: <div class="badge">{{annee.annee}}</div>
+	 	</div>
+	 	<div class="panel-body">
+	 		<table id="dataTables-classes" class="table table-bordered table-condensed table-striped">
+	 	<thead>
+	 		<tr>
+	 			
+	 			<th>Nom</th>
+	 			<th>Description</th>
+	 		</tr>
+	 		<tbody>
+	 			{%for classe in classes %}
+	 				<tr>
+	 					<td>
+	 						<a href="{{path('intranet_admin_voir_classe',{id:classe.id})}}">
+	 							{{classe.nom}}
+	 						</a>
+	 					</td>
+	 					
+	 					<td>{{classe.description|slice(0,100)}}...</td>
+	 				</tr>
+
+	 			{%endfor%}
+	 		</tbody>
+	 	</thead>
+
+	 </table>
+	 	</div>
+	 </div>
+
+	 {%else%}
+	 		<div class="alert">
+	 			Pas de classe pour l'année scolaire : {{annee.annee}}
+	 		</div>
+	 {%endif%}
+	
+{%endblock%}
+{%block script%}
+<script>
+    $(document).ready(function() {
+        $('#dataTables-classes').dataTable();
+        $('#select-annee').change(function(event) {
+        	/* Act on the event */
+        	var value = $(this).val();
+        	if(value !=""){
+        		var url = document.URL.split("?");
+        		window.location.replace(url[0]+"?annee="+value);
+        	}
+        	
+        });
+    });
+  </script>
+{%endblock%}

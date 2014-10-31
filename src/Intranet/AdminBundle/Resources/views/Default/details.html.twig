@@ -1,0 +1,28 @@
+{% extends "IntranetAdminBundle::layout.html.twig" %}
+{%block title%}
+{%if annee is not null %}
+	Détails  {{annee.annee}} 
+{%else%}
+	Erreeur
+{%endif%}
+{%endblock%}
+{%block body%}
+	{%if annee is not null%}
+
+		<p >
+{% for message in app.session.flashbag.get('info') %}
+<p class="alert span6 alert-info alert-block" style="text-align:center;margin-left:auto;margin-right:auto" > {{ message }}</p>
+{% endfor %}
+</p>
+annee : {{annee.annee}}
+
+<br>
+
+Classes : {{annee.classes|length}}
+	{%endif%}
+
+
+	
+
+	
+{%endblock%}

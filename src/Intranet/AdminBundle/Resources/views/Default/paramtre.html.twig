@@ -1,0 +1,98 @@
+{% extends "IntranetAdminBundle::layout.html.twig" %}
+{%block title%}Parametage{%endblock%}
+{%block body%}
+<p >
+{% for message in app.session.flashbag.get('info') %}
+<p class="alert span6 alert-info alert-block" style="text-align:center;margin-left:auto;margin-right:auto" > {{ message }}</p>
+{% endfor %}
+</p>
+<div class="row">
+<div class="well col-md-6">
+<h3>Ajouter une année scolaire</h3>
+  {{ form_start(form, {'attr': {'role':'form'}}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+    <div class="form-group col-md-5">
+	    {# Génération du label. #}
+	    {{ form_label(form.annee, "Année scolaire") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.annee) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(form.annee, {'attr': {'class': 'form-control','placeholder':'Exemple: 2012-2013'}}) }}
+    </div>
+
+    <div class="form-group col-md-4">
+	    {# Génération du label. #}
+	    {{ form_label(form.code, "Code") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.code) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(form.code, {'attr': {'class': 'form-control','placeholder':'Code'}}) }}
+    </div>
+    <div class="form-group col-md-3">
+	    {# Génération du label. #}
+	    {{ form_label(form.encours, "en cours") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.encours) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(form.encours, {'attr': {'class': 'form-control','disabled':'disabled'}}) }}
+    </div>
+  {# Génération automatique des champs pas encore écrits.
+     Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+     et tous les champs cachés (type « hidden »). #}
+  {#{ form_rest(form) }#}
+  
+  {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+  {#{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }#}
+  
+  <div class="col-lg-12-">
+  	<input type="submit" value="Ajouter" class="btn btn-primary ">
+  <input type="reset" value="Annuler" class="btn btn-default">
+
+  </div>
+  
+  {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(form) }}
+</div>
+<div class="col-md-6">
+	 <div class="col-lg-12 col-md-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-calendar fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">
+                                        	{% if annee is not null %}
+                                        		{{annee.annee}}
+                                        	{%else%}
+                                        		pas d'année en cours
+                                        	{%endif%}
+                                        </div>
+                                        <div>Année Scolaire en cours</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href=" {{path('intranet_admin_details_annee',
+                            {annee:annee.annee})}} ">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Voir Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+</div>
+</div>
+parametage
+{%endblock%}

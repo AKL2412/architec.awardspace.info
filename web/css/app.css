@@ -1,0 +1,17 @@
+/* line 3, ../pCss/sass/app.scss */
+body .image-profil img {
+  width: 110px;
+}
+/* line 8, ../pCss/sass/app.scss */
+body .contenu-profil {
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+}
+/* line 10, ../pCss/sass/app.scss */
+body .contenu-profil .pre-nom {
+  font-weight: bolder;
+  font-size: 1.5em;
+}
+/* line 14, ../pCss/sass/app.scss */
+body .contenu-profil .pre-nom .nom {
+  text-transform: uppercase;
+}

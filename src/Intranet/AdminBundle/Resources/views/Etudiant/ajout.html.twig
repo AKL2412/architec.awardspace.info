@@ -1,6 +1,11 @@
 {% extends "IntranetAdminBundle::layout.html.twig" %}
 {%block title%}ajout un étudiant{%endblock%}
 {%block body%}
+<p >
+{% for message in app.session.flashbag.get('info') %}
+<p class="alert span6 alert-info alert-block" style="text-align:center;margin-left:auto;margin-right:auto" > {{ message }}</p>
+{% endfor %}
+</p>
 <h3>Ajout d'un étudiant</h3>
 
 <div class="well">
@@ -80,9 +85,19 @@
   
   {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
   {#{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }#}
+  <!-- <div class="col-md-12">
+  	<label for="creer-compte">Créer le compte : </label>
+  	<label for="creer-compte-oui"> oui :
+  		<input type="radio" value="oui" name="compte" checked="checked" id="creer-compte-oui">
+  	</label>
+  	<label for="creer-compte-non"> Non :
+  		<input type="radio" value="non" name="compte"  id="creer-compte-non">
+  	</label>
+  	
+  </div> -->
   <div class="">
-  	<input type="submit" value="Ajouter" class="btn btn-primary">
-  <input type="reset" value="Annuler" class="btn btn-default">
+  	<input type="submit" value="Ajouter" class="btn btn-primary btn-xs">
+  <input type="reset" value="Annuler" class="btn btn-default btn-xs">
 
   </div>
   

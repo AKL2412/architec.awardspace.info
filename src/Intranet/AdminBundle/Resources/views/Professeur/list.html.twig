@@ -1,0 +1,56 @@
+{% extends "IntranetAdminBundle::layout.html.twig" %}
+{%block title%}Liste des étudiants{%endblock%}
+{%block body%}
+
+	 {%if professeurs|length > 0 %}
+
+	 <div class="panel panel-default">
+	 	<div class="panel-heading">La liste des professeurs
+	 	<a href=" {{path('intranet_admin_ajout_professeur')}} "
+	 		class="btn btn-default btn-xs"
+	 		style="float:right" 
+	 	>Ajouter un nouveau professeur</a>
+	 	</div>
+	 	<div class="panel-body">
+	 		<table id="dataTables-professeurs"
+	 			class="table table-bordered table-condensed table-striped">
+			 	<thead>
+			 		<tr>
+			 			<th>Matricule</th>
+			 			<th>Nom</th>
+			 			<th>Prénom(s)</th>
+			 			<th>E-mail</th>
+			 		</tr>
+			 		<tbody>
+			 			{%for prof in professeurs %}
+			 				<tr>
+			 					<td>
+			 						<a href=" {{path('intranet_admin_voir_professeur',{id:prof.id})}} ">
+			 							{{prof.matricule}}
+			 						</a>
+			 					</td>
+			 					<td>{{prof.nom}}</td>
+			 					<td>{{prof.prenom}}</td>
+			 					<td>{{prof.email}}</td>
+			 				</tr>
+
+			 			{%endfor%}
+			 		</tbody>
+			 	</thead>
+
+			</table>
+	 	</div>
+	 </div>
+
+	 {%else%}
+
+	 {%endif%}
+	
+{%endblock%}
+{%block script%}
+<script>
+    $(document).ready(function() {
+        $('#dataTables-professeurs').dataTable();
+    });
+    </script>
+{%endblock%}

@@ -1,0 +1,16 @@
+{% extends "IntranetAdminBundle::layout.html.twig" %}
+{%block title%}Consultation de classe{%endblock%}
+{%block body%}
+	{%if classe is not null%}
+
+		<p >
+{% for message in app.session.flashbag.get('info') %}
+<p class="alert span6 alert-info alert-block" style="text-align:center;margin-left:auto;margin-right:auto" > {{ message }}</p>
+{% endfor %}
+</p>
+la classe
+	{%endif%}
+	
+
+	
+{%endblock%}

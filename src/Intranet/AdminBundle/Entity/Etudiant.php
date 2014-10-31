@@ -70,9 +70,16 @@ class Etudiant
      */
     private $telephone;
 
+    /**
+      * @ORM\OneToOne(targetEntity="OC\UserBundle\Entity\User", cascade={"persist"})
+      * @ORM\JoinColumn(nullable=true)
+      */
+    private $compte;
+
     public function __construct()
   {
     $this->date = new \Datetime();
+    $this->datenaissance = new \Datetime("1970-01-01");
 
   }
 
@@ -247,5 +254,28 @@ class Etudiant
     public function getTelephone()
     {
         return $this->telephone;
+    }
+
+    /**
+     * Set compte
+     *
+     * @param \OC\UserBundle\Entity\User $compte
+     * @return Etudiant
+     */
+    public function setCompte(\OC\UserBundle\Entity\User $compte = null)
+    {
+        $this->compte = $compte;
+
+        return $this;
+    }
+
+    /**
+     * Get compte
+     *
+     * @return \OC\UserBundle\Entity\User 
+     */
+    public function getCompte()
+    {
+        return $this->compte;
     }
 }

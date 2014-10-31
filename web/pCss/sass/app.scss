@@ -1,0 +1,19 @@
+body{
+	.image-profil{
+		img{
+			width: 110px;
+
+		}
+	}
+	.contenu-profil{
+		border-left: 1px solid rgba(0,0,0,0.2);
+		.pre-nom{
+			font-weight: bolder;
+			font-size: 1.5em;
+
+			.nom{
+				text-transform: uppercase;
+			}
+		}
+	}
+}

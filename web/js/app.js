@@ -5,11 +5,11 @@ jQuery(document).ready(function($) {
 		$('#scrolling').text($(window).scrollTop())
 		$('#top-about').text($('#about').offset().top)
 		if($('#about').offset().top <= $(window).scrollTop() ){
-			$('#box-fixe').animate({left: 5}, 100)
+			$('#box-fixe').animate({left: 5}, 50)
 		}else{
 
 			$('#box-fixe').animate({left: -250}, 50)
-			alert(78)
+			
 		}
 	});
 });

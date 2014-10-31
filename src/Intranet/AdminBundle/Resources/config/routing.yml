@@ -8,19 +8,83 @@ intranet_admin_upload:
     path:     /upload-file
     defaults: { _controller: IntranetAdminBundle:Default:add }
 
+intranet_admin_recherche:
+    path:     /search
+    defaults: { _controller: IntranetAdminBundle:Default:recherche }
+#******************* PARAMETRAGE ******************************
+intranet_admin_parametage:
+    path:     /paramtrage
+    defaults: { _controller: IntranetAdminBundle:Default:paramtere }
+
+intranet_admin_details_annee:
+    path:     /details/{annee}
+    defaults: { _controller: IntranetAdminBundle:Default:detailsannee }
+
 #***************** lES LIENS DE : Gestion des étudiants *******************
 intranet_admin_ajout_etudiant:
     path:     /ajout-etudiant
     defaults: { _controller: IntranetAdminBundle:Etudiant:ajout }
+intranet_admin_stat_etudiant:
+    path:     /details-etudiant
+    defaults: { _controller: IntranetAdminBundle:Etudiant:stat }
+
 intranet_admin_voir_etudiant:
     path:     /voir-etudiant/{id}
     defaults: { _controller: IntranetAdminBundle:Etudiant:voir }
+
+intranet_admin_modifier_etudiant:
+    path:     /modifier-etudiant/{id}
+    defaults: { _controller: IntranetAdminBundle:Etudiant:modifier }
+
 intranet_admin_liste_etudiant:
     path:     /lister-etudiant
     defaults: { _controller: IntranetAdminBundle:Etudiant:list }
+intranet_admin_ajout_compte_etudiant:
+    path:     /ajout-compte-utilisateur/{id}
+    defaults: { _controller: IntranetAdminBundle:Etudiant:ajoutCompte }
 
 
 
 # ----------------------------------------------------------
 #			FIN GESION ETUDIANT
 #----------------------------------------------------------
+
+#***************** lES LIENS DE : Gestion des professeur *******************
+intranet_admin_ajout_professeur:
+    path:     /ajout-professeur
+    defaults: { _controller: IntranetAdminBundle:Professeur:ajout }
+intranet_admin_stat_professeur:
+    path:     /details-professeur
+    defaults: { _controller: IntranetAdminBundle:Professeur:stat }
+
+intranet_admin_voir_professeur:
+    path:     /voir-professeur/{id}
+    defaults: { _controller: IntranetAdminBundle:Professeur:voir }
+
+intranet_admin_ajout_compte_professeur:
+    path:     /ajout-compte-utilisateur-professeur/{id}
+    defaults: { _controller: IntranetAdminBundle:Professeur:ajoutCompte }
+
+intranet_admin_modifier_professeur:
+    path:     /modifier-professeur/{id}
+    defaults: { _controller: IntranetAdminBundle:Professeur:modifier }
+
+intranet_admin_liste_professeur:
+    path:     /lister-professeur
+    defaults: { _controller: IntranetAdminBundle:Professeur:list }
+
+# ----------------------------------------------------------
+#           FIN GESION ETUDIANT
+#----------------------------------------------------------
+#***************** lES LIENS DE : Gestion des Classes *******************
+intranet_admin_ajout_classe:
+    path:     /ajout-classe
+    defaults: { _controller: IntranetAdminBundle:Classe:ajout }
+
+intranet_admin_voir_classe:
+    path:     /voir-classe/{id}
+    defaults: { _controller: IntranetAdminBundle:Classe:voir }
+
+intranet_admin_liste_classe:
+    path:     /lister-classe
+    defaults: { _controller: IntranetAdminBundle:Classe:list }

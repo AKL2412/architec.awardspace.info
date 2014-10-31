@@ -11,9 +11,11 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
 
         $this->blocks = array(
             'title' => array($this, 'block_title'),
+            'style' => array($this, 'block_style'),
             'connected' => array($this, 'block_connected'),
             'menu' => array($this, 'block_menu'),
             'body' => array($this, 'block_body'),
+            'script' => array($this, 'block_script'),
         );
     }
 
@@ -50,20 +52,27 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
         // line 18
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/sb-admin.css"), "html", null, true);
         echo "\" rel=\"stylesheet\">
+    <link href=\"";
+        // line 19
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/app.css"), "html", null, true);
+        echo "\" rel=\"stylesheet\">
 
     <!-- Morris Charts CSS -->
     <link href=\"";
-        // line 21
+        // line 22
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/plugins/morris.css"), "html", null, true);
         echo "\" rel=\"stylesheet\">
 
     <!-- Custom Fonts -->
     <link href=\"";
-        // line 24
+        // line 25
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("font-awesome-4.1.0/css/font-awesome.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" type=\"text/css\">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+";
+        // line 26
+        $this->displayBlock('style', $context, $blocks);
+        // line 28
+        echo "    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src=\"https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js\"></script>
@@ -97,23 +106,23 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
                 </button>
 
                 <a class=\"navbar-brand\" href=\" ";
-        // line 59
+        // line 61
         echo $this->env->getExtension('routing')->getPath("internetsite_homepage");
         echo " \">Architec AwardSpace</a>
             </div>
 
             <!-- Top Menu Items -->
             ";
-        // line 63
+        // line 65
         $this->displayBlock('connected', $context, $blocks);
-        // line 68
+        // line 70
         echo "            
              
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             ";
-        // line 71
+        // line 73
         $this->displayBlock('menu', $context, $blocks);
-        // line 72
+        // line 74
         echo "            <!-- /.navbar-collapse -->
         </nav>
 
@@ -138,9 +147,9 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
                 </div> -->
                 <!-- /.row -->
                 ";
-        // line 95
+        // line 97
         $this->displayBlock('body', $context, $blocks);
-        // line 96
+        // line 98
         echo "
             </div>
             <!-- /.container-fluid -->
@@ -153,31 +162,44 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
 
     <!-- jQuery Version 1.11.0 -->
     <script src=\"";
-        // line 107
+        // line 109
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery-1.11.0.js"), "html", null, true);
         echo "\"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src=\"";
-        // line 110
+        // line 112
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
 
-    <!-- Morris Charts JavaScript -->
+    <!-- Morris Charts JavaScript 
     <script src=\"";
-        // line 113
+        // line 115
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/plugins/morris/raphael.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 114
+        // line 116
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/plugins/morris/morris.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 115
+        // line 117
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/plugins/morris/morris-data.js"), "html", null, true);
         echo "\"></script>
+    -->
 
-</body>
+    <script src=\"";
+        // line 120
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/plugins/dataTables/jquery.dataTables.js"), "html", null, true);
+        echo "\"></script>
+    <script src=\"";
+        // line 121
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/plugins/dataTables/dataTables.bootstrap.js"), "html", null, true);
+        echo "\"></script>
+";
+        // line 122
+        $this->displayBlock('script', $context, $blocks);
+        // line 124
+        echo "</body>
 
 </html>
 ";
@@ -188,26 +210,36 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
     {
     }
 
-    // line 63
+    // line 26
+    public function block_style($context, array $blocks = array())
+    {
+    }
+
+    // line 65
     public function block_connected($context, array $blocks = array())
     {
-        // line 64
+        // line 66
         echo "            <ul class=\"nav navbar-right top-nav\">
                 <li><a href=\"";
-        // line 65
+        // line 67
         echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
         echo "\">Connexion</a></li>
             </ul>
             ";
     }
 
-    // line 71
+    // line 73
     public function block_menu($context, array $blocks = array())
     {
     }
 
-    // line 95
+    // line 97
     public function block_body($context, array $blocks = array())
+    {
+    }
+
+    // line 122
+    public function block_script($context, array $blocks = array())
     {
     }
 
@@ -223,6 +255,6 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
 
     public function getDebugInfo()
     {
-        return array (  210 => 95,  205 => 71,  198 => 65,  195 => 64,  192 => 63,  187 => 12,  177 => 115,  173 => 114,  169 => 113,  163 => 110,  157 => 107,  144 => 96,  142 => 95,  117 => 72,  115 => 71,  110 => 68,  108 => 63,  101 => 59,  63 => 24,  57 => 21,  51 => 18,  45 => 15,  39 => 12,  35 => 11,  23 => 1,);
+        return array (  242 => 122,  237 => 97,  232 => 73,  225 => 67,  222 => 66,  219 => 65,  214 => 26,  209 => 12,  202 => 124,  200 => 122,  196 => 121,  192 => 120,  186 => 117,  182 => 116,  178 => 115,  172 => 112,  166 => 109,  153 => 98,  151 => 97,  126 => 74,  124 => 73,  119 => 70,  117 => 65,  110 => 61,  75 => 28,  73 => 26,  69 => 25,  63 => 22,  57 => 19,  53 => 18,  47 => 15,  41 => 12,  37 => 11,  25 => 1,);
     }
 }

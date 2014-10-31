@@ -82,8 +82,8 @@ class __TwigTemplate_e09e55bd3c3927ff16b5fe5567d2e1232cec4f28dcaa68e87e0d8e0c04d
                 <a class=\"navbar-brand page-scroll\" href=\"#page-top\">
                     <i class=\"fa fa-home\"></i> 
                     <span class=\"light\">Accueil</span> 
-                    <span id=\"scrolling\">100</span>
-                    <span id=\"top-about\">100</span>
+                    <!-- <span id=\"scrolling\">100</span>
+                    <span id=\"top-about\">100</span> -->
                 </a>
             </div>
 

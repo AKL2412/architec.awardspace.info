@@ -5,3 +5,6 @@ services:
     outil_service.antispam:
         class: Outil\ServiceBundle\Antispam\Antispam
         arguments: [@mailer, %locale%, 50]
+    outil_service.param:
+        class: Outil\ServiceBundle\Param\param
+        arguments: []

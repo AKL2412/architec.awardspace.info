@@ -1,0 +1,51 @@
+{% extends "IntranetAdminBundle::layout.html.twig" %}
+{%block title%}voir un étudiant{%endblock%}
+{%block body%}
+	{%if professeur is not null%}
+
+		<p >
+{% for message in app.session.flashbag.get('info') %}
+<p class="alert span6 alert-info alert-block" style="text-align:center;margin-left:auto;margin-right:auto" > {{ message }}</p>
+{% endfor %}
+</p>
+
+		<div class="row">
+			<div class="col-md-2 col-sm-3 image-profil">
+			<div>
+				{%if professeur.compte is not null %}		
+				<img  class="thumbnail" src=" {{asset('img/profil/')}}{{professeur.compte.image}}">
+					
+					<div class="label label-default">
+					{#{professeur.date|date("d-M-Y \\à g:ia")} #} 
+					</div>
+				{%else%}
+					<img  class="thumbnail" src=" {{asset('img/profil/default-no.png')}}">
+					<a class="btn btn-success btn-xs" href=" {{path('intranet_admin_ajout_compte_professeur',{id:professeur.id})}} ">Ajouter un compte</a>
+				{%endif%}
+			</div>
+			</div>
+			<div class="col-md-10 col-sm-9 contenu-profil">
+				
+					<div class="pre-nom col-md-8 col-sm-8 col-xs-7">
+					{{professeur.prenom}} <span class="nom">{{professeur.nom}}</span>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-5 text-right">
+						<a class="btn btn-default btn-xs" href=" {{path('intranet_admin_modifier_professeur',{id:professeur.id})}} ">modifier</a>
+						<a class="btn btn-default btn-xs" href="{{path('intranet_admin_liste_professeur')}}">les professeurs</a>
+					</div>
+				<div>
+ <ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation"><a href="#">Profile</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+				</div>
+				
+			</div>
+
+		</div>
+	{%endif%}
+	
+
+	
+{%endblock%}
