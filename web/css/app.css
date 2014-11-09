@@ -1,17 +1,86 @@
-/* line 3, ../pCss/sass/app.scss */
+/* line 2, ../pCss/sass/app.scss */
+body {
+  	/*
+  		Bloc de message
+  
+  	*/
+}
+/* line 4, ../pCss/sass/app.scss */
 body .image-profil img {
   width: 110px;
 }
-/* line 8, ../pCss/sass/app.scss */
+/* line 9, ../pCss/sass/app.scss */
 body .contenu-profil {
   border-left: 1px solid rgba(0, 0, 0, 0.2);
 }
-/* line 10, ../pCss/sass/app.scss */
+/* line 11, ../pCss/sass/app.scss */
 body .contenu-profil .pre-nom {
   font-weight: bolder;
   font-size: 1.5em;
 }
-/* line 14, ../pCss/sass/app.scss */
+/* line 15, ../pCss/sass/app.scss */
 body .contenu-profil .pre-nom .nom {
   text-transform: uppercase;
+}
+/* line 26, ../pCss/sass/app.scss */
+body .bloc-message .menu {
+  padding: 0;
+}
+/* line 28, ../pCss/sass/app.scss */
+body .bloc-message .menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* line 32, ../pCss/sass/app.scss */
+body .bloc-message .menu ul li {
+  margin: 4px 0;
+  display: inline-block;
+  width: 100%;
+  text-indent: 10px;
+}
+/* line 38, ../pCss/sass/app.scss */
+body .bloc-message .menu ul li.active {
+  border-left: 4px solid #d36563;
+}
+/* line 41, ../pCss/sass/app.scss */
+body .bloc-message .menu ul li.active a {
+  color: #d36563;
+  font-weight: bolder;
+}
+/* line 48, ../pCss/sass/app.scss */
+body .bloc-message .contenu {
+  border-left: 0px solid rgba(0, 0, 0, 0.3);
+  background-color: #f9f9f9;
+  min-height: 400px;
+}
+/* line 56, ../pCss/sass/app.scss */
+body #notification {
+  position: fixed;
+  top: 4%;
+  left: 15%;
+  width: 60%;
+  -webkit-box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+}
+/* line 65, ../pCss/sass/app.scss */
+body .image-profil-change form {
+  position: absolute;
+  margin-top: -35px;
+}
+/* line 69, ../pCss/sass/app.scss */
+body .image-profil-change form label i {
+  cursor: pointer;
+  text-align: center;
+  display: none;
+}
+/* line 74, ../pCss/sass/app.scss */
+body .image-profil-change form input {
+  display: none;
+}
+/* line 79, ../pCss/sass/app.scss */
+body .image-profil-change:hover form label i {
+  display: inline-block;
 }

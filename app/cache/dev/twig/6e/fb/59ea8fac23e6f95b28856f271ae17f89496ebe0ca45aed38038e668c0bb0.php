@@ -66,7 +66,7 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
     <!-- Custom Fonts -->
     <link href=\"";
         // line 25
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("font-awesome-4.1.0/css/font-awesome.min.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("font-awesome-4.2.0/css/font-awesome.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" type=\"text/css\">
 ";
         // line 26

@@ -4,11 +4,87 @@
 	{%if classe is not null%}
 
 		<p >
-{% for message in app.session.flashbag.get('info') %}
-<p class="alert span6 alert-info alert-block" style="text-align:center;margin-left:auto;margin-right:auto" > {{ message }}</p>
-{% endfor %}
-</p>
-la classe
+			{% for message in app.session.flashbag.get('info') %}
+			<p class="alert span6 alert-info alert-block" style="text-align:center;margin-left:auto;margin-right:auto" > {{ message }}</p>
+			{% endfor %}
+		</p>
+		<div class="col-md-12 col-sm-12 ">
+				
+			<div class="row">
+				<div class="pre-nom col-md-4 col-sm-4 col-xs-12">
+					<h4>{{classe.nom}} </h4>
+				</div>
+				<div class="col-md-8 col-sm-8 col-xs-12 text-right">
+				<a class="badge">{{classe.anneescolaire.annee}}</a>
+				
+					<a class="btn btn-default btn-xs" href=" {{path('intranet_admin_modifier_classe',{id:classe.id})}} ">modifier</a>
+					<a class="btn btn-default btn-xs" href="{{path('intranet_admin_liste_classe')}}">la liste des classes</a>
+
+							
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Description
+					</div>
+					<div class="panel-body">
+						{{classe.description}}
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						Emplois de temps
+						<a class="btn btn-info btn-xs" 
+						href=" {{path('intranet_admin_modifier_planning',{id:classe.id})}} "
+						style="float:right" 
+						>Ajouter un emploi de temps</a>
+					</div>
+					<div class="panel-body">
+						{%if classe.plannings|length > 0 %}
+							<table class="table table-bordered table-condensed table-striped">
+								<thead>
+									<tr>
+										<th>Nom</th>
+										<th>Date de debut</th>
+										<th>Date de fin</th>
+										<th>Etat</th>
+									</tr>
+								</thead>
+								<tbody>
+									{%for plan in classe.plannings %}
+										<tr>
+											<td> {{plan.nom}} </td>
+											<td>  {{plan.datedebut|date('d-M-Y')}} </td>
+											<td>  {{plan.datefin|date('d-M-Y')}} </td>
+											<td>
+												{%if plan.complet %}
+													
+													<a class="btn btn-success btn-xs" 
+													href="#">
+														<i class="fa fa-check-square-o"></i>
+														Terminé
+													</a>
+
+												{%else%}
+													<a class="btn btn-default btn-xs" href=" {{path('intranet_admin_planning_content',{id:plan.id})}} ">
+														<i class="fa fa-warning"></i>
+														Completer
+													</a>
+												{%endif%}
+											</td>
+										</tr>
+									{%endfor%}
+								</tbody>
+							</table>
+						{%endif%}
+					</div>	
+				</div>
+			</div>
+		</div>
 	{%endif%}
 	
 

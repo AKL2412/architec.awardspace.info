@@ -61,10 +61,42 @@ class Professeur
      */
     private $telephone;
     /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="text")
+     */
+    private $adresse;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+    /**
       * @ORM\OneToOne(targetEntity="OC\UserBundle\Entity\User", cascade={"persist"})
       * @ORM\JoinColumn(nullable=true)
       */
     private $compte;
+
+
+    /**
+      * @ORM\ManyToOne(targetEntity="Intranet\AdminBundle\Entity\Anneescolaire", cascade={"persist"})
+      * @ORM\JoinColumn(nullable=true)
+      */
+    private $anneescolaire;
+
+    /**
+* @ORM\OneToMany(targetEntity="Intranet\AdminBundle\Entity\Seance",mappedBy="professeur")
+*/
+private $plannings;
+
+    public function __construct()
+  {
+    $this->date = new \Datetime();
+    $this->datenaissance = new \Datetime("1970-01-01");
+
+  }
 
     /**
      * Get id
@@ -235,5 +267,107 @@ class Professeur
     public function getCompte()
     {
         return $this->compte;
+    }
+
+    /**
+     * Set anneescolaire
+     *
+     * @param \Intranet\AdminBundle\Entity\Anneescolaire $anneescolaire
+     * @return Professeur
+     */
+    public function setAnneescolaire(\Intranet\AdminBundle\Entity\Anneescolaire $anneescolaire = null)
+    {
+        $this->anneescolaire = $anneescolaire;
+
+        return $this;
+    }
+
+    /**
+     * Get anneescolaire
+     *
+     * @return \Intranet\AdminBundle\Entity\Anneescolaire 
+     */
+    public function getAnneescolaire()
+    {
+        return $this->anneescolaire;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Professeur
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Add plannings
+     *
+     * @param \Intranet\AdminBundle\Entity\Seance $plannings
+     * @return Professeur
+     */
+    public function addPlanning(\Intranet\AdminBundle\Entity\Seance $plannings)
+    {
+        $this->plannings[] = $plannings;
+
+        return $this;
+    }
+
+    /**
+     * Remove plannings
+     *
+     * @param \Intranet\AdminBundle\Entity\Seance $plannings
+     */
+    public function removePlanning(\Intranet\AdminBundle\Entity\Seance $plannings)
+    {
+        $this->plannings->removeElement($plannings);
+    }
+
+    /**
+     * Get plannings
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPlannings()
+    {
+        return $this->plannings;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     * @return Professeur
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string 
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
     }
 }

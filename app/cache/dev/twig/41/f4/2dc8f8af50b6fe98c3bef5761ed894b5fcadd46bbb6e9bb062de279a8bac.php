@@ -65,21 +65,59 @@ class __TwigTemplate_41f42dc8f8af50b6fe98c3bef5761ed894b5fcadd46bbb6e9bb062de279
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'errors');
         echo "
   <div class=\"panel-body\">
-    <div class=\"form-group col-md-6\">
+  <div class=\"form-group col-md-6\">
       ";
         // line 18
         echo "      ";
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "nom", array()), 'label', array("label" => "Nom de la classe"));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "filiere", array()), 'label', array("label" => "Filière de la classe"));
         echo "
 
       ";
         // line 21
         echo "      ";
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "nom", array()), 'errors');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "filiere", array()), 'errors');
         echo "
 
       ";
         // line 24
+        echo "      ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "filiere", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Nom de la classe")));
+        echo "
+    </div>
+    <div class=\"form-group col-md-6\">
+      ";
+        // line 28
+        echo "      ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "niveau", array()), 'label', array("label" => "Niveau de la classe"));
+        echo "
+
+      ";
+        // line 31
+        echo "      ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "niveau", array()), 'errors');
+        echo "
+
+      ";
+        // line 34
+        echo "      ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "niveau", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Nom de la classe")));
+        echo "
+    </div>
+    <div class=\"form-group col-md-6\">
+      ";
+        // line 38
+        echo "      ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "nom", array()), 'label', array("label" => "Nom de la classe"));
+        echo "
+
+      ";
+        // line 41
+        echo "      ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "nom", array()), 'errors');
+        echo "
+
+      ";
+        // line 44
         echo "      ";
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "nom", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Nom de la classe")));
         echo "
@@ -87,25 +125,25 @@ class __TwigTemplate_41f42dc8f8af50b6fe98c3bef5761ed894b5fcadd46bbb6e9bb062de279
 
     <div class=\"form-group col-md-12\">
       ";
-        // line 29
+        // line 49
         echo "      ";
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "description", array()), 'label', array("label" => "Description"));
         echo "
 
       ";
-        // line 32
+        // line 52
         echo "      ";
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "description", array()), 'errors');
         echo "
 
       ";
-        // line 35
+        // line 55
         echo "      ";
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "description", array()), 'widget', array("attr" => array("class" => "form-control")));
         echo "
     </div>
   ";
-        // line 37
+        // line 57
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'rest');
         echo "
  </div>
@@ -115,7 +153,7 @@ class __TwigTemplate_41f42dc8f8af50b6fe98c3bef5761ed894b5fcadd46bbb6e9bb062de279
     <input type=\"reset\" value=\"Annuler\" class=\"btn btn-default \">
   </div>
    ";
-        // line 45
+        // line 65
         echo "  ";
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         echo "
@@ -135,6 +173,6 @@ class __TwigTemplate_41f42dc8f8af50b6fe98c3bef5761ed894b5fcadd46bbb6e9bb062de279
 
     public function getDebugInfo()
     {
-        return array (  119 => 45,  109 => 37,  103 => 35,  97 => 32,  91 => 29,  83 => 24,  77 => 21,  71 => 18,  64 => 14,  60 => 12,  54 => 8,  45 => 6,  41 => 5,  38 => 4,  35 => 3,  29 => 2,);
+        return array (  157 => 65,  147 => 57,  141 => 55,  135 => 52,  129 => 49,  121 => 44,  115 => 41,  109 => 38,  102 => 34,  96 => 31,  90 => 28,  83 => 24,  77 => 21,  71 => 18,  64 => 14,  60 => 12,  54 => 8,  45 => 6,  41 => 5,  38 => 4,  35 => 3,  29 => 2,);
     }
 }

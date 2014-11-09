@@ -5,6 +5,7 @@ namespace Intranet\AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Intranet\AdminBundle\Entity\Etudiant;
+use Intranet\AdminBundle\Form\EtudiantType;
 use OC\UserBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +17,21 @@ class EtudiantController extends Controller{
     	 // On crée un objet Advert
 		    $etud = new Etudiant();
 
+		    $em = $this->getDoctrine()
+								->getManager();
+		    $repoAnnee = $em->getRepository('IntranetAdminBundle:Anneescolaire');
+			$anneeEncours = $repoAnnee->findOneByEncours(true);
+
+			if ($anneeEncours == null) {
+		      // Sinon on déclenche une exception « Accès interdit »
+		      throw new NotFoundHttpException('Veuillez parametrer certains paramètres : Année en cours ');
+		    }
+
+		    $etud->setAnneescolaire($anneeEncours);
+
+		    $form = $this->get('form.factory')
+    							->create(new EtudiantType(), $etud);
+    							/*
 		    // On crée le FormBuilder grâce au service form factory
 		    $formBuilder = $this->get('form.factory')->createBuilder('form', $etud);
 
@@ -31,14 +47,8 @@ class EtudiantController extends Controller{
 
 		    // À partir du formBuilder, on génère le formulaire
 		    $form = $formBuilder->getForm();
-
-		    // On fait le lien Requête <-> Formulaire
-		    // À partir de maintenant, la variable $etud contient les valeurs entrées dans le formulaire par le visiteur
-		    $form->handleRequest($request);
-
-		    // On vérifie que les valeurs entrées sont correctes
-		    // (Nous verrons la validation des objets en détail dans le prochain chapitre)
-		    if ($form->isValid()) {
+		    //*/
+		    if ($form->handleRequest($request)->isValid()) {
 		      // On l'enregistre notre objet $etud dans la base de données, par exemple
 		      $em = $this->getDoctrine()->getManager();
 
@@ -171,7 +181,20 @@ class EtudiantController extends Controller{
 
     }
 
-
+    public function definirClasseAction($id){
+    	$etud =  $this->getDoctrine()
+		  ->getManager()
+		  ->getRepository('IntranetAdminBundle:Etudiant')
+		  ->find($id)
+		;
+			if ($etud == null) {
+	      // Sinon on déclenche une exception « Accès interdit »
+	      throw new NotFoundHttpException('Identifiant incorrect');
+	    }
+	    return $this->render('IntranetAdminBundle:Etudiant:definirclasse.html.twig', array(
+	      'etudiant' => $etud
+	    ));
+    }
     public function voirAction($id){
     	$etud =  $this->getDoctrine()
 		  ->getManager()

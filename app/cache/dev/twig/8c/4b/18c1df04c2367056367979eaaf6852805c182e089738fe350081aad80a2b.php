@@ -28,7 +28,10 @@ class __TwigTemplate_8c4b18c1df04c2367056367979eaaf6852805c182e089738fe350081aad
     // line 2
     public function block_title($context, array $blocks = array())
     {
-        echo "voir un étudiant";
+        echo "voir un professeur | ";
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["professeur"]) ? $context["professeur"] : $this->getContext($context, "professeur")), "prenom", array()), "html", null, true);
+        echo " ";
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["professeur"]) ? $context["professeur"] : $this->getContext($context, "professeur")), "nom", array()), "html", null, true);
     }
 
     // line 3
@@ -70,9 +73,10 @@ class __TwigTemplate_8c4b18c1df04c2367056367979eaaf6852805c182e089738fe350081aad
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["professeur"]) ? $context["professeur"] : $this->getContext($context, "professeur")), "compte", array()), "image", array()), "html", null, true);
                 echo "\">
 \t\t\t\t\t
-\t\t\t\t\t<div class=\"label label-default\">
-\t\t\t\t\t";
+\t\t\t\t\t<div class=\"label label-success\">
+\t\t\t\t\tAjouté : ";
                 // line 19
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["professeur"]) ? $context["professeur"] : $this->getContext($context, "professeur")), "date", array()), "d-M-Y"), "html", null, true);
                 echo " 
 \t\t\t\t\t</div>
 \t\t\t\t";
@@ -142,6 +146,6 @@ class __TwigTemplate_8c4b18c1df04c2367056367979eaaf6852805c182e089738fe350081aad
 
     public function getDebugInfo()
     {
-        return array (  127 => 48,  110 => 34,  106 => 33,  98 => 30,  91 => 25,  86 => 23,  81 => 22,  76 => 19,  69 => 16,  65 => 15,  58 => 10,  49 => 8,  45 => 7,  41 => 5,  38 => 4,  35 => 3,  29 => 2,);
+        return array (  131 => 48,  114 => 34,  110 => 33,  102 => 30,  95 => 25,  90 => 23,  85 => 22,  79 => 19,  72 => 16,  68 => 15,  61 => 10,  52 => 8,  48 => 7,  44 => 5,  41 => 4,  38 => 3,  29 => 2,);
     }
 }

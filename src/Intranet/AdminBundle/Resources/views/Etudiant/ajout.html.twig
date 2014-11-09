@@ -14,7 +14,7 @@
     {# Les erreurs générales du formulaire. #}
     {{ form_errors(form) }}
 
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
 	    {# Génération du label. #}
 	    {{ form_label(form.nom, "Nom de l'étudiant") }}
 
@@ -25,7 +25,7 @@
 	    {{ form_widget(form.nom, {'attr': {'class': 'form-control','placeholder':'Nom de l\'étudiant'}}) }}
     </div>
 
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
 	    {# Génération du label. #}
 	    {{ form_label(form.prenom, "Prenom de l'étudiant") }}
 
@@ -34,6 +34,16 @@
 
 	    {# Génération de l'input. #}
 	    {{ form_widget(form.prenom, {'attr': {'class': 'form-control','placeholder':'Prenom de l\'étudiant'}}) }}
+    </div>
+    <div class="form-group col-md-4">
+      {# Génération du label. #}
+      {{ form_label(form.matricule, "Le matricule de l'étudiant") }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.matricule) }}
+
+      {# Génération de l'input. #}
+      {{ form_widget(form.matricule, {'attr': {'class': 'form-control','placeholder':"Le matricule de l'étudiant"}}) }}
     </div>
     <div class="form-group col-md-3">
 	    {# Génération du label. #}
@@ -57,13 +67,13 @@
     </div>
     <div class="form-group col-md-3">
 	    {# Génération du label. #}
-	    {{ form_label(form.matricule, "Le matricule de l'étudiant") }}
+	    {{ form_label(form.sexe, "Le sexe de l'étudiant") }}
 
 	    {# Affichage des erreurs pour ce champ précis. #}
-	    {{ form_errors(form.matricule) }}
+	    {{ form_errors(form.sexe) }}
 
 	    {# Génération de l'input. #}
-	    {{ form_widget(form.matricule, {'attr': {'class': 'form-control','placeholder':"Le matricule de l'étudiant"}}) }}
+	    {{ form_widget(form.sexe, {'attr': {'class': 'form-control','placeholder':"Le sexe de l'étudiant"}}) }}
     </div>
     <div class="form-group col-md-3">
 	    {# Génération du label. #}
@@ -96,8 +106,8 @@
   	
   </div> -->
   <div class="">
-  	<input type="submit" value="Ajouter" class="btn btn-primary btn-xs">
-  <input type="reset" value="Annuler" class="btn btn-default btn-xs">
+  	<input type="submit" value="Ajouter" class="btn btn-primary btn">
+  <input type="reset" value="Annuler" class="btn btn-default btn">
 
   </div>
   

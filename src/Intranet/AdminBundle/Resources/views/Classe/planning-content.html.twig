@@ -1,0 +1,170 @@
+{% extends "IntranetAdminBundle::layout.html.twig" %}
+{%block title%}
+	ajout contenu | {{planning.nom}}
+{%endblock%}
+
+{%block style%}
+	<style type="text/css">
+		.drop-hover{
+			background-color: rgba(0,0,0,0.1);
+		}
+		.case{
+			background-color: #f4551f1f1;
+			height: 70px;
+		}
+		.case i{
+			cursor: pointer;
+			margin-top: -8px;
+			position: absolute;
+		}
+		.case .data-case {
+			display: inline-block;
+			width: 100%;
+			margin: 0;
+		}
+		.data-case-move{
+			cursor: move;
+			z-index: 50;
+			display: inline-block;
+		}
+	</style>
+{%endblock%}
+{%block body%}
+	<p >
+		{% for message in app.session.flashbag.get('info') %}
+			<p class="alert span6 alert-info alert-block" style="text-align:center;margin-left:auto;margin-right:auto" > 
+				{{ message }}
+			</p>
+		{% endfor %}
+	</p>
+
+	<div class="row">
+		<div class="row">
+				<div class="pre-nom col-md-7 col-sm-4 col-xs-12">
+					<h2>{{planning.nom}} </h2>
+					
+						
+						{%if planning.complet %}
+						<div class="label label-primary">
+							Etat : <i class="fa fa-check-circle-o"></i>	Terminé
+						</div>
+						{%else%}
+						<div class="label label-warning">
+							Etat : <i class="fa fa-times"></i>	Non terminé
+						</div>
+						{%endif%}
+					
+				</div>
+				<div class="col-md-5 col-sm-5 col-xs-12 text-right">
+				<label class="alert alert-success">
+					<i class="fa fa-calendar-o"></i>
+					Du : {{planning.datedebut|date('d-M-Y')}} au {{planning.datefin|date('d-M-Y')}}
+				</label>
+							
+				</div>
+			</div>
+			<div class="row">
+				{%if planning.complet %}
+					<div class="alert">
+						Consultation de l'emploi de temps
+					</div>
+				{%else%}
+					<div class="row">
+						<div class="alert alert-info col-md-3 col-md-offset-2">
+							Completer l'emploi de temps
+						</div>
+					</div>
+
+					<div class="row">
+						
+						<div class="container">
+							<div class="col-md-4">
+							<div class="panel panel-default">
+								<div class="panel-heading">Les professeurs</div>
+								<div class="panel-body">
+									{%for professeur in professeurs%}
+										<div type="professeur" class="data-case-move label label-info" objectId="{{professeur.id}}">
+											{{professeur.nom}} {{professeur.prenom}}
+										</div>
+									{%endfor%}
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="panel panel-default">
+								<div class="panel-heading">Les Matières</div>
+								<div class="panel-body">
+									{%for matiere in matieres%}
+										<div type="matiere" objectId="{{matiere.id}}" class="data-case-move label label-default">
+											{{matiere.nom}}
+										</div>
+									{%endfor%}
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="panel panel-default">
+								<div class="panel-heading">Les Salles</div>
+								<div class="panel-body">
+									{%for salle in salles%}
+										<div type="salle" objectId="{{salle.id}}" class="data-case-move label label-success">
+											{{salle.nom}}
+										</div>
+									{%endfor%}
+								</div>
+							</div>
+						</div>
+
+						<!-- La table de contenu -->
+						<div class="col-lg-12">
+								<table class="table table-condensed table-bordered table-striped-">
+									<thead>
+										<th></th>
+										{%for jour in jours %}
+											<th>{{jour}}</th>
+										{%endfor%}
+									</thead>
+									<tbody>
+										{%for heure in heures%}
+											<tr>
+												<td>{{heure}}</td>
+												{%for jour in jours%}
+													<td>
+														<div class="case" jour="{{jour}}" heure="{heure}}">
+															<i class="fa fa-trash-o"></i>
+
+															<div etat="vide" class="matiere data-case label label-default " >Matière...</div>
+															<div etat="vide" class="professeur data-case  label label-info">Professeur...</div>
+															<div etat="vide" class="salle data-case  label label-success">salle...</div>
+														</div>
+													</td>
+												{%endfor%}
+
+											</tr>
+
+										{%endfor%}
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</div>
+
+					
+
+
+				{%endif%}
+			</div>
+	</div>
+
+{%endblock%}
+
+
+{%block script%}
+<script src="{{asset('js/jquery-ui.min.js')}}"></script>
+<script src="{{asset('js/droppable.js')}}"></script>
+<script src="{{asset('js/draggable.js')}}"></script>
+<script src="{{asset('js/contenuplanning.js')}}"></script>
+{%endblock%}

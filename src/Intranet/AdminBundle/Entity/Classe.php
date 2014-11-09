@@ -48,6 +48,41 @@ class Classe
       */
     private $anneescolaire;
 
+    /**
+      * @ORM\ManyToOne(targetEntity="Intranet\AdminBundle\Entity\Filiere", cascade={"persist"})
+      * @ORM\JoinColumn(nullable=true)
+      */
+    private $filiere;
+
+    /**
+      * @ORM\ManyToOne(targetEntity="Intranet\AdminBundle\Entity\Niveauinscription", cascade={"persist"})
+      * @ORM\JoinColumn(nullable=true)
+      */
+    private $niveau;
+
+  /**
+* @ORM\OneToMany(targetEntity="Intranet\AdminBundle\Entity\Classeetudiant",mappedBy="classe")
+*/
+private $etudiants;
+
+/**
+* @ORM\OneToMany(targetEntity="Intranet\AdminBundle\Entity\Planning",mappedBy="classe")
+*/
+private $plannings;
+
+
+public function actuelle(){
+    if($this->anneescolaire->getEncours())
+        return true;
+    return false;
+}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->etudiants = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -149,5 +184,117 @@ class Classe
     public function getAnneescolaire()
     {
         return $this->anneescolaire;
+    }
+
+    /**
+     * Add etudiants
+     *
+     * @param \Intranet\AdminBundle\Entity\Classeetudiant $etudiants
+     * @return Classe
+     */
+    public function addEtudiant(\Intranet\AdminBundle\Entity\Classeetudiant $etudiants)
+    {
+        $this->etudiants[] = $etudiants;
+
+        return $this;
+    }
+
+    /**
+     * Remove etudiants
+     *
+     * @param \Intranet\AdminBundle\Entity\Classeetudiant $etudiants
+     */
+    public function removeEtudiant(\Intranet\AdminBundle\Entity\Classeetudiant $etudiants)
+    {
+        $this->etudiants->removeElement($etudiants);
+    }
+
+    /**
+     * Get etudiants
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEtudiants()
+    {
+        return $this->etudiants;
+    }
+
+    /**
+     * Add plannings
+     *
+     * @param \Intranet\AdminBundle\Entity\Planning $plannings
+     * @return Classe
+     */
+    public function addPlanning(\Intranet\AdminBundle\Entity\Planning $plannings)
+    {
+        $this->plannings[] = $plannings;
+
+        return $this;
+    }
+
+    /**
+     * Remove plannings
+     *
+     * @param \Intranet\AdminBundle\Entity\Planning $plannings
+     */
+    public function removePlanning(\Intranet\AdminBundle\Entity\Planning $plannings)
+    {
+        $this->plannings->removeElement($plannings);
+    }
+
+    /**
+     * Get plannings
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPlannings()
+    {
+        return $this->plannings;
+    }
+
+    /**
+     * Set filiere
+     *
+     * @param \Intranet\AdminBundle\Entity\Filiere $filiere
+     * @return Classe
+     */
+    public function setFiliere(\Intranet\AdminBundle\Entity\Filiere $filiere = null)
+    {
+        $this->filiere = $filiere;
+
+        return $this;
+    }
+
+    /**
+     * Get filiere
+     *
+     * @return \Intranet\AdminBundle\Entity\Filiere 
+     */
+    public function getFiliere()
+    {
+        return $this->filiere;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param \Intranet\AdminBundle\Entity\Niveauinscription $niveau
+     * @return Classe
+     */
+    public function setNiveau(\Intranet\AdminBundle\Entity\Niveauinscription $niveau = null)
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return \Intranet\AdminBundle\Entity\Niveauinscription 
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
     }
 }

@@ -14,7 +14,7 @@
     {# Les erreurs générales du formulaire. #}
     {{ form_errors(form) }}
 
-    <div class="form-group col-md-5">
+    <div class="form-group col-md-8">
 	    {# Génération du label. #}
 	    {{ form_label(form.annee, "Année scolaire") }}
 
@@ -25,25 +25,36 @@
 	    {{ form_widget(form.annee, {'attr': {'class': 'form-control','placeholder':'Exemple: 2012-2013'}}) }}
     </div>
 
+    
     <div class="form-group col-md-4">
 	    {# Génération du label. #}
-	    {{ form_label(form.code, "Code") }}
-
-	    {# Affichage des erreurs pour ce champ précis. #}
-	    {{ form_errors(form.code) }}
-
-	    {# Génération de l'input. #}
-	    {{ form_widget(form.code, {'attr': {'class': 'form-control','placeholder':'Code'}}) }}
-    </div>
-    <div class="form-group col-md-3">
-	    {# Génération du label. #}
-	    {{ form_label(form.encours, "en cours") }}
+	    {{ form_label(form.encours, "Année en cours") }}
 
 	    {# Affichage des erreurs pour ce champ précis. #}
 	    {{ form_errors(form.encours) }}
 
 	    {# Génération de l'input. #}
 	    {{ form_widget(form.encours, {'attr': {'class': 'form-control','disabled':'disabled'}}) }}
+    </div>
+    <div class="form-group col-md-6">
+      {# Génération du label. #}
+      {{ form_label(form.datedebut, "date de debut") }}
+ 
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.datedebut) }}
+
+      {# Génération de l'input. #}
+      {{ form_widget(form.datedebut) }}
+    </div>
+     <div class="form-group col-md-6">
+      {# Génération du label. #}
+      {{ form_label(form.datefin, "date de fin") }}
+ 
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.datefin) }}
+
+      {# Génération de l'input. #}
+      {{ form_widget(form.datefin) }}
     </div>
   {# Génération automatique des champs pas encore écrits.
      Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
@@ -94,5 +105,5 @@
                     </div>
 </div>
 </div>
-parametage
+
 {%endblock%}

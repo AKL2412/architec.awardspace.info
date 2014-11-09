@@ -29,11 +29,18 @@ class Anneescolaire
     private $annee;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="code", type="string", length=100,unique=true)
+     * @ORM\Column(name="datedebut", type="date")
      */
-    private $code;
+    private $datedebut;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datefin", type="date")
+     */
+    private $datefin;
 
     /**
      * @var boolean
@@ -47,88 +54,21 @@ class Anneescolaire
 */
 private $classes;
 
+/**
+* @ORM\OneToMany(targetEntity="Intranet\AdminBundle\Entity\Etudiant",mappedBy="anneescolaire")
+*/
+private $etudiants;
+
+/**
+* @ORM\OneToMany(targetEntity="Intranet\AdminBundle\Entity\Professeur",mappedBy="anneescolaire")
+*/
+private $professeurs;
+
 public function __construct()
   {
     $this->encours = true;
 
   }
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set annee
-     *
-     * @param string $annee
-     * @return Anneescolaire
-     */
-    public function setAnnee($annee)
-    {
-        $this->annee = $annee;
-
-        return $this;
-    }
-
-    /**
-     * Get annee
-     *
-     * @return string 
-     */
-    public function getAnnee()
-    {
-        return $this->annee;
-    }
-
-    /**
-     * Set code
-     *
-     * @param string $code
-     * @return Anneescolaire
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
-
-        return $this;
-    }
-
-    /**
-     * Get code
-     *
-     * @return string 
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
-
-    /**
-     * Set encours
-     *
-     * @param boolean $encours
-     * @return Anneescolaire
-     */
-    public function setEncours($encours)
-    {
-        $this->encours = $encours;
-
-        return $this;
-    }
-
-    /**
-     * Get encours
-     *
-     * @return boolean 
-     */
-    public function getEncours()
-    {
-        return $this->encours;
-    }
+    
 }

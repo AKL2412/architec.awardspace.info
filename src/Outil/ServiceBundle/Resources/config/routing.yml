@@ -1,1 +1,11 @@
+intranet_change_picture:
+    path:     /intranet-change-picture
+    defaults: { _controller: OutilServiceBundle:Default:picture }
 
+intranet_change_password:
+    path:     /intranet-change-password
+    defaults: { _controller: OutilServiceBundle:Default:passeword }
+
+intranet_change_message:
+    path:     /message-box
+    defaults: { _controller: OutilServiceBundle:Default:message }

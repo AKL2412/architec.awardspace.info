@@ -66,7 +66,7 @@ class __TwigTemplate_f2a0ba40013ef924691e6ef4bcec17abadde702f44801f5d86a08671e4d
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'errors');
         echo "
 
-    <div class=\"form-group col-md-5\">
+    <div class=\"form-group col-md-8\">
 \t    ";
         // line 19
         echo "\t    ";
@@ -86,53 +86,73 @@ class __TwigTemplate_f2a0ba40013ef924691e6ef4bcec17abadde702f44801f5d86a08671e4d
         echo "
     </div>
 
+    
     <div class=\"form-group col-md-4\">
 \t    ";
-        // line 30
+        // line 31
         echo "\t    ";
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "code", array()), 'label', array("label" => "Code"));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "encours", array()), 'label', array("label" => "Année en cours"));
         echo "
 
 \t    ";
-        // line 33
-        echo "\t    ";
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "code", array()), 'errors');
-        echo "
-
-\t    ";
-        // line 36
-        echo "\t    ";
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "code", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Code")));
-        echo "
-    </div>
-    <div class=\"form-group col-md-3\">
-\t    ";
-        // line 40
-        echo "\t    ";
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "encours", array()), 'label', array("label" => "en cours"));
-        echo "
-
-\t    ";
-        // line 43
+        // line 34
         echo "\t    ";
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "encours", array()), 'errors');
         echo "
 
 \t    ";
-        // line 46
+        // line 37
         echo "\t    ";
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "encours", array()), 'widget', array("attr" => array("class" => "form-control", "disabled" => "disabled")));
         echo "
     </div>
-  ";
+    <div class=\"form-group col-md-6\">
+      ";
+        // line 41
+        echo "      ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "datedebut", array()), 'label', array("label" => "date de debut"));
+        echo "
+ 
+      ";
+        // line 44
+        echo "      ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "datedebut", array()), 'errors');
+        echo "
+
+      ";
+        // line 47
+        echo "      ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "datedebut", array()), 'widget');
+        echo "
+    </div>
+     <div class=\"form-group col-md-6\">
+      ";
         // line 51
+        echo "      ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "datefin", array()), 'label', array("label" => "date de fin"));
+        echo "
+ 
+      ";
+        // line 54
+        echo "      ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "datefin", array()), 'errors');
+        echo "
+
+      ";
+        // line 57
+        echo "      ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "datefin", array()), 'widget');
+        echo "
+    </div>
+  ";
+        // line 62
         echo "  ";
-        // line 52
+        // line 63
         echo "  
   ";
-        // line 54
+        // line 65
         echo "  ";
-        // line 55
+        // line 66
         echo "  
   <div class=\"col-lg-12-\">
   \t<input type=\"submit\" value=\"Ajouter\" class=\"btn btn-primary \">
@@ -141,7 +161,7 @@ class __TwigTemplate_f2a0ba40013ef924691e6ef4bcec17abadde702f44801f5d86a08671e4d
   </div>
   
   ";
-        // line 63
+        // line 74
         echo "  ";
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         echo "
@@ -157,28 +177,28 @@ class __TwigTemplate_f2a0ba40013ef924691e6ef4bcec17abadde702f44801f5d86a08671e4d
                                     <div class=\"col-xs-9 text-right\">
                                         <div class=\"huge\">
                                         \t";
-        // line 75
+        // line 86
         if ((!(null === (isset($context["annee"]) ? $context["annee"] : $this->getContext($context, "annee"))))) {
-            // line 76
+            // line 87
             echo "                                        \t\t";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["annee"]) ? $context["annee"] : $this->getContext($context, "annee")), "annee", array()), "html", null, true);
             echo "
                                         \t";
         } else {
-            // line 78
+            // line 89
             echo "                                        \t\tpas d'année en cours
                                         \t";
         }
-        // line 80
+        // line 91
         echo "                                        </div>
                                         <div>Année Scolaire en cours</div>
                                     </div>
                                 </div>
                             </div>
                             <a href=\" ";
-        // line 85
+        // line 96
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("intranet_admin_details_annee", array("annee" => $this->getAttribute((isset($context["annee"]) ? $context["annee"] : $this->getContext($context, "annee")), "annee", array()))), "html", null, true);
-        // line 86
+        // line 97
         echo " \">
                                 <div class=\"panel-footer\">
                                     <span class=\"pull-left\">Voir Details</span>
@@ -190,7 +210,7 @@ class __TwigTemplate_f2a0ba40013ef924691e6ef4bcec17abadde702f44801f5d86a08671e4d
                     </div>
 </div>
 </div>
-parametage
+
 ";
     }
 
@@ -206,6 +226,6 @@ parametage
 
     public function getDebugInfo()
     {
-        return array (  182 => 86,  180 => 85,  173 => 80,  169 => 78,  163 => 76,  161 => 75,  145 => 63,  136 => 55,  134 => 54,  131 => 52,  129 => 51,  123 => 46,  117 => 43,  111 => 40,  104 => 36,  98 => 33,  92 => 30,  84 => 25,  78 => 22,  72 => 19,  65 => 15,  60 => 12,  54 => 8,  45 => 6,  41 => 5,  38 => 4,  35 => 3,  29 => 2,);
+        return array (  202 => 97,  200 => 96,  193 => 91,  189 => 89,  183 => 87,  181 => 86,  165 => 74,  156 => 66,  154 => 65,  151 => 63,  149 => 62,  143 => 57,  137 => 54,  131 => 51,  124 => 47,  118 => 44,  112 => 41,  105 => 37,  99 => 34,  93 => 31,  84 => 25,  78 => 22,  72 => 19,  65 => 15,  60 => 12,  54 => 8,  45 => 6,  41 => 5,  38 => 4,  35 => 3,  29 => 2,);
     }
 }

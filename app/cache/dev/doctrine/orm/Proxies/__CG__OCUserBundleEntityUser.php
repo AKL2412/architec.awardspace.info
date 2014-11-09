@@ -64,10 +64,10 @@ class User extends \OC\UserBundle\Entity\User implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', '' . "\0" . 'OC\\UserBundle\\Entity\\User' . "\0" . 'image', '' . "\0" . 'OC\\UserBundle\\Entity\\User' . "\0" . 'date', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt');
+            return array('__isInitialized__', 'id', '' . "\0" . 'OC\\UserBundle\\Entity\\User' . "\0" . 'image', '' . "\0" . 'OC\\UserBundle\\Entity\\User' . "\0" . 'sends', '' . "\0" . 'OC\\UserBundle\\Entity\\User' . "\0" . 'receives', '' . "\0" . 'OC\\UserBundle\\Entity\\User' . "\0" . 'date', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt');
         }
 
-        return array('__isInitialized__', 'id', '' . "\0" . 'OC\\UserBundle\\Entity\\User' . "\0" . 'image', '' . "\0" . 'OC\\UserBundle\\Entity\\User' . "\0" . 'date', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt');
+        return array('__isInitialized__', 'id', '' . "\0" . 'OC\\UserBundle\\Entity\\User' . "\0" . 'image', '' . "\0" . 'OC\\UserBundle\\Entity\\User' . "\0" . 'sends', '' . "\0" . 'OC\\UserBundle\\Entity\\User' . "\0" . 'receives', '' . "\0" . 'OC\\UserBundle\\Entity\\User' . "\0" . 'date', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt');
     }
 
     /**
@@ -230,6 +230,72 @@ class User extends \OC\UserBundle\Entity\User implements \Doctrine\ORM\Proxy\Pro
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDate', array());
 
         return parent::getDate();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addSend(\Intranet\AdminBundle\Entity\Message $sends)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addSend', array($sends));
+
+        return parent::addSend($sends);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeSend(\Intranet\AdminBundle\Entity\Message $sends)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeSend', array($sends));
+
+        return parent::removeSend($sends);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSends()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSends', array());
+
+        return parent::getSends();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addReceife(\Intranet\AdminBundle\Entity\Message $receives)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addReceife', array($receives));
+
+        return parent::addReceife($receives);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeReceife(\Intranet\AdminBundle\Entity\Message $receives)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeReceife', array($receives));
+
+        return parent::removeReceife($receives);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getReceives()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReceives', array());
+
+        return parent::getReceives();
     }
 
     /**

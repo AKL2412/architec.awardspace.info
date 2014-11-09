@@ -1,3 +1,4 @@
+@import "compass";
 body{
 	.image-profil{
 		img{
@@ -13,6 +14,70 @@ body{
 
 			.nom{
 				text-transform: uppercase;
+			}
+		}
+	}
+
+	/*
+		Bloc de message
+
+	*/
+	.bloc-message{
+		.menu{
+			padding: 0;
+			ul{
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				li{
+					margin: 4px 0;
+					display: inline-block;
+					width: 100%;
+					text-indent: 10px;
+				}
+				li.active{
+					
+					border-left: 4px solid #d36563;
+					a{
+						color: #d36563;
+						font-weight: bolder;
+					}
+				}
+			}
+		}
+		.contenu{
+			border-left: 0px solid rgba(0,0,0,0.3);
+			background-color: #f9f9f9;
+			min-height: 400px;
+		}
+	}
+	
+	
+	#notification{
+		position: fixed;
+		top: 4%;left: 15%;
+		
+		width: 60%;
+		@include box-shadow(0 5px 8px rgba(0,0,0,0.2));
+		z-index: 10000;
+	}
+	.image-profil-change{
+		form{
+			position: absolute;
+			
+			margin-top: -35px;
+			label i{
+				cursor: pointer;
+				text-align: center;
+				display: none;
+			}
+			input{
+				display: none;
+			}
+		}
+		&:hover{
+			form label i{
+				display: inline-block;
 			}
 		}
 	}

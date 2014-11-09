@@ -1,4 +1,6 @@
 services:
-#    internetsite.example:
-#        class: Internet\siteBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    internetsite.preinscription:
+        class: Internet\siteBundle\Form\PreinscriptionType
+        arguments: 
+            - %urlPreincription%
+

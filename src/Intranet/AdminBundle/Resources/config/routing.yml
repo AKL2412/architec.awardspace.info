@@ -43,6 +43,10 @@ intranet_admin_ajout_compte_etudiant:
     path:     /ajout-compte-utilisateur/{id}
     defaults: { _controller: IntranetAdminBundle:Etudiant:ajoutCompte }
 
+intranet_admin_ajout_classe_etudiant:
+    path:     /definir-classe-etudiant/{id}
+    defaults: { _controller: IntranetAdminBundle:Etudiant:definirClasse }
+
 
 
 # ----------------------------------------------------------
@@ -88,3 +92,18 @@ intranet_admin_voir_classe:
 intranet_admin_liste_classe:
     path:     /lister-classe
     defaults: { _controller: IntranetAdminBundle:Classe:list }
+
+intranet_admin_modifier_classe:
+    path:     /modifier-classe/{id}
+    defaults: { _controller: IntranetAdminBundle:Classe:modifier }
+
+#-------------------------------
+#       EMPLOI DE TEMPS
+#---------------------------------------
+intranet_admin_modifier_planning:
+    path:     /ajouter-emploi-de-temps/{id}
+    defaults: { _controller: IntranetAdminBundle:Classe:planning }
+
+intranet_admin_planning_content:
+    path:     /ajouter-emploi-de-temps-contenu/{id}
+    defaults: { _controller: IntranetAdminBundle:Classe:contenu }

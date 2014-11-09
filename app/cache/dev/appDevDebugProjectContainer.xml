@@ -46,6 +46,7 @@
     <parameter key="debug_toolbar">true</parameter>
     <parameter key="debug_redirects">false</parameter>
     <parameter key="use_assetic_controller">true</parameter>
+    <parameter key="urlpreincription">http://localhost/architec.awardspace.info/web/app_dev.php/se-preinscrire</parameter>
     <parameter key="fos_user.backend_type_orm">true</parameter>
     <parameter key="fos_user.security.interactive_login_listener.class">FOS\UserBundle\EventListener\LastLoginListener</parameter>
     <parameter key="fos_user.security.login_manager.class">FOS\UserBundle\Security\LoginManager</parameter>
@@ -3060,7 +3061,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5453d54891b94</argument>
+            <argument>545fadd33ce56</argument>
           </service>
         </argument>
       </argument>
@@ -3402,7 +3403,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>5453d54891b94</argument>
+            <argument>545fadd33ce56</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
           </service>
         </argument>
@@ -3852,6 +3853,7 @@
           <call method="setEntityNamespaces">
             <argument type="collection">
               <argument key="IntranetAdminBundle">Intranet\AdminBundle\Entity</argument>
+              <argument key="InternetsiteBundle">Internet\siteBundle\Entity</argument>
               <argument key="OCUserBundle">OC\UserBundle\Entity</argument>
             </argument>
           </call>
@@ -3891,6 +3893,7 @@
                       <argument type="service" id="annotation_reader"/>
                       <argument type="collection">
                         <argument>/opt/lampp/htdocs/architec.awardspace.info/src/Intranet/AdminBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/architec.awardspace.info/src/Internet/siteBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/architec.awardspace.info/src/OC/UserBundle/Entity</argument>
                       </argument>
                     </service>
@@ -3903,6 +3906,20 @@
                       <argument type="service" id="annotation_reader"/>
                       <argument type="collection">
                         <argument>/opt/lampp/htdocs/architec.awardspace.info/src/Intranet/AdminBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/architec.awardspace.info/src/Internet/siteBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/architec.awardspace.info/src/OC/UserBundle/Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>Internet\siteBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>/opt/lampp/htdocs/architec.awardspace.info/src/Intranet/AdminBundle/Entity</argument>
+                        <argument>/opt/lampp/htdocs/architec.awardspace.info/src/Internet/siteBundle/Entity</argument>
                         <argument>/opt/lampp/htdocs/architec.awardspace.info/src/OC/UserBundle/Entity</argument>
                       </argument>
                     </service>
@@ -3997,6 +4014,9 @@
       </argument>
       <argument type="service" id="security.authentication.trust_resolver" on-invalid="null"/>
       <argument type="service" id="security.role_hierarchy" on-invalid="null"/>
+    </service>
+    <service id="internetsite.preinscription" class="Internet\siteBundle\Form\PreinscriptionType">
+      <argument>http://localhost/architec.awardspace.info/web/app_dev.php/se-preinscrire</argument>
     </service>
     <service id="outil_service.antispam" class="Outil\ServiceBundle\Antispam\Antispam">
       <argument type="service" id="swiftmailer.mailer.default"/>

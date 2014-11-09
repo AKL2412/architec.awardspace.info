@@ -137,6 +137,7 @@ class appDevDebugProjectContainer extends Container
             'fragment.renderer.hinclude' => 'getFragment_Renderer_HincludeService',
             'fragment.renderer.inline' => 'getFragment_Renderer_InlineService',
             'http_kernel' => 'getHttpKernelService',
+            'internetsite.preinscription' => 'getInternetsite_PreinscriptionService',
             'kernel' => 'getKernelService',
             'knp_snappy.image' => 'getKnpSnappy_ImageService',
             'knp_snappy.pdf' => 'getKnpSnappy_PdfService',
@@ -676,15 +677,16 @@ class appDevDebugProjectContainer extends Container
         $d = new \Doctrine\Common\Cache\ArrayCache();
         $d->setNamespace('sf2orm_default_d5ec64c555bf6679350f9c839e2b0965f3fe46b719e2697724bf112e9d5c6e73');
 
-        $e = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => '/opt/lampp/htdocs/architec.awardspace.info/src/Intranet/AdminBundle/Entity', 1 => '/opt/lampp/htdocs/architec.awardspace.info/src/OC/UserBundle/Entity'));
+        $e = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => '/opt/lampp/htdocs/architec.awardspace.info/src/Intranet/AdminBundle/Entity', 1 => '/opt/lampp/htdocs/architec.awardspace.info/src/Internet/siteBundle/Entity', 2 => '/opt/lampp/htdocs/architec.awardspace.info/src/OC/UserBundle/Entity'));
 
         $f = new \Doctrine\ORM\Mapping\Driver\DriverChain();
         $f->addDriver($e, 'Intranet\\AdminBundle\\Entity');
+        $f->addDriver($e, 'Internet\\siteBundle\\Entity');
         $f->addDriver($e, 'OC\\UserBundle\\Entity');
         $f->addDriver(new \Doctrine\ORM\Mapping\Driver\XmlDriver(new \Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator(array('/opt/lampp/htdocs/architec.awardspace.info/vendor/friendsofsymfony/user-bundle/Resources/config/doctrine/model' => 'FOS\\UserBundle\\Model'), '.orm.xml')), 'FOS\\UserBundle\\Model');
 
         $g = new \Doctrine\ORM\Configuration();
-        $g->setEntityNamespaces(array('IntranetAdminBundle' => 'Intranet\\AdminBundle\\Entity', 'OCUserBundle' => 'OC\\UserBundle\\Entity'));
+        $g->setEntityNamespaces(array('IntranetAdminBundle' => 'Intranet\\AdminBundle\\Entity', 'InternetsiteBundle' => 'Internet\\siteBundle\\Entity', 'OCUserBundle' => 'OC\\UserBundle\\Entity'));
         $g->setMetadataCacheImpl($b);
         $g->setQueryCacheImpl($c);
         $g->setResultCacheImpl($d);
@@ -1673,6 +1675,19 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'internetsite.preinscription' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Internet\siteBundle\Form\PreinscriptionType A Internet\siteBundle\Form\PreinscriptionType instance.
+     */
+    protected function getInternetsite_PreinscriptionService()
+    {
+        return $this->services['internetsite.preinscription'] = new \Internet\siteBundle\Form\PreinscriptionType('http://localhost/architec.awardspace.info/web/app_dev.php/se-preinscrire');
+    }
+
+    /**
      * Gets the 'kernel' service.
      *
      * This service is shared.
@@ -2306,7 +2321,7 @@ class appDevDebugProjectContainer extends Container
         $p = new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, $this->get('security.authentication.session_strategy'), $l, 'main', $o, new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($f, $l, array('login_path' => 'fos_user_security_login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'), $a), array('check_path' => 'fos_user_security_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $d, NULL);
         $p->setRememberMeServices($m);
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'main', $a, $d), 2 => $n, 3 => $p, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $m, $g, $a, $d), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5453d54891b94', $a), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $l, 'fos_user_security_login', false), NULL, NULL, $a));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'main', $a, $d), 2 => $n, 3 => $p, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $m, $g, $a, $d), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '545fadd33ce56', $a), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $l, 'fos_user_security_login', false), NULL, NULL, $a));
     }
 
     /**
@@ -3866,7 +3881,7 @@ class appDevDebugProjectContainer extends Container
     {
         $a = $this->get('security.user_checker');
 
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $a, 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, '8e59202d408b52ff02cedb266abe0af377692672', 'main'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5453d54891b94')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $a, 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, '8e59202d408b52ff02cedb266abe0af377692672', 'main'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('545fadd33ce56')), true);
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 
@@ -4105,6 +4120,7 @@ class appDevDebugProjectContainer extends Container
             'debug_toolbar' => true,
             'debug_redirects' => false,
             'use_assetic_controller' => true,
+            'urlpreincription' => 'http://localhost/architec.awardspace.info/web/app_dev.php/se-preinscrire',
             'fos_user.backend_type_orm' => true,
             'fos_user.security.interactive_login_listener.class' => 'FOS\\UserBundle\\EventListener\\LastLoginListener',
             'fos_user.security.login_manager.class' => 'FOS\\UserBundle\\Security\\LoginManager',

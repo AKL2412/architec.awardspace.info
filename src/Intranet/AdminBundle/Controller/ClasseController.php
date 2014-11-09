@@ -5,6 +5,8 @@ namespace Intranet\AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Intranet\AdminBundle\Entity\Classe;
+use Intranet\AdminBundle\Form\ClasseType;
+use Intranet\AdminBundle\Entity\Planning;
 use OC\UserBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,16 +29,18 @@ class ClasseController extends Controller{
 		    $classe->setAnneescolaire($anneeEncours);
 		    $classe->setCreated(new \Datetime());
 
-		    $formBuilder = $this->get('form.factory')->createBuilder('form', $classe);
+    		$form = $this->get('form.factory')
+    							->create(new ClasseType(), $classe);
 
-		    $formBuilder
-		      ->add('nom',      'text')
-		      ->add('description',     'textarea')
-		    ;
+		    // $formBuilder = $this->get('form.factory')->createBuilder('form', $classe);
+
+		    // $formBuilder
+		    //   ->add('nom',      'text')
+		    //   ->add('description',     'textarea')
+		    // ;
 		 // À partir du formBuilder, on génère le formulaire
-		    $form = $formBuilder->getForm();
-		    $form->handleRequest($request);
-		 	if ($form->isValid()) {
+		    //$form = $formBuilder->getForm();
+		 	if ($form->handleRequest($request)->isValid()) {
 		      $em->persist($classe);
 		      $em->flush();
 		      $request->getSession()->getFlashBag()->add('info', 'Classe bien enregistrée.');
@@ -56,11 +60,6 @@ class ClasseController extends Controller{
 		  ->getRepository('IntranetAdminBundle:Classe')
 		  ->find($id)
 		;
-		//$classe->setDatenaissance();
-		// echo '<pre>';
-		// print_r($classe);
-		// echo '</pre>';
-		// return new Response('');
 			if ($classe == null) {
 	      // Sinon on déclenche une exception « Accès interdit »
 	      throw $this->createNotFoundException('Classe [id='.$id.'] inexistant.');
@@ -89,24 +88,103 @@ class ClasseController extends Controller{
     		}
     	}
 
-    	
-    	
-    	
     	$repository = $em->getRepository('IntranetAdminBundle:Classe');
 
+    	$lastID = 0;
+    	if(!empty($request->query->get('id'))){
+    		$lastID = $request->query->get('id');
+    	}	
     	$classes = $repository->findBy(array('anneescolaire' => $anneeEncours),
-						array('created' => 'desc'),null,null);
-  //   	print_r($anneeEncours->getAnnee());
-  //   	echo "<pre>";
-  //   	echo(count($classes));
-  //   	echo "</pre>";
-		// die('');
+						array('created' => 'desc'),30,$lastID);
+		  //   	print_r($anneeEncours->getAnnee());
+		  //   	echo "<pre>";
+		  //   	echo(count($classes));
+		  //   	echo "</pre>";
+				// die('');
     	return $this->render('IntranetAdminBundle:Classe:list.html.twig', array(
       'classes' => $classes,
       'annee' =>$anneeEncours,
       'annees'=> $em->getRepository('IntranetAdminBundle:Anneescolaire')
-    							->findAll()
-    ));
+    							->findAll(array('id' => 'desc'))
+    	));
     }
+
+    public function planningAction($id,Request $request){
+
+    	$planning = new Planning();
+		    $em = $this->getDoctrine()
+								->getManager();
+		    $repoClasse = $em->getRepository('IntranetAdminBundle:Classe');
+			$classe = $repoClasse->find($id);
+
+			if ($classe == null) {
+		      // Sinon on déclenche une exception « Accès interdit »
+		      throw new NotFoundHttpException("La classe d'Identifiant : [id : ".$id."] n'existe pas");
+		    }
+    	
+    	$planning->setClasse($classe);
+		$planning->setCreated(new \Datetime());
+
+		$formBuilder = $this->get('form.factory')->createBuilder('form', $planning);
+
+		$formBuilder
+		  	->add('nom',      'text')
+		    ->add('datedebut',     'date')
+            ->add('datefin',     'date');
+
+        $form = $formBuilder->getForm();
+		$form->handleRequest($request);
+
+		 	if ($form->isValid()) {
+		      $em->persist($planning);
+		      $em->flush();
+		      $request->getSession()->getFlashBag()->add('info', 'Emploi de temps bien enregistrée.');
+
+		      // On redirige vers la page de visualisation de l'annonce nouvellement créée
+		      return $this->redirect($this->generateUrl('intranet_admin_planning_content', 
+		      	array('id' => $planning->getId())));
+		    }
+
+    	return $this->render('IntranetAdminBundle:Classe:planning.html.twig', 
+    		array(
+		      'form' => $form->createView(),
+		      'classe'=>$classe
+		    ));	
+    }
+
+     public function contenuAction($id,Request $request){
+
+    	
+		    $em = $this->getDoctrine()
+								->getManager();
+		    $repoplan = $em->getRepository('IntranetAdminBundle:Planning');
+			$plan = $repoplan->find($id);
+
+			if ($plan == null) {
+		      // Sinon on déclenche une exception « Accès interdit »
+		      throw new NotFoundHttpException("L'emploi de temps d'Identifiant : [id : ".$id."] n'existe pas");
+		    }
+
+		    $return = array('planning'=>$plan);
+		    if(!$plan->getComplet()){
+		    	$jours = array('Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi');
+			    $horaires = array('8h-10h','10h-12h','14h-16h','16h-18h');
+			    $return = 	array(
+			      'planning'=>$plan,
+			      'professeurs'=>$em->getRepository('IntranetAdminBundle:Professeur')
+			      					->findAll(),
+			      'salles'=>$em->getRepository('IntranetAdminBundle:Salle')
+			      					->findAll(),
+			      'matieres'=>$em->getRepository('IntranetAdminBundle:Matiere')
+			      					->findAll(),
+			      'jours'=>$jours,
+			      'heures'=>$horaires
+		    );
+		    }
+		    
+
+		    return $this->render('IntranetAdminBundle:Classe:planning-content.html.twig', 
+    		$return);	
+	}
 
 }

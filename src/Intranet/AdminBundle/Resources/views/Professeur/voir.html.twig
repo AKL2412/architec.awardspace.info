@@ -1,5 +1,5 @@
 {% extends "IntranetAdminBundle::layout.html.twig" %}
-{%block title%}voir un étudiant{%endblock%}
+{%block title%}voir un professeur | {{professeur.prenom}} {{professeur.nom}}{%endblock%}
 {%block body%}
 	{%if professeur is not null%}
 
@@ -15,8 +15,8 @@
 				{%if professeur.compte is not null %}		
 				<img  class="thumbnail" src=" {{asset('img/profil/')}}{{professeur.compte.image}}">
 					
-					<div class="label label-default">
-					{#{professeur.date|date("d-M-Y \\à g:ia")} #} 
+					<div class="label label-success">
+					Ajouté : {{professeur.date|date("d-M-Y")}} 
 					</div>
 				{%else%}
 					<img  class="thumbnail" src=" {{asset('img/profil/default-no.png')}}">

@@ -1,0 +1,22 @@
+{% if is_granted("ROLE_ETUDIANT") %}
+
+{% extends "IntranetEtudiantBundle::layout.html.twig" %}
+{%block title%}Mon compte | {{etudiant.prenom}} {{etudiant.nom}} {%endblock%}
+{%block body%}
+	les messages
+{%endblock%}
+
+{%elseif is_granted("ROLE_PROFESSEUR") %}
+
+
+
+
+
+{%else %}
+
+
+
+
+{%endif%}
+
+

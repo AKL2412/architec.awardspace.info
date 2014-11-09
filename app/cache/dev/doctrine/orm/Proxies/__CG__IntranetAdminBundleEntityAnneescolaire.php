@@ -64,10 +64,10 @@ class Anneescolaire extends \Intranet\AdminBundle\Entity\Anneescolaire implement
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'id', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'annee', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'code', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'encours', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'classes');
+            return array('__isInitialized__', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'id', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'annee', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'datedebut', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'datefin', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'encours', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'classes', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'etudiants', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'professeurs');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'id', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'annee', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'code', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'encours', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'classes');
+        return array('__isInitialized__', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'id', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'annee', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'datedebut', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'datefin', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'encours', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'classes', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'etudiants', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Anneescolaire' . "\0" . 'professeurs');
     }
 
     /**
@@ -213,23 +213,45 @@ class Anneescolaire extends \Intranet\AdminBundle\Entity\Anneescolaire implement
     /**
      * {@inheritDoc}
      */
-    public function setCode($code)
+    public function setDatedebut($datedebut)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCode', array($code));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDatedebut', array($datedebut));
 
-        return parent::setCode($code);
+        return parent::setDatedebut($datedebut);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getCode()
+    public function getDatedebut()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDatedebut', array());
 
-        return parent::getCode();
+        return parent::getDatedebut();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDatefin($datefin)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDatefin', array($datefin));
+
+        return parent::setDatefin($datefin);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDatefin()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDatefin', array());
+
+        return parent::getDatefin();
     }
 
     /**
@@ -285,6 +307,72 @@ class Anneescolaire extends \Intranet\AdminBundle\Entity\Anneescolaire implement
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClasses', array());
 
         return parent::getClasses();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addEtudiant(\Intranet\AdminBundle\Entity\Etudiant $etudiants)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addEtudiant', array($etudiants));
+
+        return parent::addEtudiant($etudiants);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeEtudiant(\Intranet\AdminBundle\Entity\Etudiant $etudiants)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeEtudiant', array($etudiants));
+
+        return parent::removeEtudiant($etudiants);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getEtudiants()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEtudiants', array());
+
+        return parent::getEtudiants();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addProfesseur(\Intranet\AdminBundle\Entity\Professeur $professeurs)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addProfesseur', array($professeurs));
+
+        return parent::addProfesseur($professeurs);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeProfesseur(\Intranet\AdminBundle\Entity\Professeur $professeurs)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeProfesseur', array($professeurs));
+
+        return parent::removeProfesseur($professeurs);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getProfesseurs()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProfesseurs', array());
+
+        return parent::getProfesseurs();
     }
 
 }

@@ -284,7 +284,7 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
         // line 206
         echo $this->env->getExtension('routing')->getPath("intranet_admin_liste_professeur");
         echo "\"> 
-                                <i class=\"fa fa-fw fa-list\"></i> liste évaluations
+                                <i class=\"fa fa-fw fa-list\"></i> liste des professeurs
 <span class=\"details\">Liste des professeurs</span>
                                 </a>
                             </li>
@@ -318,7 +318,7 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                             </li>
                         </ul>
                     </li>
-                    <li >
+                    <!-- <li >
                         <a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#emploidetempsBlock\"><i class=\"fa fa-fw fa-calendar\"></i> Emplois de temps <i class=\"fa fa-fw fa-caret-down\"></i></a>
                         <ul id=\"emploidetempsBlock\" class=\"collapse\">
                         \t<li>
@@ -331,7 +331,7 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                                 <a href=\"#\"> <i class=\"fa fa-fw fa-bookmark\"></i> type évaluations</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li >
                         <a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#comptabiliteBlock\"><i class=\"fa fa-fw fa-money\"></i> Comptabilité <i class=\"fa fa-fw fa-caret-down\"></i></a>
                         <ul id=\"comptabiliteBlock\" class=\"collapse\">

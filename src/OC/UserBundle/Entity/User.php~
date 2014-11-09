@@ -27,6 +27,15 @@ class User extends BaseUser
   private $image;
 
   /**
+* @ORM\OneToMany(targetEntity="Intranet\AdminBundle\Entity\Message",mappedBy="send")
+*/
+private $sends;
+/**
+* @ORM\OneToMany(targetEntity="Intranet\AdminBundle\Entity\Message",mappedBy="receive")
+*/
+private $receives;
+
+  /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
@@ -37,7 +46,69 @@ class User extends BaseUser
   {
     $this->date = new \Datetime();
     $this->image = "default.jpg";
+    $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
+    $this->enabled = false;
+    $this->locked = false;
+    $this->expired = false;
+    $this->roles = array();
+    $this->credentialsExpired = false;
 
   }
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return User
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return User
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
 }

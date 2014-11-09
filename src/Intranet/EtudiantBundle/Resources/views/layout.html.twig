@@ -92,14 +92,14 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ app.user.username }} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            <a href="{{path('intranet_etudiant_compte')}} "><i class="fa fa-fw fa-user"></i> Profile</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                            <a href="{{path('intranet_etudiant_message')}}"><i class="fa fa-fw fa-envelope"></i> Messages </a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
+                        </li> -->
                         <li class="divider"></li>
                         <li>
                             <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
@@ -124,38 +124,52 @@
 
 <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    <li class="activet">
+                        <a href="{{path('intranet_etudiant_homepage')}}"><i class="fa fa-fw fa-home"></i> Accueil</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
-                    </li>
-                    <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
-                    </li>
-                    <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-university"></i> Ma classe <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="{{path('intranet_etudiant_ma_classe_actuelle')}} ">
+                                    Informations
+                                    <span class="details">
+                                        Les détails: matières,...
+                                    </span>
+                                </a>
                             </li>
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="{{path('intranet_etudiant_ma_classe_actuelle_edt')}} ">
+                                    Emploi de temps
+                                    <span class="details">
+                                        Matières-professeurs-salles-jours-heures
+                                    </span>
+                                </a>
                             </li>
+                            
                         </ul>
                     </li>
+                   
                     <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                        <a href="bootstrap-grid.html">
+                            <i class="fa fa-fw fa-money"></i> 
+                            Mes règlements
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href=" {{path('intranet_etudiant_compte')}} "><i class="fa fa-fw fa-user"></i> Mon compte</a>
+                    </li>
+                    <li>
+                        <a href="{{path('intranet_etudiant_message')}}">
+                            <i class="fa fa-envelope-o"></i>
+                            Messages
+                        </a>
                     </li>
                 </ul>
             </div>
      {%endblock%}
+
+{%block script%}
+     <script src="{{asset('js/appEtudiant.js')}}"></script>
+{%endblock%}

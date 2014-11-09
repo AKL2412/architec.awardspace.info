@@ -15,7 +15,16 @@ class ProfesseurController extends Controller{
 	public function ajoutAction(Request $request){
     	 // On crée un objet Advert
 		    $prof = new Professeur();
+		    $em = $this->getDoctrine()
+								->getManager();
+		    $repoAnnee = $em->getRepository('IntranetAdminBundle:Anneescolaire');
+			$anneeEncours = $repoAnnee->findOneByEncours(true);
 
+			if ($anneeEncours == null) {
+		      // Sinon on déclenche une exception « Accès interdit »
+		      throw new NotFoundHttpException('Vueillez parametrer certains paramètres : Année en cours ');
+		    }
+		    $prof->setAnneescolaire($anneeEncours);
 		    // On crée le FormBuilder grâce au service form factory
 		    $formBuilder = $this->get('form.factory')->createBuilder('form', $prof);
 

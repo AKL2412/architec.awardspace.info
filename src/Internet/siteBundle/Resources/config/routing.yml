@@ -1,3 +1,12 @@
 internetsite_homepage:
     path:     /
     defaults: { _controller: InternetsiteBundle:Site:index }
+
+internetsite_add_email_newsletter:
+    path:     /ajouter-email-a-la-newsletter
+    defaults: { _controller: InternetsiteBundle:Site:addemail }
+
+internetsite_add_preinscription:
+    path:     /se-preinscrire
+    defaults: { _controller: InternetsiteBundle:Site:preinscrire }
+

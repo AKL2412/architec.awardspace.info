@@ -13,6 +13,7 @@ class __TwigTemplate_6df9bbbe59235a769aa7109ed4f83430433f35146643c9707d4adb8a9c7
             'title' => array($this, 'block_title'),
             'connected' => array($this, 'block_connected'),
             'menu' => array($this, 'block_menu'),
+            'script' => array($this, 'block_script'),
         );
     }
 
@@ -132,14 +133,20 @@ class __TwigTemplate_6df9bbbe59235a769aa7109ed4f83430433f35146643c9707d4adb8a9c7
             echo " <b class=\"caret\"></b></a>
                     <ul class=\"dropdown-menu\">
                         <li>
-                            <a href=\"#\"><i class=\"fa fa-fw fa-user\"></i> Profile</a>
+                            <a href=\"";
+            // line 95
+            echo $this->env->getExtension('routing')->getPath("intranet_etudiant_compte");
+            echo " \"><i class=\"fa fa-fw fa-user\"></i> Profile</a>
                         </li>
                         <li>
-                            <a href=\"#\"><i class=\"fa fa-fw fa-envelope\"></i> Inbox</a>
+                            <a href=\"";
+            // line 98
+            echo $this->env->getExtension('routing')->getPath("intranet_etudiant_message");
+            echo "\"><i class=\"fa fa-fw fa-envelope\"></i> Messages </a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href=\"#\"><i class=\"fa fa-fw fa-gear\"></i> Settings</a>
-                        </li>
+                        </li> -->
                         <li class=\"divider\"></li>
                         <li>
                             <a href=\"";
@@ -179,41 +186,76 @@ class __TwigTemplate_6df9bbbe59235a769aa7109ed4f83430433f35146643c9707d4adb8a9c7
         echo "
 <div class=\"collapse navbar-collapse navbar-ex1-collapse\">
                 <ul class=\"nav navbar-nav side-nav\">
-                    <li class=\"active\">
-                        <a href=\"index.html\"><i class=\"fa fa-fw fa-dashboard\"></i> Dashboard</a>
+                    <li class=\"activet\">
+                        <a href=\"";
+        // line 128
+        echo $this->env->getExtension('routing')->getPath("intranet_etudiant_homepage");
+        echo "\"><i class=\"fa fa-fw fa-home\"></i> Accueil</a>
                     </li>
                     <li>
-                        <a href=\"charts.html\"><i class=\"fa fa-fw fa-bar-chart-o\"></i> Charts</a>
-                    </li>
-                    <li>
-                        <a href=\"tables.html\"><i class=\"fa fa-fw fa-table\"></i> Tables</a>
-                    </li>
-                    <li>
-                        <a href=\"forms.html\"><i class=\"fa fa-fw fa-edit\"></i> Forms</a>
-                    </li>
-                    <li>
-                        <a href=\"bootstrap-elements.html\"><i class=\"fa fa-fw fa-desktop\"></i> Bootstrap Elements</a>
-                    </li>
-                    <li>
-                        <a href=\"bootstrap-grid.html\"><i class=\"fa fa-fw fa-wrench\"></i> Bootstrap Grid</a>
-                    </li>
-                    <li>
-                        <a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#demo\"><i class=\"fa fa-fw fa-arrows-v\"></i> Dropdown <i class=\"fa fa-fw fa-caret-down\"></i></a>
+                        <a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#demo\"><i class=\"fa fa-fw fa-university\"></i> Ma classe <i class=\"fa fa-fw fa-caret-down\"></i></a>
                         <ul id=\"demo\" class=\"collapse\">
                             <li>
-                                <a href=\"#\">Dropdown Item</a>
+                                <a href=\"";
+        // line 134
+        echo $this->env->getExtension('routing')->getPath("intranet_etudiant_ma_classe_actuelle");
+        echo " \">
+                                    Informations
+                                    <span class=\"details\">
+                                        Les détails: matières,...
+                                    </span>
+                                </a>
                             </li>
                             <li>
-                                <a href=\"#\">Dropdown Item</a>
+                                <a href=\"";
+        // line 142
+        echo $this->env->getExtension('routing')->getPath("intranet_etudiant_ma_classe_actuelle_edt");
+        echo " \">
+                                    Emploi de temps
+                                    <span class=\"details\">
+                                        Matières-professeurs-salles-jours-heures
+                                    </span>
+                                </a>
                             </li>
+                            
                         </ul>
                     </li>
+                   
                     <li>
-                        <a href=\"blank-page.html\"><i class=\"fa fa-fw fa-file\"></i> Blank Page</a>
+                        <a href=\"bootstrap-grid.html\">
+                            <i class=\"fa fa-fw fa-money\"></i> 
+                            Mes règlements
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href=\" ";
+        // line 161
+        echo $this->env->getExtension('routing')->getPath("intranet_etudiant_compte");
+        echo " \"><i class=\"fa fa-fw fa-user\"></i> Mon compte</a>
+                    </li>
+                    <li>
+                        <a href=\"";
+        // line 164
+        echo $this->env->getExtension('routing')->getPath("intranet_etudiant_message");
+        echo "\">
+                            <i class=\"fa fa-envelope-o\"></i>
+                            Messages
+                        </a>
                     </li>
                 </ul>
             </div>
      ";
+    }
+
+    // line 173
+    public function block_script($context, array $blocks = array())
+    {
+        // line 174
+        echo "     <script src=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/appEtudiant.js"), "html", null, true);
+        echo "\"></script>
+";
     }
 
     public function getTemplateName()
@@ -228,6 +270,6 @@ class __TwigTemplate_6df9bbbe59235a769aa7109ed4f83430433f35146643c9707d4adb8a9c7
 
     public function getDebugInfo()
     {
-        return array (  179 => 124,  176 => 123,  169 => 119,  162 => 115,  159 => 114,  147 => 105,  131 => 92,  44 => 7,  42 => 6,  39 => 5,  36 => 4,  30 => 2,);
+        return array (  255 => 174,  252 => 173,  240 => 164,  234 => 161,  212 => 142,  201 => 134,  192 => 128,  186 => 124,  183 => 123,  176 => 119,  169 => 115,  166 => 114,  154 => 105,  144 => 98,  138 => 95,  132 => 92,  45 => 7,  43 => 6,  40 => 5,  37 => 4,  31 => 2,);
     }
 }

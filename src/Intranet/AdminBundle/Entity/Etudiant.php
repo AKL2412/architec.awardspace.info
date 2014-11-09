@@ -31,6 +31,13 @@ class Etudiant
     /**
      * @var string
      *
+     * @ORM\Column(name="sexe", type="string", length=50)
+     */
+    private $sexe;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="prenom", type="string", length=255)
      */
     private $prenom;
@@ -76,13 +83,38 @@ class Etudiant
       */
     private $compte;
 
+
+
+    /**
+      * @ORM\ManyToOne(targetEntity="Intranet\AdminBundle\Entity\Anneescolaire", cascade={"persist"})
+      * @ORM\JoinColumn(nullable=true)
+      */
+    private $anneescolaire;
+
+/**
+* @ORM\OneToMany(targetEntity="Intranet\AdminBundle\Entity\Classeetudiant",mappedBy="etudiant")
+*/
+private $classes;
+
+
     public function __construct()
   {
     $this->date = new \Datetime();
     $this->datenaissance = new \Datetime("1970-01-01");
 
   }
-
+    /**
+     * Get classe
+     *
+     * @return \Intranet\AdminBundle\Entity\Classe 
+     */
+  public function classeActuelle(){
+        foreach ($this->classes as $key => $classe) {
+            if($classe->getActive() && $classe->getClasse()->actuelle()) return $classe;
+        }
+        return null;
+  }
+    
 
     /**
      * Get id
@@ -154,13 +186,13 @@ class Etudiant
     }
 
     /**
-     * Get date
+     * Get datenaissance
      *
      * @return \DateTime 
      */
-    public function getDate()
+    public function getDatenaissance()
     {
-        return $this->date;
+        return $this->datenaissance;
     }
 
     /**
@@ -177,15 +209,14 @@ class Etudiant
     }
 
     /**
-     * Get datenaissance
+     * Get date
      *
      * @return \DateTime 
      */
-    public function getDatenaissance()
+    public function getDate()
     {
-        return $this->datenaissance;
+        return $this->date;
     }
-
 
     /**
      * Set matricule
@@ -277,5 +308,84 @@ class Etudiant
     public function getCompte()
     {
         return $this->compte;
+    }
+
+    /**
+     * Set anneescolaire
+     *
+     * @param \Intranet\AdminBundle\Entity\Anneescolaire $anneescolaire
+     * @return Etudiant
+     */
+    public function setAnneescolaire(\Intranet\AdminBundle\Entity\Anneescolaire $anneescolaire = null)
+    {
+        $this->anneescolaire = $anneescolaire;
+
+        return $this;
+    }
+
+    /**
+     * Get anneescolaire
+     *
+     * @return \Intranet\AdminBundle\Entity\Anneescolaire 
+     */
+    public function getAnneescolaire()
+    {
+        return $this->anneescolaire;
+    }
+
+    /**
+     * Add classes
+     *
+     * @param \Intranet\AdminBundle\Entity\Classeetudiant $classes
+     * @return Etudiant
+     */
+    public function addClass(\Intranet\AdminBundle\Entity\Classeetudiant $classes)
+    {
+        $this->classes[] = $classes;
+
+        return $this;
+    }
+
+    /**
+     * Remove classes
+     *
+     * @param \Intranet\AdminBundle\Entity\Classeetudiant $classes
+     */
+    public function removeClass(\Intranet\AdminBundle\Entity\Classeetudiant $classes)
+    {
+        $this->classes->removeElement($classes);
+    }
+
+    /**
+     * Get classes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getClasses()
+    {
+        return $this->classes;
+    }
+
+    /**
+     * Set sexe
+     *
+     * @param string $sexe
+     * @return Etudiant
+     */
+    public function setSexe($sexe)
+    {
+        $this->sexe = $sexe;
+
+        return $this;
+    }
+
+    /**
+     * Get sexe
+     *
+     * @return string 
+     */
+    public function getSexe()
+    {
+        return $this->sexe;
     }
 }

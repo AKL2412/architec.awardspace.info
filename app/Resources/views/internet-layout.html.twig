@@ -16,7 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="{{asset('css/grayscale.css')}}" rel="stylesheet">
-
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="{{asset('font-awesome-4.1.0/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
@@ -33,11 +33,13 @@
     width: 220px;
     min-height: 300px;
     height: auto;
-    background-color: red;
     position: fixed;
     top: 55px;
     left: -300px;
     z-index: 50;
+}
+body .panel .panel-heading {
+  cursor: move;
 }
     </style>
 
@@ -45,8 +47,13 @@
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
+{% for message in app.session.flashbag.get('info') %}
+            <p id="notification" class="alert {{app.session.flashbag.get('class')[0]}}" > 
+                {{ message }}
+            </p>
+        {% endfor %}
     <!-- Navigation -->
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation" style="background:##063a46">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
@@ -102,7 +109,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="">institut architec de marrakech</h1>
-                        <p class="intro-text">Votre tremplin vers l'entreprise</p>
+                        <p class="intro-text">Votre tremplin vers l'entreprise
+                        </p>
                         
                     </div>
                 </div>
@@ -121,8 +129,56 @@
 
 <div class="row">
     <div class="col-lg-2 col-md-3 hidden-sm hidden-xs">
-        <div id="box-fixe" >
-            box fixe
+        <div id="box-fixe">
+          
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                       <i class="fa fa-arrow-circle-o-right"></i> Newsletters
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            {{ form_start(formNewsletter, {'attr': 
+                                {'role':'form'}
+                            }) }}
+
+                            {{ form_widget(formNewsletter.email, {'attr': {'class': 'form-control','placeholder':"your@mail.here"}}) }}
+                            <input type="submit" class="btn-link" value="S'inscrire">
+                            {{ form_end(formNewsletter) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                       <i class="fa fa-calendar-o"></i> Agenda
+                    </div>
+                    <div class="panel-body">
+                        
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                       <i class="fa fa-envelope-o"></i> Contact Info
+                    </div>
+                    <div class="panel-body">
+                        <div class="row"style="padding-left:30px" >
+                            <img class="thumbnail" src=" {{asset('img/contact.jpg')}} " width="150">
+                        </div>
+                        <div class="row">
+                            <p style="font-size:12px">
+                                <strong>Institut ARCHITEC de Marrakech </strong>
+                            Imm. Al Massira appts 11, 12, 13 rue Al Khawarizmi unité 2 Daoudiate Marrakech.<br>
+                            <a href="mailto:i.a.m@menara.ma" class="btn-a" style="font-size:12px; text-align:left"><i class="fa fa-envelope-o"></i> i.a.m@menara.ma</a>
+                            <br>
+                            <label class="label label-default"><i class="fa fa-phone"></i> (212) 5 24 30 37 60 </label>
+                            </p>
+
+
+                        </div>
+                    </div>
+                </div>
+           
         </div>
     </div>
 <div class="col-lg-9 col-md-9">
@@ -222,78 +278,110 @@
                     <p class="alert alert-info">
                         Afin que votre demande d'Inscription soit prise en compte, vous devez minutieusement remplir le formulaire
                     </p>
-                    <form role="form">
-                        <div class="form-group col-md-4">
-                            <label>Inscription en :</label>
-                            <select required="required" class="form-control">
-                                <option value>Niveau d'inscription</option>
-                                <option value="1">1ère année</option>
-                                <option value="2">2e année</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group col-md-4">
-                            <label>Filière :</label>
-                            <select required="required" class="form-control">
-                                <option value>Choisissez une filière</option>
-                                <option value="1">Dessin de batimens</option>
-                                <option>Infographie</option>
-                                <option>Gestion informatisée</option>
+                    <div class="row">
+                        {{ form_start(formPreinscription, {'attr': 
+                                {'role':'form'}
+                            }) }}
 
-                            </select>
-                        </div>
                         <div class="form-group col-md-4">
-                            <label>Votre niveau scolaire :</label>
-                            <select required="required" class="form-control" name="niv-sc">
-                                <option value>Niveau scolaire</option>
-                                <option value="1">Baccalauréat</option>
-                                <option>3e année secondaire Sc.</option>
-                                <option>3e année secondaire Lettre </option>
+                            {# Génération du label. #}
+                            {{ form_label(formPreinscription.niveauinscription, "Niveau d'inscription") }}
 
-                            </select>
+                            {{ form_errors(formPreinscription.niveauinscription) }}
+
+                            {{ form_widget(formPreinscription.niveauinscription, {'attr': {'class': 'form-control'}}) }}
                         </div>
 
                         <div class="form-group col-md-4">
-                            <label>Nom :</label>
-                            <input placeholder="Nom" required="required" class="form-control" type="text"> 
+                            {# Génération du label. #}
+                            {{ form_label(formPreinscription.filiere, "Choisissez une filière") }}
+
+                            {{ form_errors(formPreinscription.filiere) }}
+
+                            {{ form_widget(formPreinscription.filiere, {'attr': {'class': 'form-control'}}) }}
                         </div>
                         <div class="form-group col-md-4">
-                            <label>Prenom :</label>
-                            <input placeholder="Prenom" required="required" class="form-control" type="text"> 
+                            {# Génération du label. #}
+                            {{ form_label(formPreinscription.niveauscolaire, "Votre niveau scolaire ") }}
+
+                            {{ form_errors(formPreinscription.niveauscolaire) }}
+
+                            {{ form_widget(formPreinscription.niveauscolaire, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            {# Génération du label. #}
+                            {{ form_label(formPreinscription.nom, "Votre nom ") }}
+
+                            {{ form_errors(formPreinscription.nom) }}
+
+                            {{ form_widget(formPreinscription.nom, {'attr': {'class': 'form-control','placeholder':'Votre nom'}}) }}
                         </div>
                         <div class="form-group col-md-4">
-                            <label>E-mail :</label>
-                            <input placeholder="E-mail" required="required" class="form-control" type="mail"> 
+                            {# Génération du label. #}
+                            {{ form_label(formPreinscription.prenom, "Votre prenom ") }}
+
+                            {{ form_errors(formPreinscription.prenom) }}
+
+                            {{ form_widget(formPreinscription.prenom, {'attr': {'class': 'form-control','placeholder':'Votre prenom'}}) }}
+                        </div>
+                        <div class="form-group col-md-4">
+                            {# Génération du label. #}
+                            {{ form_label(formPreinscription.email, "Votre email ") }}
+
+                            {{ form_errors(formPreinscription.email) }}
+
+                            {{ form_widget(formPreinscription.email, {'attr': {'class': 'form-control','placeholder':'Votre email'}}) }}
+                        </div>
+                         <div class="form-group col-md-3">
+                            {# Génération du label. #}
+                            {{ form_label(formPreinscription.ville, "Votre ville ") }}
+
+                            {{ form_errors(formPreinscription.ville) }}
+
+                            {{ form_widget(formPreinscription.ville, {'attr': {'class': 'form-control','placeholder':'Votre ville'}}) }}
                         </div>
                         <div class="form-group col-md-3">
-                            <label>Ville :</label>
-                            <input placeholder="Ville" name="ville" required="required" class="form-control" type="text"> 
+                            {# Génération du label. #}
+                            {{ form_label(formPreinscription.telephone, "Votre telephone ") }}
+
+                            {{ form_errors(formPreinscription.telephone) }}
+
+                            {{ form_widget(formPreinscription.telephone, {'attr': {'class': 'form-control','placeholder':'Votre telephone'}}) }}
                         </div>
                         <div class="form-group col-md-3">
-                            <label>Téléphone fixe :</label>
-                            <input placeholder="Téléphone fixe" name="tel-fixe" required="required" class="form-control" type="text"> 
+                            {# Génération du label. #}
+                            {{ form_label(formPreinscription.mobile, "Votre numero mobile ") }}
+
+                            {{ form_errors(formPreinscription.mobile) }}
+
+                            {{ form_widget(formPreinscription.mobile, {'attr': {'class': 'form-control','placeholder':'Votre mobile'}}) }}
                         </div>
                         <div class="form-group col-md-3">
-                            <label>Téléphone mobile :</label>
-                            <input placeholder="Téléphone mobile" name="tel-mob" required="required" class="form-control" type="text"> 
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label>Adresse :</label>
-                            <input placeholder="Adresse" name="adresse" required="required" class="form-control" type="text"> 
+                            {# Génération du label. #}
+                            {{ form_label(formPreinscription.adresse, "Votre adresse ") }}
+
+                            {{ form_errors(formPreinscription.adresse) }}
+
+                            {{ form_widget(formPreinscription.adresse, {'attr': {'class': 'form-control','placeholder':'Votre adresse'}}) }}
                         </div>
 
                         <div class="form-group col-md-12">
-                            <label>Rédiger quelques lignes motivant votre choix pour  <span class="btn-a">ARCHITEC</span> :</label>
-                            <textarea name="motivation" required="required" class="form-control">
-                                
-                            </textarea>
+                            {# Génération du label. #}
+                            {{ form_label(formPreinscription.motivation, 'Rédiger quelques lignes motivant votre choix pour ARCHITEC:') }}
+
+                            {{ form_errors(formPreinscription.motivation) }}
+
+                            {{ form_widget(formPreinscription.motivation, {'attr': {'class': 'form-control','placeholder':'Votre motivation'}}) }}
                         </div>
 
-                        <div class="text-align">
+                        {{ form_rest(formPreinscription) }}
+                           <div class="text-align">
                             <input type="submit" value="Envoyer" class="btn btn-default">
                             <input type="reset" value="Annuler" class="btn btn-default">
                         </div>
-                    </form>
+                            {{ form_end(formPreinscription) }}
+                    </div>
                 </div>
             </div>
         </div>
@@ -391,6 +479,10 @@
 </div>
     <!-- jQuery Version 1.11.0 -->
     <script src="{{asset('js/jquery-1.11.0.js')}}"></script>
+
+    <script src="{{asset('js/jquery-ui.min.js')}}"></script>
+    <script src="{{asset('js/droppable.js')}}"></script>
+    <script src="{{asset('js/draggable.js')}}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>

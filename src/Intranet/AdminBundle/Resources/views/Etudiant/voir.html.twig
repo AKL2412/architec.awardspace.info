@@ -16,7 +16,7 @@
 				<img  class="thumbnail" src=" {{asset('img/profil/')}}{{etudiant.compte.image}}">
 					
 					<div class="label label-default">
-					{{etudiant.date|date("d-M-Y \\à g:ia")}} 
+					Mis à jour: {{etudiant.date|date("d-M-Y")}} 
 					</div>
 				{%else%}
 					<img  class="thumbnail" src=" {{asset('img/profil/default-no.png')}}">
@@ -26,19 +26,133 @@
 			</div>
 			<div class="col-md-10 col-sm-9 contenu-profil">
 				
-					<div class="pre-nom col-md-8 col-sm-8 col-xs-7">
-					{{etudiant.prenom}} <span class="nom">{{etudiant.nom}}</span>
+					<div class="row">
+						<div class="pre-nom col-md-4 col-sm-4 col-xs-12">
+						{{etudiant.prenom}} <span class="nom">{{etudiant.nom}}</span>
+						</div>
+						<div class="col-md-8 col-sm-8 col-xs-12 text-right">
+							<a class="btn btn-default btn-xs" href=" {{path('intranet_admin_modifier_etudiant',{id:etudiant.id})}} ">modifier</a>
+							<a class="btn btn-default btn-xs" href="{{path('intranet_admin_liste_etudiant')}}">les étudiants</a>
+							{%set classe = etudiant.classeActuelle()%}
+							{%if classe is null %}
+								<a class="btn btn-success btn-xs" href="{{path('intranet_admin_ajout_classe_etudiant',{id:etudiant.id})}}">Définir la classe actuelle</a>
+							{%else%}
+							<a href="{{path('intranet_admin_voir_classe',{id:classe.classe.id})}}" class="label label-primary">
+									{{classe.classe.nom}}
+								</a>
+							{%endif%}
+						</div>
+						</div>
+
+
+				<div class="row" style="padding-top:20px;">
+					 
+					 <div class="tabbable tabs-left">
+						<ul class="nav nav-tabs ">
+							<li class="active">
+								<a href="#Information" data-toggle="tab">Informations</a>
+							</li>
+							<li >
+								<a href="#parcours" data-toggle="tab">Parcours</a>
+							</li>
+							
+							<li>
+								<a href="#témoignages" data-toggle="tab">Documents</a>
+							</li>
+							<li>
+								<a href="#tuteur" data-toggle="tab">Tuteur de l'étudiant</a>
+							</li>
+							<li>
+								<a href="#urgence" data-toggle="tab">Contact d'urgence</a>
+							</li>
+						</ul>
+						<div class="tab-content" style="padding-top:20px;">
+
+							<div class="tab-pane" id="parcours">
+								<table class="table table-striped table-bordered table-condensed">
+									<thead>
+										<tr>
+											<th>Classe</th>
+											<th>Année Scolaire</th>
+										</tr>
+									</thead>
+									<tbody>
+										{%for classe in etudiant.classes %}
+											<tr>
+												<td>
+												<a href="{{path('intranet_admin_voir_classe',{id:classe.classe.id})}}">
+														{{classe.classe.nom}}
+													</a>
+												</td>
+												<td>{{classe.classe.anneescolaire.annee}}</td>
+											</tr>
+										{%endfor%}
+									</tbody>
+								</table>
+							</div>
+							<div class="tab-pane active" id="Information">
+								<table class="table-condensed ">
+								<tr>
+									<td>
+										<span class="badge">Nom : </span>
+									</td>
+									<td> <strong>{{etudiant.nom}}</strong> </td>
+									
+								</tr>
+								<tr>
+									<td>
+										<span class="badge">Prenom : </span>
+									</td>
+									<td> <strong>{{etudiant.prenom}}</strong> </td>
+								</tr>
+								<tr>
+									<td>
+										<span class="badge">Matricule : </span>
+									</td>
+									<td> <strong>{{etudiant.matricule}}</strong> </td>
+								</tr>
+								<tr>
+									<td>
+										<span class="badge">Email : </span>
+									</td>
+									<td> <strong>{{etudiant.email}}</strong> </td>
+								</tr>
+								<tr>
+									<td>
+										<span class="badge">Date de naissance : </span>
+									</td>
+									<td> <strong>{{etudiant.datenaissance|date("d-M-Y")}}</strong> </td>
+								</tr>
+								<tr>
+									<td>
+										<span class="badge">Téléphone : </span>
+									</td>
+									<td> <strong>{{etudiant.telephone}}</strong> </td>
+								</tr>
+								<tr>
+									
+									<td> <span class="label label-info">{{etudiant.sexe}}</span> </td>
+									<td></td>
+								</tr>
+								</table>
+							</div>
+							<div class="tab-pane" id="témoignages">
+								<div class="container">
+									Tous les documents pour l'inscription
+								</div>
+							</div>
+
+							<div class="tab-pane" id="tuteur">
+								Informations sur le tuteur
+							</div>
+							<div class="tab-pane" id="urgence">
+								Informations sur le tuteur à contacter en cas d'urgence
+							</div>
+
+
+						</div>
 					</div>
-					<div class="col-md-4 col-sm-4 col-xs-5 text-right">
-						<a class="btn btn-default btn-xs" href=" {{path('intranet_admin_modifier_etudiant',{id:etudiant.id})}} ">modifier</a>
-						<a class="btn btn-default btn-xs" href="{{path('intranet_admin_liste_etudiant')}}">les étudiants</a>
-					</div>
-				<div>
- <ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#">Home</a></li>
-  <li role="presentation"><a href="#">Profile</a></li>
-  <li role="presentation"><a href="#">Messages</a></li>
-</ul>
+
 				</div>
 				
 			</div>

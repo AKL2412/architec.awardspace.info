@@ -1,3 +1,23 @@
 intranet_etudiant_homepage:
     path:     /accueil
     defaults: { _controller: IntranetEtudiantBundle:Default:index }
+
+intranet_etudiant_compte:
+    path:     /mon-compte
+    defaults: { _controller: IntranetEtudiantBundle:Default:compte }
+
+intranet_etudiant_ma_classe:
+    path:     /ma-classe/{id}
+    defaults: { _controller: IntranetEtudiantBundle:Default:classe }
+
+intranet_etudiant_ma_classe_actuelle:
+    path:     /ma-classe-actuelle
+    defaults: { _controller: IntranetEtudiantBundle:Default:classeActuelle }
+
+intranet_etudiant_ma_classe_actuelle_edt:
+    path:     /ma-classe-actuelle-emploi-de-temps
+    defaults: { _controller: IntranetEtudiantBundle:Default:emploitdetempsCA }
+
+intranet_etudiant_message:
+    path:     /message-box
+    defaults: { _controller: IntranetEtudiantBundle:Default:message }

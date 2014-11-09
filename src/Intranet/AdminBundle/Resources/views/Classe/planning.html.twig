@@ -1,0 +1,57 @@
+{% extends "IntranetAdminBundle::layout.html.twig" %}
+{%block title%}Ajouter emploi de temps{%endblock%}
+{%block body%}
+<p >
+{% for message in app.session.flashbag.get('info') %}
+<p class="alert span6 alert-info alert-block" style="text-align:center;margin-left:auto;margin-right:auto" > {{ message }}</p>
+{% endfor %}
+</p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Ajout d'emploi de temps <span class="badge">{{classe.nom}} | {{classe.anneescolaire.annee}} </span></div>
+  {{ form_start(form, {'attr': {'role':'form'}}) }}
+  {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+  <div class="panel-body">
+    <div class="form-group col-md-12">
+      {# Génération du label. #}
+      {{ form_label(form.nom, "Nom de l'emploi de temps") }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.nom) }}
+
+      {# Génération de l'input. #}
+      {{ form_widget(form.nom, {'attr': {'class': 'form-control','placeholder':'Nom de l\'emploi de temps'}}) }}
+    </div>
+
+    <div class="form-group col-md-6">
+      {# Génération du label. #}
+      {{ form_label(form.datedebut, "date de debut") }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.datedebut) }}
+
+      {# Génération de l'input. #}
+      {{ form_widget(form.datedebut) }}
+    </div>
+    <div class="form-group col-md-6">
+      {# Génération du label. #}
+      {{ form_label(form.datefin, "date de fin fin") }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.datefin) }}
+
+      {# Génération de l'input. #}
+      {{ form_widget(form.datefin) }}
+    </div>
+  {{ form_rest(form) }}
+ </div>
+ 
+  <div class="panel-footer">
+    <input type="submit" value="Ajouter" class="btn btn-primary ">
+    <input type="reset" value="Annuler" class="btn btn-default ">
+  </div>
+   {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(form) }}
+</div>
+{%endblock%}

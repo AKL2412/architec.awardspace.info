@@ -1,0 +1,96 @@
+{% extends "IntranetEtudiantBundle::layout.html.twig" %}
+{%block title%}Classe | {{classe.nom}} {%endblock%}
+{%block body%}
+
+<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h1>
+							{{classe.nom}}
+							<span class="badge" style="float:right">
+								{{classe.anneescolaire.annee}}
+							</span>
+						</h1>
+
+						
+					</div>
+					<div class="panel-body">
+						{{classe.description}}
+					</div>
+				</div>
+			</div>
+
+			<!-- <div class="row">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						Emplois de temps
+						
+					</div>
+					<div class="panel-body">
+						{%if classe.plannings|length > 0 %}
+							<table class="table table-bordered table-condensed table-striped">
+								<thead>
+									<tr>
+										<th>Nom</th>
+										<th>Date de debut</th>
+										<th>Date de fin</th>
+									</tr>
+								</thead>
+								<tbody>
+									{%for plan in classe.plannings %}
+										<tr>
+											<td> {{plan.nom}} </td>
+											<td>  {{plan.datedebut|date('d-M-Y')}} </td>
+											<td>  {{plan.datefin|date('d-M-Y')}} </td>
+											
+										</tr>
+									{%endfor%}
+								</tbody>
+							</table>
+						{%endif%}
+					</div>	
+				</div>
+			</div> -->
+
+			{%if emploiDeTemps is defined %}
+
+			<div class="row">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						Emplois de temps
+						
+					</div>
+					<div class="panel-body">
+						{%if classe.plannings|length > 0 %}
+							<table class="table table-bordered table-condensed table-striped">
+								<thead>
+									<tr>
+										<th>Nom</th>
+										<th>Date de debut</th>
+										<th>Date de fin</th>
+										<th>Cases</th>
+									</tr>
+								</thead>
+								<tbody>
+									{%for plan in classe.plannings %}
+										<tr>
+											<td> {{plan.nom}} </td>
+											<td>  {{plan.datedebut|date('d-M-Y')}} </td>
+											<td>  {{plan.datefin|date('d-M-Y')}} </td>
+											<td>
+												{{plan.cases|length}}
+											</td>
+											
+										</tr>
+									{%endfor%}
+								</tbody>
+							</table>
+						{%endif%}
+					</div>	
+				</div>
+			</div> 
+
+
+				emploi de temps
+			{%endif%}
+{%endblock%}

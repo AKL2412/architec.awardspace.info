@@ -46,7 +46,8 @@ inexistant.');
             // On ajoute les champs de l'entité que l'on veut à notre formulaire
             $formBuilder
               ->add('annee',      'text')
-              ->add('code',     'text')
+              ->add('datedebut',     'date')
+               ->add('datefin',     'date')
               ->add('encours',   'checkbox') 
             ;
             $form = $formBuilder->getForm();

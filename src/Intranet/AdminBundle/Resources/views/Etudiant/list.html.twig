@@ -4,33 +4,37 @@
 
 	 {%if etudiants|length > 0 %}
 
-	 <table id="dataTables-etudiants"
-	 class="table table-bordered table-condensed table-striped">
-	 	<thead>
-	 		<tr>
-	 			<th>Matricule</th>
-	 			<th>Nom</th>
-	 			<th>Prénom(s)</th>
-	 			<th>E-mail</th>
-	 		</tr>
-	 		<tbody>
-	 			{%for etu in etudiants %}
-	 				<tr>
-	 					<td>
-	 						<a href=" {{path('intranet_admin_voir_etudiant',{id:etu.id})}} ">
-	 							{{etu.matricule}}
-	 						</a>
-	 					</td>
-	 					<td>{{etu.nom}}</td>
-	 					<td>{{etu.prenom}}</td>
-	 					<td>{{etu.email}}</td>
-	 				</tr>
+	 <div class="panel panel-default">
+	 	<div class="panel-heading">La liste de étudiants</div>
+	 	<div class="panel-body">
+	 		<table id="dataTables-etudiants" class="table table-bordered table-condensed table-striped">
+			 	<thead>
+			 		<tr>
+			 			<th>Matricule</th>
+			 			<th>Nom</th>
+			 			<th>Prénom(s)</th>
+			 			<th>E-mail</th>
+			 		</tr>
+			 		<tbody>
+			 			{%for etu in etudiants %}
+			 				<tr>
+			 					<td>
+			 						<a href=" {{path('intranet_admin_voir_etudiant',{id:etu.id})}} ">
+			 							{{etu.matricule}}
+			 						</a>
+			 					</td>
+			 					<td>{{etu.nom}}</td>
+			 					<td>{{etu.prenom}}</td>
+			 					<td>{{etu.email}}</td>
+			 				</tr>
 
-	 			{%endfor%}
-	 		</tbody>
-	 	</thead>
+			 			{%endfor%}
+			 		</tbody>
+			 	</thead>
 
-	 </table>
+			 </table>
+	 	</div>
+	 </div>
 
 	 {%else%}
 

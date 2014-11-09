@@ -29,6 +29,10 @@
 	 			
 	 			<th>Nom</th>
 	 			<th>Description</th>
+	 			<th>Nombre d'étudiants</th>
+	 			<th>Filière</th>
+	 			<th>Niveau</th>
+	 			<th>Ajoutée le </th>
 	 		</tr>
 	 		<tbody>
 	 			{%for classe in classes %}
@@ -40,6 +44,16 @@
 	 					</td>
 	 					
 	 					<td>{{classe.description|slice(0,100)}}...</td>
+	 					<td>
+						    {{classe.etudiants|length}}
+	 					</td>
+	 					<td>
+	 						{{classe.filiere.nom}}
+	 					</td>
+	 					<td>
+	 						{{classe.niveau.nom}}
+	 					</td>
+	 					<td>{{classe.created|date('d-M-Y')}}</td>
 	 				</tr>
 
 	 			{%endfor%}

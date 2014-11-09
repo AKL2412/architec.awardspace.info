@@ -29,11 +29,18 @@ class Anneescolaire
     private $annee;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="code", type="string", length=100,unique=true)
+     * @ORM\Column(name="datedebut", type="date")
      */
-    private $code;
+    private $datedebut;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datefin", type="date")
+     */
+    private $datefin;
 
     /**
      * @var boolean
@@ -47,11 +54,23 @@ class Anneescolaire
 */
 private $classes;
 
+/**
+* @ORM\OneToMany(targetEntity="Intranet\AdminBundle\Entity\Etudiant",mappedBy="anneescolaire")
+*/
+private $etudiants;
+
+/**
+* @ORM\OneToMany(targetEntity="Intranet\AdminBundle\Entity\Professeur",mappedBy="anneescolaire")
+*/
+private $professeurs;
+
 public function __construct()
   {
     $this->encours = true;
 
   }
+
+    
 
     /**
      * Get id
@@ -87,26 +106,49 @@ public function __construct()
     }
 
     /**
-     * Set code
+     * Set datedebut
      *
-     * @param string $code
+     * @param \DateTime $datedebut
      * @return Anneescolaire
      */
-    public function setCode($code)
+    public function setDatedebut($datedebut)
     {
-        $this->code = $code;
+        $this->datedebut = $datedebut;
 
         return $this;
     }
 
     /**
-     * Get code
+     * Get datedebut
      *
-     * @return string 
+     * @return \DateTime 
      */
-    public function getCode()
+    public function getDatedebut()
     {
-        return $this->code;
+        return $this->datedebut;
+    }
+
+    /**
+     * Set datefin
+     *
+     * @param \DateTime $datefin
+     * @return Anneescolaire
+     */
+    public function setDatefin($datefin)
+    {
+        $this->datefin = $datefin;
+
+        return $this;
+    }
+
+    /**
+     * Get datefin
+     *
+     * @return \DateTime 
+     */
+    public function getDatefin()
+    {
+        return $this->datefin;
     }
 
     /**
@@ -163,5 +205,71 @@ public function __construct()
     public function getClasses()
     {
         return $this->classes;
+    }
+
+    /**
+     * Add etudiants
+     *
+     * @param \Intranet\AdminBundle\Entity\Etudiant $etudiants
+     * @return Anneescolaire
+     */
+    public function addEtudiant(\Intranet\AdminBundle\Entity\Etudiant $etudiants)
+    {
+        $this->etudiants[] = $etudiants;
+
+        return $this;
+    }
+
+    /**
+     * Remove etudiants
+     *
+     * @param \Intranet\AdminBundle\Entity\Etudiant $etudiants
+     */
+    public function removeEtudiant(\Intranet\AdminBundle\Entity\Etudiant $etudiants)
+    {
+        $this->etudiants->removeElement($etudiants);
+    }
+
+    /**
+     * Get etudiants
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEtudiants()
+    {
+        return $this->etudiants;
+    }
+
+    /**
+     * Add professeurs
+     *
+     * @param \Intranet\AdminBundle\Entity\Professeur $professeurs
+     * @return Anneescolaire
+     */
+    public function addProfesseur(\Intranet\AdminBundle\Entity\Professeur $professeurs)
+    {
+        $this->professeurs[] = $professeurs;
+
+        return $this;
+    }
+
+    /**
+     * Remove professeurs
+     *
+     * @param \Intranet\AdminBundle\Entity\Professeur $professeurs
+     */
+    public function removeProfesseur(\Intranet\AdminBundle\Entity\Professeur $professeurs)
+    {
+        $this->professeurs->removeElement($professeurs);
+    }
+
+    /**
+     * Get professeurs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProfesseurs()
+    {
+        return $this->professeurs;
     }
 }

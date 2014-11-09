@@ -1,0 +1,74 @@
+
+
+{% extends "IntranetEtudiantBundle::layout.html.twig" %}
+{%block title%} {{rubrique}}
+	{%if data|length != 0 %} ({{data|length}}) {%endif%}
+-{{etudiant.prenom}} {{etudiant.nom}} {%endblock%}
+{%block body%}
+	les messages : {{user.sends|length}}
+	{{path('intranet_etudiant_message',{rubrique:'send',action:'receive'})}}
+
+	<div class="row bloc-message">
+		<div class="container">
+			
+			<div class="col-md-2 menu">
+				
+                	<ul class="">
+                		
+                		<li>
+                			<div class="btn-group">
+							  <a href="{{path('intranet_etudiant_message',{rubrique:'message-contact'})}}" class="btn btn-danger btn-xs">
+		                		Nouveau message
+							  </a>
+							  <button type="button" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown">
+							    <span class="caret"></span>
+							    <span class="sr-only">Toggle Dropdown</span>
+							  </button>
+							  <ul class="dropdown-menu" role="menu">
+							    <li><a href="{{path('intranet_etudiant_message',{rubrique:'message-administrateur'})}}">Pour l'administrateur</a></li>
+							   <li><a href="{{path('intranet_etudiant_message',{rubrique:'message-adminstration'})}}">Pour l'administration</a></li>
+							    <li class="divider"></li>
+							    <li><a href="#">Autre chose</a></li>
+							  </ul>
+							</div>
+                		</li>
+
+	                    <li 
+	                    {%if rubrique == 'boite-reception'%}
+	                    	class="active" 
+	                    {%endif%}
+	                    >
+	                        <a href="{{path('intranet_etudiant_message',{rubrique:'boite-reception'})}}">
+	                        	Boîte de réception 
+	                        </a>
+	                    </li>
+	                    <li 
+	                    {%if rubrique == 'message-envoyes'%}
+	                    	class="active" 
+	                    {%endif%}
+	                    >
+	                        <a href="{{path('intranet_etudiant_message',{rubrique:'message-envoyes'})}}">
+	                        	Messages envoyés
+	                        </a>
+	                    </li>
+	                    <li 
+	                    {%if rubrique == 'contact'%}
+	                    	class="active" 
+	                    {%endif%}
+	                    >
+	                        <a href="{{path('intranet_etudiant_message',{rubrique:'contact'})}}">
+	                        	Mes contacts
+	                        </a>
+	                    </li>
+                    </ul>
+                
+			</div>
+			<div class="col-md-9 contenu">
+				contenu
+			</div>
+		</div>
+	</div>
+{%endblock%}
+
+
+

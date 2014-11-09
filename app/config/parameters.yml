@@ -1,4 +1,5 @@
 # This file is auto-generated during the composer install
+
 parameters:
     database_driver: pdo_mysql
     database_host: 127.0.0.1
@@ -15,3 +16,8 @@ parameters:
     debug_toolbar: true
     debug_redirects: false
     use_assetic_controller: true
+
+
+
+    urlPreincription: http://localhost/architec.awardspace.info/web/app_dev.php/se-preinscrire
+

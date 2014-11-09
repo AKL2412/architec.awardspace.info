@@ -27,6 +27,15 @@ class User extends BaseUser
   private $image;
 
   /**
+* @ORM\OneToMany(targetEntity="Intranet\AdminBundle\Entity\Message",mappedBy="send")
+*/
+private $sends;
+/**
+* @ORM\OneToMany(targetEntity="Intranet\AdminBundle\Entity\Message",mappedBy="receive")
+*/
+private $receives;
+
+  /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
@@ -101,5 +110,71 @@ class User extends BaseUser
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Add sends
+     *
+     * @param \Intranet\AdminBundle\Entity\Message $sends
+     * @return User
+     */
+    public function addSend(\Intranet\AdminBundle\Entity\Message $sends)
+    {
+        $this->sends[] = $sends;
+
+        return $this;
+    }
+
+    /**
+     * Remove sends
+     *
+     * @param \Intranet\AdminBundle\Entity\Message $sends
+     */
+    public function removeSend(\Intranet\AdminBundle\Entity\Message $sends)
+    {
+        $this->sends->removeElement($sends);
+    }
+
+    /**
+     * Get sends
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSends()
+    {
+        return $this->sends;
+    }
+
+    /**
+     * Add receives
+     *
+     * @param \Intranet\AdminBundle\Entity\Message $receives
+     * @return User
+     */
+    public function addReceife(\Intranet\AdminBundle\Entity\Message $receives)
+    {
+        $this->receives[] = $receives;
+
+        return $this;
+    }
+
+    /**
+     * Remove receives
+     *
+     * @param \Intranet\AdminBundle\Entity\Message $receives
+     */
+    public function removeReceife(\Intranet\AdminBundle\Entity\Message $receives)
+    {
+        $this->receives->removeElement($receives);
+    }
+
+    /**
+     * Get receives
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getReceives()
+    {
+        return $this->receives;
     }
 }

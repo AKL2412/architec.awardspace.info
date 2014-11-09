@@ -40,7 +40,10 @@ class __TwigTemplate_e09e55bd3c3927ff16b5fe5567d2e1232cec4f28dcaa68e87e0d8e0c04d
         // line 18
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/grayscale.css"), "html", null, true);
         echo "\" rel=\"stylesheet\">
-
+    <link href=\"";
+        // line 19
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/app.css"), "html", null, true);
+        echo "\" rel=\"stylesheet\">
     <!-- Custom Fonts -->
     <link href=\"";
         // line 21
@@ -60,11 +63,13 @@ class __TwigTemplate_e09e55bd3c3927ff16b5fe5567d2e1232cec4f28dcaa68e87e0d8e0c04d
     width: 220px;
     min-height: 300px;
     height: auto;
-    background-color: red;
     position: fixed;
     top: 55px;
     left: -300px;
     z-index: 50;
+}
+body .panel .panel-heading {
+  cursor: move;
 }
     </style>
 
@@ -72,8 +77,28 @@ class __TwigTemplate_e09e55bd3c3927ff16b5fe5567d2e1232cec4f28dcaa68e87e0d8e0c04d
 
 <body id=\"page-top\" data-spy=\"scroll\" data-target=\".navbar-fixed-top\">
 
-    <!-- Navigation -->
-    <nav class=\"navbar navbar-custom navbar-fixed-top\" role=\"navigation\">
+";
+        // line 50
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashbag", array()), "get", array(0 => "info"), "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 51
+            echo "            <p id=\"notification\" class=\"alert ";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashbag", array()), "get", array(0 => "class"), "method"), 0, array(), "array"), "html", null, true);
+            echo "\" > 
+                ";
+            // line 52
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "
+            </p>
+        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 55
+        echo "    <!-- Navigation -->
+    <nav class=\"navbar navbar-custom navbar-fixed-top\" role=\"navigation\" style=\"background:##063a46\">
         <div class=\"container\">
             <div class=\"navbar-header\">
                 <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-main-collapse\">
@@ -114,7 +139,7 @@ class __TwigTemplate_e09e55bd3c3927ff16b5fe5567d2e1232cec4f28dcaa68e87e0d8e0c04d
                     </li>
                     <li>
                         <a class=\"page-scroll\" href=\" ";
-        // line 89
+        // line 96
         echo $this->env->getExtension('routing')->getPath("accueil_intranet");
         echo " \">Intranet</a>
                     </li>
@@ -132,7 +157,8 @@ class __TwigTemplate_e09e55bd3c3927ff16b5fe5567d2e1232cec4f28dcaa68e87e0d8e0c04d
                 <div class=\"row\">
                     <div class=\"col-md-12\">
                         <h1 class=\"\">institut architec de marrakech</h1>
-                        <p class=\"intro-text\">Votre tremplin vers l'entreprise</p>
+                        <p class=\"intro-text\">Votre tremplin vers l'entreprise
+                        </p>
                         
                     </div>
                 </div>
@@ -151,8 +177,67 @@ class __TwigTemplate_e09e55bd3c3927ff16b5fe5567d2e1232cec4f28dcaa68e87e0d8e0c04d
 
 <div class=\"row\">
     <div class=\"col-lg-2 col-md-3 hidden-sm hidden-xs\">
-        <div id=\"box-fixe\" >
-            box fixe
+        <div id=\"box-fixe\">
+          
+                <div class=\"panel panel-danger\">
+                    <div class=\"panel-heading\">
+                       <i class=\"fa fa-arrow-circle-o-right\"></i> Newsletters
+                    </div>
+                    <div class=\"panel-body\">
+                        <div class=\"row\">
+                            ";
+        // line 140
+        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["formNewsletter"]) ? $context["formNewsletter"] : $this->getContext($context, "formNewsletter")), 'form_start', array("attr" => array("role" => "form")));
+        // line 142
+        echo "
+
+                            ";
+        // line 144
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formNewsletter"]) ? $context["formNewsletter"] : $this->getContext($context, "formNewsletter")), "email", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "your@mail.here")));
+        echo "
+                            <input type=\"submit\" class=\"btn-link\" value=\"S'inscrire\">
+                            ";
+        // line 146
+        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["formNewsletter"]) ? $context["formNewsletter"] : $this->getContext($context, "formNewsletter")), 'form_end');
+        echo "
+                        </div>
+                    </div>
+                </div>
+
+                <div class=\"panel panel-default\">
+                    <div class=\"panel-heading\">
+                       <i class=\"fa fa-calendar-o\"></i> Agenda
+                    </div>
+                    <div class=\"panel-body\">
+                        
+                    </div>
+                </div>
+
+                <div class=\"panel panel-default\">
+                    <div class=\"panel-heading\">
+                       <i class=\"fa fa-envelope-o\"></i> Contact Info
+                    </div>
+                    <div class=\"panel-body\">
+                        <div class=\"row\"style=\"padding-left:30px\" >
+                            <img class=\"thumbnail\" src=\" ";
+        // line 166
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("img/contact.jpg"), "html", null, true);
+        echo " \" width=\"150\">
+                        </div>
+                        <div class=\"row\">
+                            <p style=\"font-size:12px\">
+                                <strong>Institut ARCHITEC de Marrakech </strong>
+                            Imm. Al Massira appts 11, 12, 13 rue Al Khawarizmi unité 2 Daoudiate Marrakech.<br>
+                            <a href=\"mailto:i.a.m@menara.ma\" class=\"btn-a\" style=\"font-size:12px; text-align:left\"><i class=\"fa fa-envelope-o\"></i> i.a.m@menara.ma</a>
+                            <br>
+                            <label class=\"label label-default\"><i class=\"fa fa-phone\"></i> (212) 5 24 30 37 60 </label>
+                            </p>
+
+
+                        </div>
+                    </div>
+                </div>
+           
         </div>
     </div>
 <div class=\"col-lg-9 col-md-9\">
@@ -179,7 +264,7 @@ class __TwigTemplate_e09e55bd3c3927ff16b5fe5567d2e1232cec4f28dcaa68e87e0d8e0c04d
         <div class=\"carousel-inner\">
         <!-- <div class=\"item \">
                 <img src=\"";
-        // line 151
+        // line 207
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("img/carroussel/04.jpg"), "html", null, true);
         echo "\">
                 <div class=\"carousel-caption\">
@@ -188,7 +273,7 @@ class __TwigTemplate_e09e55bd3c3927ff16b5fe5567d2e1232cec4f28dcaa68e87e0d8e0c04d
             </div> -->
             <div class=\"item active\">
                 <img src=\"";
-        // line 157
+        // line 213
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("img/carroussel/01.jpg"), "html", null, true);
         echo "\">
                 <div class=\"carousel-caption\">
@@ -197,7 +282,7 @@ class __TwigTemplate_e09e55bd3c3927ff16b5fe5567d2e1232cec4f28dcaa68e87e0d8e0c04d
             </div>
             <div class=\"item\">
                 <img src=\"";
-        // line 163
+        // line 219
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("img/carroussel/02.jpg"), "html", null, true);
         echo "\">
                 <div class=\"carousel-caption\">
@@ -206,7 +291,7 @@ class __TwigTemplate_e09e55bd3c3927ff16b5fe5567d2e1232cec4f28dcaa68e87e0d8e0c04d
             </div>
             <div class=\"item\">
                 <img src=\"";
-        // line 169
+        // line 225
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("img/carroussel/03.jpg"), "html", null, true);
         echo "\">
                 <div class=\"carousel-caption\">
@@ -264,78 +349,217 @@ class __TwigTemplate_e09e55bd3c3927ff16b5fe5567d2e1232cec4f28dcaa68e87e0d8e0c04d
                     <p class=\"alert alert-info\">
                         Afin que votre demande d'Inscription soit prise en compte, vous devez minutieusement remplir le formulaire
                     </p>
-                    <form role=\"form\">
-                        <div class=\"form-group col-md-4\">
-                            <label>Inscription en :</label>
-                            <select required=\"required\" class=\"form-control\">
-                                <option value>Niveau d'inscription</option>
-                                <option value=\"1\">1ère année</option>
-                                <option value=\"2\">2e année</option>
-                            </select>
-                        </div>
-                        
-                        <div class=\"form-group col-md-4\">
-                            <label>Filière :</label>
-                            <select required=\"required\" class=\"form-control\">
-                                <option value>Choisissez une filière</option>
-                                <option value=\"1\">Dessin de batimens</option>
-                                <option>Infographie</option>
-                                <option>Gestion informatisée</option>
+                    <div class=\"row\">
+                        ";
+        // line 282
+        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), 'form_start', array("attr" => array("role" => "form")));
+        // line 284
+        echo "
 
-                            </select>
-                        </div>
                         <div class=\"form-group col-md-4\">
-                            <label>Votre niveau scolaire :</label>
-                            <select required=\"required\" class=\"form-control\" name=\"niv-sc\">
-                                <option value>Niveau scolaire</option>
-                                <option value=\"1\">Baccalauréat</option>
-                                <option>3e année secondaire Sc.</option>
-                                <option>3e année secondaire Lettre </option>
+                            ";
+        // line 288
+        echo "                            ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "niveauinscription", array()), 'label', array("label" => "Niveau d'inscription"));
+        echo "
 
-                            </select>
+                            ";
+        // line 290
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "niveauinscription", array()), 'errors');
+        echo "
+
+                            ";
+        // line 292
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "niveauinscription", array()), 'widget', array("attr" => array("class" => "form-control")));
+        echo "
                         </div>
 
                         <div class=\"form-group col-md-4\">
-                            <label>Nom :</label>
-                            <input placeholder=\"Nom\" required=\"required\" class=\"form-control\" type=\"text\"> 
+                            ";
+        // line 297
+        echo "                            ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "filiere", array()), 'label', array("label" => "Choisissez une filière"));
+        echo "
+
+                            ";
+        // line 299
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "filiere", array()), 'errors');
+        echo "
+
+                            ";
+        // line 301
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "filiere", array()), 'widget', array("attr" => array("class" => "form-control")));
+        echo "
                         </div>
                         <div class=\"form-group col-md-4\">
-                            <label>Prenom :</label>
-                            <input placeholder=\"Prenom\" required=\"required\" class=\"form-control\" type=\"text\"> 
+                            ";
+        // line 305
+        echo "                            ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "niveauscolaire", array()), 'label', array("label" => "Votre niveau scolaire "));
+        echo "
+
+                            ";
+        // line 307
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "niveauscolaire", array()), 'errors');
+        echo "
+
+                            ";
+        // line 309
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "niveauscolaire", array()), 'widget', array("attr" => array("class" => "form-control")));
+        echo "
+                        </div>
+
+                        <div class=\"form-group col-md-4\">
+                            ";
+        // line 314
+        echo "                            ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "nom", array()), 'label', array("label" => "Votre nom "));
+        echo "
+
+                            ";
+        // line 316
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "nom", array()), 'errors');
+        echo "
+
+                            ";
+        // line 318
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "nom", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Votre nom")));
+        echo "
                         </div>
                         <div class=\"form-group col-md-4\">
-                            <label>E-mail :</label>
-                            <input placeholder=\"E-mail\" required=\"required\" class=\"form-control\" type=\"mail\"> 
+                            ";
+        // line 322
+        echo "                            ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "prenom", array()), 'label', array("label" => "Votre prenom "));
+        echo "
+
+                            ";
+        // line 324
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "prenom", array()), 'errors');
+        echo "
+
+                            ";
+        // line 326
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "prenom", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Votre prenom")));
+        echo "
+                        </div>
+                        <div class=\"form-group col-md-4\">
+                            ";
+        // line 330
+        echo "                            ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "email", array()), 'label', array("label" => "Votre email "));
+        echo "
+
+                            ";
+        // line 332
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "email", array()), 'errors');
+        echo "
+
+                            ";
+        // line 334
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "email", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Votre email")));
+        echo "
+                        </div>
+                         <div class=\"form-group col-md-3\">
+                            ";
+        // line 338
+        echo "                            ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "ville", array()), 'label', array("label" => "Votre ville "));
+        echo "
+
+                            ";
+        // line 340
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "ville", array()), 'errors');
+        echo "
+
+                            ";
+        // line 342
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "ville", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Votre ville")));
+        echo "
                         </div>
                         <div class=\"form-group col-md-3\">
-                            <label>Ville :</label>
-                            <input placeholder=\"Ville\" name=\"ville\" required=\"required\" class=\"form-control\" type=\"text\"> 
+                            ";
+        // line 346
+        echo "                            ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "telephone", array()), 'label', array("label" => "Votre telephone "));
+        echo "
+
+                            ";
+        // line 348
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "telephone", array()), 'errors');
+        echo "
+
+                            ";
+        // line 350
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "telephone", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Votre telephone")));
+        echo "
                         </div>
                         <div class=\"form-group col-md-3\">
-                            <label>Téléphone fixe :</label>
-                            <input placeholder=\"Téléphone fixe\" name=\"tel-fixe\" required=\"required\" class=\"form-control\" type=\"text\"> 
+                            ";
+        // line 354
+        echo "                            ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "mobile", array()), 'label', array("label" => "Votre numero mobile "));
+        echo "
+
+                            ";
+        // line 356
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "mobile", array()), 'errors');
+        echo "
+
+                            ";
+        // line 358
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "mobile", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Votre mobile")));
+        echo "
                         </div>
                         <div class=\"form-group col-md-3\">
-                            <label>Téléphone mobile :</label>
-                            <input placeholder=\"Téléphone mobile\" name=\"tel-mob\" required=\"required\" class=\"form-control\" type=\"text\"> 
-                        </div>
-                        <div class=\"form-group col-md-3\">
-                            <label>Adresse :</label>
-                            <input placeholder=\"Adresse\" name=\"adresse\" required=\"required\" class=\"form-control\" type=\"text\"> 
+                            ";
+        // line 362
+        echo "                            ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "adresse", array()), 'label', array("label" => "Votre adresse "));
+        echo "
+
+                            ";
+        // line 364
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "adresse", array()), 'errors');
+        echo "
+
+                            ";
+        // line 366
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "adresse", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Votre adresse")));
+        echo "
                         </div>
 
                         <div class=\"form-group col-md-12\">
-                            <label>Rédiger quelques lignes motivant votre choix pour  <span class=\"btn-a\">ARCHITEC</span> :</label>
-                            <textarea name=\"motivation\" required=\"required\" class=\"form-control\">
-                                
-                            </textarea>
+                            ";
+        // line 371
+        echo "                            ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "motivation", array()), 'label', array("label" => "Rédiger quelques lignes motivant votre choix pour ARCHITEC:"));
+        echo "
+
+                            ";
+        // line 373
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "motivation", array()), 'errors');
+        echo "
+
+                            ";
+        // line 375
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), "motivation", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Votre motivation")));
+        echo "
                         </div>
 
-                        <div class=\"text-align\">
+                        ";
+        // line 378
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), 'rest');
+        echo "
+                           <div class=\"text-align\">
                             <input type=\"submit\" value=\"Envoyer\" class=\"btn btn-default\">
                             <input type=\"reset\" value=\"Annuler\" class=\"btn btn-default\">
                         </div>
-                    </form>
+                            ";
+        // line 383
+        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["formPreinscription"]) ? $context["formPreinscription"] : $this->getContext($context, "formPreinscription")), 'form_end');
+        echo "
+                    </div>
                 </div>
             </div>
         </div>
@@ -433,23 +657,36 @@ class __TwigTemplate_e09e55bd3c3927ff16b5fe5567d2e1232cec4f28dcaa68e87e0d8e0c04d
 </div>
     <!-- jQuery Version 1.11.0 -->
     <script src=\"";
-        // line 393
+        // line 481
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery-1.11.0.js"), "html", null, true);
+        echo "\"></script>
+
+    <script src=\"";
+        // line 483
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery-ui.min.js"), "html", null, true);
+        echo "\"></script>
+    <script src=\"";
+        // line 484
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/droppable.js"), "html", null, true);
+        echo "\"></script>
+    <script src=\"";
+        // line 485
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/draggable.js"), "html", null, true);
         echo "\"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src=\"";
-        // line 396
+        // line 488
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
 
     <!-- Plugin JavaScript -->
     <script src=\"";
-        // line 399
+        // line 491
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.easing.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 400
+        // line 492
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/app.js"), "html", null, true);
         echo "\"></script>
     <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
@@ -457,7 +694,7 @@ class __TwigTemplate_e09e55bd3c3927ff16b5fe5567d2e1232cec4f28dcaa68e87e0d8e0c04d
 
     <!-- Custom Theme JavaScript -->
     <script src=\"";
-        // line 405
+        // line 497
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/grayscale.js"), "html", null, true);
         echo " \"></script>
 
@@ -486,6 +723,6 @@ class __TwigTemplate_e09e55bd3c3927ff16b5fe5567d2e1232cec4f28dcaa68e87e0d8e0c04d
 
     public function getDebugInfo()
     {
-        return array (  461 => 405,  453 => 400,  449 => 399,  443 => 396,  437 => 393,  210 => 169,  201 => 163,  192 => 157,  183 => 151,  118 => 89,  47 => 21,  41 => 18,  35 => 15,  19 => 1,);
+        return array (  698 => 497,  690 => 492,  686 => 491,  680 => 488,  674 => 485,  670 => 484,  666 => 483,  661 => 481,  560 => 383,  552 => 378,  546 => 375,  541 => 373,  535 => 371,  528 => 366,  523 => 364,  517 => 362,  511 => 358,  506 => 356,  500 => 354,  494 => 350,  489 => 348,  483 => 346,  477 => 342,  472 => 340,  466 => 338,  460 => 334,  455 => 332,  449 => 330,  443 => 326,  438 => 324,  432 => 322,  426 => 318,  421 => 316,  415 => 314,  408 => 309,  403 => 307,  397 => 305,  391 => 301,  386 => 299,  380 => 297,  373 => 292,  368 => 290,  362 => 288,  357 => 284,  355 => 282,  295 => 225,  286 => 219,  277 => 213,  268 => 207,  224 => 166,  201 => 146,  196 => 144,  192 => 142,  190 => 140,  143 => 96,  100 => 55,  91 => 52,  86 => 51,  82 => 50,  50 => 21,  45 => 19,  41 => 18,  35 => 15,  19 => 1,);
     }
 }

@@ -122,15 +122,70 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/intranet-change-p')) {
+            // intranet_change_picture
+            if ($pathinfo === '/intranet-change-picture') {
+                return array (  '_controller' => 'Outil\\ServiceBundle\\Controller\\DefaultController::pictureAction',  '_route' => 'intranet_change_picture',);
+            }
+
+            // intranet_change_password
+            if ($pathinfo === '/intranet-change-password') {
+                return array (  '_controller' => 'Outil\\ServiceBundle\\Controller\\DefaultController::passewordAction',  '_route' => 'intranet_change_password',);
+            }
+
+        }
+
+        // intranet_change_message
+        if ($pathinfo === '/message-box') {
+            return array (  '_controller' => 'Outil\\ServiceBundle\\Controller\\DefaultController::messageAction',  '_route' => 'intranet_change_message',);
+        }
+
         if (0 === strpos($pathinfo, '/espace-')) {
             // intranet_professeur_homepage
             if ($pathinfo === '/espace-professeur/accueil') {
                 return array (  '_controller' => 'Intranet\\ProfesseurBundle\\Controller\\DefaultController::indexAction',  '_route' => 'intranet_professeur_homepage',);
             }
 
-            // intranet_etudiant_homepage
-            if ($pathinfo === '/espace-etudiant/accueil') {
-                return array (  '_controller' => 'Intranet\\EtudiantBundle\\Controller\\DefaultController::indexAction',  '_route' => 'intranet_etudiant_homepage',);
+            if (0 === strpos($pathinfo, '/espace-etudiant')) {
+                // intranet_etudiant_homepage
+                if ($pathinfo === '/espace-etudiant/accueil') {
+                    return array (  '_controller' => 'Intranet\\EtudiantBundle\\Controller\\DefaultController::indexAction',  '_route' => 'intranet_etudiant_homepage',);
+                }
+
+                if (0 === strpos($pathinfo, '/espace-etudiant/m')) {
+                    // intranet_etudiant_compte
+                    if ($pathinfo === '/espace-etudiant/mon-compte') {
+                        return array (  '_controller' => 'Intranet\\EtudiantBundle\\Controller\\DefaultController::compteAction',  '_route' => 'intranet_etudiant_compte',);
+                    }
+
+                    if (0 === strpos($pathinfo, '/espace-etudiant/ma-classe')) {
+                        // intranet_etudiant_ma_classe
+                        if (preg_match('#^/espace\\-etudiant/ma\\-classe/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'intranet_etudiant_ma_classe')), array (  '_controller' => 'Intranet\\EtudiantBundle\\Controller\\DefaultController::classeAction',));
+                        }
+
+                        if (0 === strpos($pathinfo, '/espace-etudiant/ma-classe-actuelle')) {
+                            // intranet_etudiant_ma_classe_actuelle
+                            if ($pathinfo === '/espace-etudiant/ma-classe-actuelle') {
+                                return array (  '_controller' => 'Intranet\\EtudiantBundle\\Controller\\DefaultController::classeActuelleAction',  '_route' => 'intranet_etudiant_ma_classe_actuelle',);
+                            }
+
+                            // intranet_etudiant_ma_classe_actuelle_edt
+                            if ($pathinfo === '/espace-etudiant/ma-classe-actuelle-emploi-de-temps') {
+                                return array (  '_controller' => 'Intranet\\EtudiantBundle\\Controller\\DefaultController::emploitdetempsCAAction',  '_route' => 'intranet_etudiant_ma_classe_actuelle_edt',);
+                            }
+
+                        }
+
+                    }
+
+                    // intranet_etudiant_message
+                    if ($pathinfo === '/espace-etudiant/message-box') {
+                        return array (  '_controller' => 'Intranet\\EtudiantBundle\\Controller\\DefaultController::messageAction',  '_route' => 'intranet_etudiant_message',);
+                    }
+
+                }
+
             }
 
         }
@@ -142,6 +197,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             return array (  '_controller' => 'Internet\\siteBundle\\Controller\\SiteController::indexAction',  '_route' => 'internetsite_homepage',);
+        }
+
+        // internetsite_add_email_newsletter
+        if ($pathinfo === '/ajouter-email-a-la-newsletter') {
+            return array (  '_controller' => 'Internet\\siteBundle\\Controller\\SiteController::addemailAction',  '_route' => 'internetsite_add_email_newsletter',);
+        }
+
+        // internetsite_add_preinscription
+        if ($pathinfo === '/se-preinscrire') {
+            return array (  '_controller' => 'Internet\\siteBundle\\Controller\\SiteController::preinscrireAction',  '_route' => 'internetsite_add_preinscription',);
         }
 
         if (0 === strpos($pathinfo, '/admin')) {
@@ -200,17 +265,19 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\EtudiantController::listAction',  '_route' => 'intranet_admin_liste_etudiant',);
             }
 
-            if (0 === strpos($pathinfo, '/admin/ajout-')) {
-                // intranet_admin_ajout_compte_etudiant
-                if (0 === strpos($pathinfo, '/admin/ajout-compte-utilisateur') && preg_match('#^/admin/ajout\\-compte\\-utilisateur/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'intranet_admin_ajout_compte_etudiant')), array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\EtudiantController::ajoutCompteAction',));
-                }
+            // intranet_admin_ajout_compte_etudiant
+            if (0 === strpos($pathinfo, '/admin/ajout-compte-utilisateur') && preg_match('#^/admin/ajout\\-compte\\-utilisateur/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'intranet_admin_ajout_compte_etudiant')), array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\EtudiantController::ajoutCompteAction',));
+            }
 
-                // intranet_admin_ajout_professeur
-                if ($pathinfo === '/admin/ajout-professeur') {
-                    return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\ProfesseurController::ajoutAction',  '_route' => 'intranet_admin_ajout_professeur',);
-                }
+            // intranet_admin_ajout_classe_etudiant
+            if (0 === strpos($pathinfo, '/admin/definir-classe-etudiant') && preg_match('#^/admin/definir\\-classe\\-etudiant/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'intranet_admin_ajout_classe_etudiant')), array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\EtudiantController::definirClasseAction',));
+            }
 
+            // intranet_admin_ajout_professeur
+            if ($pathinfo === '/admin/ajout-professeur') {
+                return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\ProfesseurController::ajoutAction',  '_route' => 'intranet_admin_ajout_professeur',);
             }
 
             // intranet_admin_stat_professeur
@@ -251,6 +318,24 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             // intranet_admin_liste_classe
             if ($pathinfo === '/admin/lister-classe') {
                 return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\ClasseController::listAction',  '_route' => 'intranet_admin_liste_classe',);
+            }
+
+            // intranet_admin_modifier_classe
+            if (0 === strpos($pathinfo, '/admin/modifier-classe') && preg_match('#^/admin/modifier\\-classe/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'intranet_admin_modifier_classe')), array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\ClasseController::modifierAction',));
+            }
+
+            if (0 === strpos($pathinfo, '/admin/ajouter-emploi-de-temps')) {
+                // intranet_admin_modifier_planning
+                if (preg_match('#^/admin/ajouter\\-emploi\\-de\\-temps/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'intranet_admin_modifier_planning')), array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\ClasseController::planningAction',));
+                }
+
+                // intranet_admin_planning_content
+                if (0 === strpos($pathinfo, '/admin/ajouter-emploi-de-temps-contenu') && preg_match('#^/admin/ajouter\\-emploi\\-de\\-temps\\-contenu/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'intranet_admin_planning_content')), array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\ClasseController::contenuAction',));
+                }
+
             }
 
         }
