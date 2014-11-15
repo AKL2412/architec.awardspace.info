@@ -5,6 +5,7 @@ namespace Intranet\AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Intranet\AdminBundle\Entity\Professeur;
+use Intranet\AdminBundle\Entity\Profmat;
 use OC\UserBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,6 +37,16 @@ class ProfesseurController extends Controller{
 		      ->add('matricule',   'text')
 		      ->add('email',   'email')
 		      ->add('telephone',   'text')
+		      ->add('adresse',   'textarea')
+		      ->add('genre', 'choice', array(
+                'choices' => array(
+                    'Homme' => 'Masculin',
+                    'Femme' => 'Féminin'
+                ),                                                                                
+                'required'    => true,
+                'empty_value' => 'Choisissez le sexe',
+                'empty_data'  => null
+            ))
 		    ;
 
 		    // À partir du formBuilder, on génère le formulaire
@@ -85,10 +96,10 @@ class ProfesseurController extends Controller{
 
 
 
-     public function voirAction($id){
-    	$prof =  $this->getDoctrine()
-		  ->getManager()
-		  ->getRepository('IntranetAdminBundle:Professeur')
+     public function voirAction($id,Request $request){
+    	$em =  $this->getDoctrine()
+		  ->getManager();
+		 $prof=$em->getRepository('IntranetAdminBundle:Professeur')
 		  ->find($id)
 		;
 		//$prof->setDatenaissance();
@@ -100,6 +111,19 @@ class ProfesseurController extends Controller{
 	      // Sinon on déclenche une exception « Accès interdit »
 	      throw new NotFoundHttpException('Identifiant incorrect');
 	    }
+	    if(!empty($request->request->all())){
+        
+        	foreach($request->request->all() as $req){
+   					$pm = $em->getRepository('IntranetAdminBundle:Profmat')->find($req);
+   					
+   					$em->remove($pm);
+			}
+			$em->flush();
+        	
+
+        	return $this->redirect($this->generateUrl('intranet_admin_voir_professeur', 
+		      	array('id' => $prof->getId())));
+        }
 	    	return $this->render('IntranetAdminBundle:Professeur:voir.html.twig', array(
 	      'professeur' => $prof
 	    ));
@@ -168,6 +192,46 @@ class ProfesseurController extends Controller{
 	      'form' => $form->createView()
 	    ));
 
+    }
+
+    public function affectermatiereAction($id, Request $request){
+
+    	$em = $this->getDoctrine()
+		  ->getManager();
+    	$prof =  $em
+		  ->getRepository('IntranetAdminBundle:Professeur')->find($id)
+		;
+		 if ($prof == null) {
+              // Sinon on déclenche une exception « Accès interdit »
+              throw new NotFoundHttpException('Erreur : Identifiant ['.$id.'] inconnu');
+        }
+
+        if(!empty($request->request->all())){
+        
+        	foreach($request->request->all() as $req){
+   					$pm = new Profmat();
+   					$pm->setProfesseur($prof);
+   					$pm->setMatiere(
+   						$em->getRepository('IntranetAdminBundle:Matiere')->find($req)
+   						);
+   					$em->persist($pm);
+			}
+			$em->flush();
+        	
+
+        	return $this->redirect($this->generateUrl('intranet_admin_voir_professeur', 
+		      	array('id' => $prof->getId())));
+        }
+        $tab =array();
+        foreach ($em->getRepository('IntranetAdminBundle:Matiere')->findAll() as $key => $value) {
+        	if(!$prof->enseigneMatiere($value))
+        		$tab[]=$value;
+        }
+    	return $this->render('IntranetAdminBundle:Professeur:affectermatiere.html.twig', 
+    		array(
+	      'professeur' => $prof,
+	      'matieres' => $tab
+	    ));
     }
 
 }

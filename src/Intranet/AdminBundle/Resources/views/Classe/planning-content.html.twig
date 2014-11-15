@@ -17,7 +17,7 @@
 			margin-top: -8px;
 			position: absolute;
 		}
-		.case .data-case {
+		.case .data-case,.case-visonner .data-case{
 			display: inline-block;
 			width: 100%;
 			margin: 0;
@@ -26,6 +26,15 @@
 			cursor: move;
 			z-index: 50;
 			display: inline-block;
+		}
+		table thead tr th{
+			text-align: center;
+		}
+		table tbody tr td.td{
+			background-color: #f5f5f5;
+		}
+		.case-visonner{
+			background-color: #fff;
 		}
 	</style>
 {%endblock%}
@@ -41,7 +50,14 @@
 	<div class="row">
 		<div class="row">
 				<div class="pre-nom col-md-7 col-sm-4 col-xs-12">
-					<h2>{{planning.nom}} </h2>
+					<div class="badge">
+							{{planning.classe.nom}}
+						</div>
+					<h3>
+
+					{{planning.nom}} 
+						
+					 </h3>
 					
 						
 						{%if planning.complet %}
@@ -50,7 +66,7 @@
 						</div>
 						{%else%}
 						<div class="label label-warning">
-							Etat : <i class="fa fa-times"></i>	Non terminé
+							Signalé : <i class="fa fa-times"></i>	Non terminé
 						</div>
 						{%endif%}
 					
@@ -64,11 +80,71 @@
 				</div>
 			</div>
 			<div class="row">
-				{%if planning.complet %}
+				{%if action == 'visionner' %}
 					<div class="alert">
 						Consultation de l'emploi de temps
 					</div>
-				{%else%}
+					<div class="col-lg-12">
+								<table id="lesSeances" class="table table-condensed table-bordered table-striped-">
+									<thead>
+										<th>
+											<i class="fa-calendar fa"></i>
+										</th>
+										{%for jour in planning.lesjours() %}
+											<th>{{jour}}</th>
+										{%endfor%}
+									</thead>
+									<tbody>
+										{%for heure in planning.leshoraires() %}
+											<tr>
+												<td>{{heure}}</td>
+												{%for jour in planning.lesjours() %}
+													<td class="td">
+														
+														{%for seance in planning.cases %}
+															{%set s = seance.salle%}
+															{%set p = seance.professeur%}
+														{%if seance.jour == jour and seance.horaire == heure %}
+													
+														<div class="case-visonner" jour="{{jour}}" heure="{{heure}}">
+
+															<div  class="matiere data-case label label-default " >
+																{{seance.matiere.nom}}
+															</div>
+															{%if p is not null %}
+															<div class="professeur data-case  label label-info">
+															{{p.prenom}} <strong>{{p.nom}}</strong>
+															</div>
+															{%else%}
+															<div class="professeur data-case  label label-danger">
+															Professeur Inconnu
+															</div>
+															{%endif%}
+
+															{%if s is not null %}
+															<div class="salle data-case  label label-success">
+																{{s.nom}}
+															</div>
+															{%else%}
+															<div class="salle data-case  label label-danger">
+																Salle Inconnu
+															</div>
+															{%endif%}
+														</div>
+														{%endif%}
+
+														{%endfor%}
+													</td>
+												{%endfor%}
+
+											</tr>
+
+										{%endfor%}
+									</tbody>
+										
+								</table>
+					</div>
+				{%elseif action == 'ajout-contenu' %}
 					<div class="row">
 						<div class="alert alert-info col-md-3 col-md-offset-2">
 							Completer l'emploi de temps
@@ -79,24 +155,24 @@
 						
 						<div class="container">
 							<div class="col-md-4">
-							<div class="panel panel-default">
+							<div class="panel panel-default" id="lesProfesseurs">
 								<div class="panel-heading">Les professeurs</div>
 								<div class="panel-body">
-									{%for professeur in professeurs%}
+									{#%for professeur in professeurs%}
 										<div type="professeur" class="data-case-move label label-info" objectId="{{professeur.id}}">
 											{{professeur.nom}} {{professeur.prenom}}
 										</div>
-									{%endfor%}
+									{%endfor%#}
 								</div>
 							</div>
 						</div>
 
 						<div class="col-md-4">
 							<div class="panel panel-default">
-								<div class="panel-heading">Les Matières</div>
+								<div class="panel-heading">Les Matières de la filière</div>
 								<div class="panel-body">
-									{%for matiere in matieres%}
-										<div type="matiere" objectId="{{matiere.id}}" class="data-case-move label label-default">
+									{%for matiere in planning.classe.filiere.matieres(em)%}
+										<div url="{{path('intranet_admin_professeur_de_matiere',{id:matiere.id})}} " type="matiere" objectId="{{matiere.id}}" class="data-case-move label label-default">
 											{{matiere.nom}}
 										</div>
 									{%endfor%}
@@ -119,25 +195,25 @@
 
 						<!-- La table de contenu -->
 						<div class="col-lg-12">
-								<table class="table table-condensed table-bordered table-striped-">
+								<table id="lesSeances" class="table table-condensed table-bordered table-striped-">
 									<thead>
-										<th></th>
-										{%for jour in jours %}
+										<th><i class="fa-calendar fa"></i></th>
+										{%for jour in planning.lesjours() %}
 											<th>{{jour}}</th>
 										{%endfor%}
 									</thead>
 									<tbody>
-										{%for heure in heures%}
+										{%for heure in planning.leshoraires() %}
 											<tr>
 												<td>{{heure}}</td>
-												{%for jour in jours%}
+												{%for jour in planning.lesjours() %}
 													<td>
-														<div class="case" jour="{{jour}}" heure="{heure}}">
+														<div class="case" jour="{{jour}}" heure="{{heure}}">
 															<i class="fa fa-trash-o"></i>
 
-															<div etat="vide" class="matiere data-case label label-default " >Matière...</div>
-															<div etat="vide" class="professeur data-case  label label-info">Professeur...</div>
-															<div etat="vide" class="salle data-case  label label-success">salle...</div>
+															<div objectId="" etat="vide" class="matiere data-case label label-default " >Matière...</div>
+															<div objectId="" etat="vide" class="professeur data-case  label label-info">Professeur...</div>
+															<div objectId="" etat="vide" class="salle data-case  label label-success">salle...</div>
 														</div>
 													</td>
 												{%endfor%}
@@ -146,15 +222,32 @@
 
 										{%endfor%}
 									</tbody>
+										
 								</table>
+								<div>
+									<button id="verification" class="btn btn-default">
+										<i class="fa-stethoscope fa"></i>	Vérifier
+									</button>
+										
+									
+											<button
+											url="{{path('intranet_admin_enregistrer_contenu_planning',{id:planning.id})}}" id="continuer" class="btn btn-success">
+											<i class="fa-send fa"></i>	Continuer
+											</button>
+
+									<button id="refresh" class="btn btn-warning"
+									style="float:right" 
+									>
+									<i class="fa-refresh fa"></i>	Reprendre
+									</button>
+								</div>
+
+
+
 							</div>
 						</div>
 
 					</div>
-
-					
-
-
 				{%endif%}
 			</div>
 	</div>

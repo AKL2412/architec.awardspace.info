@@ -1,26 +1,126 @@
 {% extends "IntranetAdminBundle::layout.html.twig" %}
 {%block title%}Définition de classe |{{etudiant.prenom}} {%endblock%}
 {%block body%}
-{{etudiant.nom}}
-<select>
-	<optgroup label="Prémiere année">
-		<option>b</option>
-		<option>b</option>
-	</optgroup>
-	<optgroup label="Deuxième année">
-		<optgroup label="Informatique">
-		
-		<option>a</option>
-		<option>a</option>
-		
-		</optgroup>
-		<optgroup label="Statistiques">
-		
-		<option>s</option>
-		<option>s</option>
-		
-	</optgroup>
+<div class="badge">
+	{{etudiant.prenom}} {{etudiant.nom}}
+</div>
+<div class="row">
+	
+	<div class="col-lg-12">
+		<div class="form-group col-md-6">
+			<label>Le niveau : </label>
+			<select class="select-type form-control" type="niveau">
+			<option value="none">Choisir le niveau</option>
+			{%for niv in niveaux %}
+				<option value="{{niv.id}} ">{{niv.nom}} </option>
+			{%endfor%}
+			</select>
+		</div>
+		<div class="form-group col-md-6">
+			<label>La filière : </label>
+			<select class="select-type form-control" type="filiere">
+			<option value="none">Choisir la filière</option>
+			{%for fil in filieres %}
+				<option value="{{fil.id}} ">{{fil.nom}} </option>
+			{%endfor%}
+			</select>
+		</div>
+	</div>	
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		{%if classes is defined %}
 
-	</optgroup>
-</select>
+			<div class="alert alert-info">
+				Le nombre de classe de <strong>{{filiere.nom }}</strong> <strong>{{niveau.nom}}</strong> : {{classes|length}}
+			</div>
+			<form role="form" method="post">
+				<div class="form-group col-md-6">
+			<label>La classe : </label>
+			<select class="form-control" type="clasee" name="classe">
+			<option value="none">Choisir la filière</option>
+			{%for classe in classes %}
+				<option value="{{classe.id}} ">{{classe.nom}} </option>
+			{%endfor%}
+			</select>
+		</div>
+		<div class="form-group col-md-1">
+		<label></label>
+			<input type="submit"  value="Affecter" class="btn btn-primary form-control">
+		</div>
+			</form>
+		{%endif%}
+	</div>
+</div>
+
+{%endblock%}
+
+
+{%block script %}
+<script type="text/javascript">
+	
+	jQuery(document).ready(function($) {
+
+var vars ={
+		filiere : null,
+		niveau :null
+	};
+
+		$('.select-type').change(function(event) {
+		/* Act on the event */
+		var type = $(this).attr('type');
+		var url =window.location.href.toString().split("?")[0];
+		
+		//alert(url)
+		if($(this).val() != 'none'){
+
+			vars[type] = $(this).val();
+
+			if(type == 'filiere' && vars['niveau'] != null){
+				window.location.href = url+"?niveau="+vars['niveau']+"&filiere="+vars['filiere']
+			}else if(type == 'niveau' && vars['filiere'] != null){
+			window.location.href = url+"?niveau="+vars['niveau']+"&filiere="+vars['filiere']
+			}
+			console.log(vars);
+		}
+	});
+
+	});
+
+
+function decoupage(url,type,newValue){
+	var dUrl = url.split('?');
+	var rUrl = dUrl[0];
+	var find = false;
+	if(dUrl.length > 1){
+
+		for (var i = 1; i < dUrl.length; i++) {
+			var tnavl = dUrl[i].split("=");
+			if(tnavl.length > 1){
+				if(tnavl[0] == type){
+					if( i != 1)
+						rUrl += "&"+type+"="+newValue;
+					else
+						rUrl += "?"+type+"="+newValue;
+					find = true;
+				}else{
+					rUrl += "?"+dUrl[i];
+				}
+			}else{
+
+			}
+		};
+		if(!find){
+
+			rUrl +="&"+type+"="+newValue;
+		}
+
+	}else{
+		rUrl = url+"?"+type+"="+newValue;
+	}
+	return rUrl;
+}
+</script>
+
+
 {%endblock%}

@@ -5,7 +5,10 @@ namespace Intranet\AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Intranet\AdminBundle\Entity\Etudiant;
+use Intranet\AdminBundle\Entity\Tuteur;
+use Intranet\AdminBundle\Entity\Classeetudiant;
 use Intranet\AdminBundle\Form\EtudiantType;
+use Intranet\AdminBundle\Form\TuteurType;
 use OC\UserBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -143,6 +146,8 @@ class EtudiantController extends Controller{
     	));
     }
 
+    
+
     public function ajoutCompteAction($id,Request $request){
     	$em = $this->getDoctrine()
 		  ->getManager();
@@ -181,38 +186,120 @@ class EtudiantController extends Controller{
 
     }
 
-    public function definirClasseAction($id){
-    	$etud =  $this->getDoctrine()
-		  ->getManager()
+    public function definirClasseAction(Request $req,$id){
+
+
+    	$em = $this->getDoctrine()->getManager();
+    	$etud = $em 
 		  ->getRepository('IntranetAdminBundle:Etudiant')
 		  ->find($id)
 		;
+		
 			if ($etud == null) {
 	      // Sinon on déclenche une exception « Accès interdit »
 	      throw new NotFoundHttpException('Identifiant incorrect');
 	    }
-	    return $this->render('IntranetAdminBundle:Etudiant:definirclasse.html.twig', array(
-	      'etudiant' => $etud
-	    ));
+	    $action = "niveau-filiere";
+	    $tabReturn = array(
+			'etudiant' => $etud,
+	      	'action'=>$action,
+	      	'filieres'=>$em->getRepository('IntranetAdminBundle:Filiere')->findAll(),
+	      	'niveaux'=>$em->getRepository('IntranetAdminBundle:Niveauinscription')->findAll()
+	    	);
+	    if(!empty($req->query->get('niveau')) 
+	    	&&
+	    	!empty($req->query->get('filiere'))){
+	    	$repoAnnee = $em->getRepository('IntranetAdminBundle:Anneescolaire');
+			$anneeEncours = $repoAnnee->findOneByEncours(true);
+
+			if ($anneeEncours == null) {
+		      // Sinon on déclenche une exception « Accès interdit »
+		      throw new NotFoundHttpException("Veuillez définir l'année en cours !!");
+		    }
+		    $niveau = $em->getRepository('IntranetAdminBundle:Niveauinscription')->find($req->query->get('niveau'));
+		    $filiere = $em->getRepository('IntranetAdminBundle:Filiere')->find($req->query->get('filiere'));
+		    
+		//     echo '<pre>';
+		//  print_r($niveau);
+		//  print_r($filiere);
+		// echo '</pre>'; 
+		//     die('');
+
+		    $classes = $em->getRepository('IntranetAdminBundle:Classe')
+		    				->findBy(
+		    					array(
+		    						'anneescolaire' => $anneeEncours,
+		    						'filiere'=>$filiere,
+		    						'niveau'=>$niveau
+		    						),
+						array('created' => 'desc'),100,0);
+
+	    	$tabReturn ["classes"] = $classes;
+	    	$tabReturn ["filiere"] = $filiere;
+	    	$tabReturn ["niveau"] = $niveau;
+	    	
+
+	    }
+	    if(!empty($req->request->get('classe'))){
+	    	$classe = $em->getRepository('IntranetAdminBundle:Classe')->find($req->request->get('classe'));
+	    	$ce = new Classeetudiant();
+	    	$ce->setActive(true);
+	    	$ce->setDate(new \Datetime());
+	    	$ce->setEtudiant($etud);
+	    	$ce->setClasse($classe);
+	    	$em->persist($ce);
+	    	$em->flush();
+	    	return $this->redirect($this->generateUrl('intranet_admin_voir_etudiant', 
+	      	array('id' => $etud->getId())));
+	    }
+	    return $this->render('IntranetAdminBundle:Etudiant:definirclasse.html.twig', $tabReturn);
     }
-    public function voirAction($id){
-    	$etud =  $this->getDoctrine()
+
+
+    public function voirAction($id,Request $request){
+    	$em = $this->getDoctrine()
 		  ->getManager()
-		  ->getRepository('IntranetAdminBundle:Etudiant')
+		  ;
+    	$etud =  $em->getRepository('IntranetAdminBundle:Etudiant')
 		  ->find($id)
 		;
-		//$etud->setDatenaissance();
-		// echo '<pre>';
-		// print_r($etud);
-		// echo '</pre>';
-		// return new Response('');
 			if ($etud == null) {
 	      // Sinon on déclenche une exception « Accès interdit »
 	      throw new NotFoundHttpException('Identifiant incorrect');
 	    }
-	    	return $this->render('IntranetAdminBundle:Etudiant:voir.html.twig', array(
-	      'etudiant' => $etud
-	    ));
+	    $tabe = array('etudiant' => $etud);
+
+	    if($etud->getTuteur() == null){
+	    	$tuteur = new Tuteur();
+	    	$tuteur->setDate(new \Datetime());
+	    	$form = $this->get('form.factory')
+    							->create(new TuteurType(), $tuteur);
+    		 if ($form->handleRequest($request)->isValid()) {
+    		 	$em->persist($tuteur);
+    		 	$etud->setTuteur($tuteur);
+    		 	$em->flush();
+
+    		 	return $this->redirect($this->generateUrl('intranet_admin_voir_etudiant',array('id'=>$etud->getId())));
+    		 }
+    		$tabe['form']=$form->createView();
+	    }
+
+	    if($etud->getContacturgent() == null){
+	    	$tuteuru = new Tuteur();
+	    	$tuteuru->setDate(new \Datetime());
+	    	$formu = $this->get('form.factory')
+    							->create(new TuteurType(), $tuteuru);
+    		 if ($formu->handleRequest($request)->isValid()) {
+    		 	$em->persist($tuteuru);
+    		 	$etud->setContacturgent($tuteuru);
+    		 	$em->flush();
+
+    		 	return $this->redirect($this->generateUrl('intranet_admin_voir_etudiant',array('id'=>$etud->getId())));
+    		 }
+    		$tabe['formu']=$formu->createView();
+	    }
+
+	    	return $this->render('IntranetAdminBundle:Etudiant:voir.html.twig', $tabe);
     }
 
     public function listAction(Request $request){

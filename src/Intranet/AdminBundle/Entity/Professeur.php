@@ -60,6 +60,13 @@ class Professeur
      * @ORM\Column(name="telephone", type="string", length=255)
      */
     private $telephone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="genre", type="string", length=50)
+     */
+    private $genre;
     /**
      * @var string
      *
@@ -80,6 +87,7 @@ class Professeur
     private $compte;
 
 
+
     /**
       * @ORM\ManyToOne(targetEntity="Intranet\AdminBundle\Entity\Anneescolaire", cascade={"persist"})
       * @ORM\JoinColumn(nullable=true)
@@ -91,6 +99,11 @@ class Professeur
 */
 private $plannings;
 
+/**
+* @ORM\OneToMany(targetEntity="Intranet\AdminBundle\Entity\Profmat",mappedBy="professeur")
+*/
+private $matieres;
+
     public function __construct()
   {
     $this->date = new \Datetime();
@@ -98,6 +111,12 @@ private $plannings;
 
   }
 
+  public function enseigneMatiere(\Intranet\AdminBundle\Entity\Matiere $mat){
+    foreach ($this->matieres as $key => $profmat) {
+       if($profmat->getMatiere()->getId() == $mat->getId()) return true;
+    }
+    return false;
+  }
     /**
      * Get id
      *
@@ -369,5 +388,61 @@ private $plannings;
     public function getAdresse()
     {
         return $this->adresse;
+    }
+
+    /**
+     * Add matieres
+     *
+     * @param \Intranet\AdminBundle\Entity\Profmat $matieres
+     * @return Professeur
+     */
+    public function addMatiere(\Intranet\AdminBundle\Entity\Profmat $matieres)
+    {
+        $this->matieres[] = $matieres;
+
+        return $this;
+    }
+
+    /**
+     * Remove matieres
+     *
+     * @param \Intranet\AdminBundle\Entity\Profmat $matieres
+     */
+    public function removeMatiere(\Intranet\AdminBundle\Entity\Profmat $matieres)
+    {
+        $this->matieres->removeElement($matieres);
+    }
+
+    /**
+     * Get matieres
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMatieres()
+    {
+        return $this->matieres;
+    }
+
+    /**
+     * Set genre
+     *
+     * @param string $genre
+     * @return Professeur
+     */
+    public function setGenre($genre)
+    {
+        $this->genre = $genre;
+
+        return $this;
+    }
+
+    /**
+     * Get genre
+     *
+     * @return string 
+     */
+    public function getGenre()
+    {
+        return $this->genre;
     }
 }

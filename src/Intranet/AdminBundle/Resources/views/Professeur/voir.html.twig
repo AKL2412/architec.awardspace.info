@@ -33,15 +33,114 @@
 						<a class="btn btn-default btn-xs" href=" {{path('intranet_admin_modifier_professeur',{id:professeur.id})}} ">modifier</a>
 						<a class="btn btn-default btn-xs" href="{{path('intranet_admin_liste_professeur')}}">les professeurs</a>
 					</div>
-				<div>
- <ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#">Home</a></li>
-  <li role="presentation"><a href="#">Profile</a></li>
-  <li role="presentation"><a href="#">Messages</a></li>
-</ul>
+				
+ <div class="row" style="padding-top:20px;">
+					 
+					 <div class="tabbable tabs-center">
+						<ul class="nav nav-tabs ">
+							<li class="active">
+								<a href="#Information" data-toggle="tab">Informations</a>
+							</li>
+							<li >
+								<a href="#matieres" data-toggle="tab">Matières</a>
+							</li>
+							
+							<li>
+								<a href="#témoignages" data-toggle="tab">Documents</a>
+							</li>
+						</ul>
+						<div class="tab-content" style="padding-top:20px;">
+
+							
+							<div class="tab-pane active" id="Information">
+								<table class="table-condensed ">
+								<tr>
+									<td>
+										<span class="badge">Nom : </span>
+									</td>
+									<td> <strong>{{professeur.nom}}</strong> </td>
+									
+								</tr>
+								<tr>
+									<td>
+										<span class="badge">Prenom : </span>
+									</td>
+									<td> <strong>{{professeur.prenom}}</strong> </td>
+								</tr>
+								<tr>
+									<td>
+										<span class="badge">Matricule : </span>
+									</td>
+									<td> <strong>{{professeur.matricule}}</strong> </td>
+								</tr>
+								<tr>
+									<td>
+										<span class="badge">Email : </span>
+									</td>
+									<td> <strong>{{professeur.email}}</strong> </td>
+								</tr>
+								<tr>
+									<td>
+										<span class="badge">Date de naissance : </span>
+									</td>
+									<td> <strong>{{professeur.datenaissance|date("d-M-Y")}}</strong> </td>
+								</tr>
+								<tr>
+									<td>
+										<span class="badge">Téléphone : </span>
+									</td>
+									<td> <strong>{{professeur.telephone}}</strong> </td>
+								</tr>
+								<tr>
+									
+									<td> <span class="label label-info">{{professeur.genre}}</span> </td>
+									<td></td>
+								</tr>
+								</table>
+							</div>
+							<div class="tab-pane" id="témoignages">
+								<div class="container">
+									Tous les documents pour l'inscription
+								</div>
+							</div>
+
+							<div class="tab-pane" id="matieres">
+								
+							<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3> <i class="fa-cubes fa"></i> Les matières enseignées 
+
+							<a href="{{path('intranet_admin_affecter_matiere',{id:professeur.id})}} " class="btn btn-default btn-xs"
+							style="float:right" 
+							>Ajouter des matières</a>
+						</h3>
+					</div>
+					<form method="post" role="form">
+						<div class="panel-body">
+								{%for pm in professeur.matieres %}
+								{%set fil = pm.matiere %}
+							<div class="col-md-3 form-group">
+								<label for="fil{{fil.id}}">{{fil.nom}}</label>
+								<input type="checkbox" name="fil{{fil.id}}" id="fil{{fil.id}}" value="{{pm.id}}">
+							</div>
+
+						{%endfor%}
+						</div>
+						<div class="panel-footer">
+							<input type="submit" class="btn btn-success" value="Supprimer">
+							<input type="reset" class="btn btn-default" value="Annuler">
+						</div>
+					</form>
+					
+				</div>
+
+							</div>
+					</div>
+
+				</div>
 				</div>
 				
-			</div>
+			
 
 		</div>
 	{%endif%}

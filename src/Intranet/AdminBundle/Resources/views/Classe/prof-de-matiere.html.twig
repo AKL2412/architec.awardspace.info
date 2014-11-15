@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+</head>
+<body>
+{%if matiere.professeurs|length > 0 %}
+
+{%for pm in matiere.professeurs%}
+	{%set professeur = pm.professeur%}
+	<div type="professeur" class="data-case-move label label-info" objectId="{{professeur.id}}">
+		{{professeur.nom}} {{professeur.prenom}}
+	</div>
+{%endfor%}
+{%else%}
+
+<div>
+	Pas de professeurs pour cette matière
+</div>
+
+{%endif%}
+<script type="text/javascript">
+	$('.data-case-move').draggable({
+		revert : true,
+		revertDuration: 0 
+	});
+</script>
+</body>
+</html>
+

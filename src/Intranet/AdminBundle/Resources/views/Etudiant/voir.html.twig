@@ -1,5 +1,5 @@
 {% extends "IntranetAdminBundle::layout.html.twig" %}
-{%block title%}voir un étudiant{%endblock%}
+{%block title%}Etudiant : {{etudiant.prenom}} {{etudiant.nom}}{%endblock%}
 {%block body%}
 	{%if etudiant is not null%}
 
@@ -33,12 +33,12 @@
 						<div class="col-md-8 col-sm-8 col-xs-12 text-right">
 							<a class="btn btn-default btn-xs" href=" {{path('intranet_admin_modifier_etudiant',{id:etudiant.id})}} ">modifier</a>
 							<a class="btn btn-default btn-xs" href="{{path('intranet_admin_liste_etudiant')}}">les étudiants</a>
-							{%set classe = etudiant.classeActuelle()%}
-							{%if classe is null %}
+							{%set classeA = etudiant.classeActuelle()%}
+							{%if classeA is null %}
 								<a class="btn btn-success btn-xs" href="{{path('intranet_admin_ajout_classe_etudiant',{id:etudiant.id})}}">Définir la classe actuelle</a>
 							{%else%}
-							<a href="{{path('intranet_admin_voir_classe',{id:classe.classe.id})}}" class="label label-primary">
-									{{classe.classe.nom}}
+							<a href="{{path('intranet_admin_voir_classe',{id:classeA.classe.id})}}" class="label label-primary">
+									{{classeA.classe.nom}}
 								</a>
 							{%endif%}
 						</div>
@@ -73,7 +73,7 @@
 									<thead>
 										<tr>
 											<th>Classe</th>
-											<th>Année Scolaire</th>
+											<th >Année Scolaire</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -83,8 +83,13 @@
 												<a href="{{path('intranet_admin_voir_classe',{id:classe.classe.id})}}">
 														{{classe.classe.nom}}
 													</a>
+													{%if classeA is not null and classeA.classe.id == classe.classe.id%}
+														<span class="badge">Classe actuelle</span>
+													{%endif%}
+													
 												</td>
 												<td>{{classe.classe.anneescolaire.annee}}</td>
+												
 											</tr>
 										{%endfor%}
 									</tbody>
@@ -143,10 +148,216 @@
 							</div>
 
 							<div class="tab-pane" id="tuteur">
-								Informations sur le tuteur
+								{%set tut = etudiant.tuteur %}
+									{%if tut is null%}
+										
+									<h2>Veuillez renseigner le tuteur</h2>
+									{{ form_start(form, {'attr': {'role':'form'}}) }}
+    {{ form_errors(form) }}
+
+    <div class="form-group col-md-6">
+	    {# Génération du label. #}
+	    {{ form_label(form.nom, "Nom du tuteur") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.nom) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(form.nom, {'attr': {'class': 'form-control','placeholder':'Nom du tuteur'}}) }}
+    </div>
+    <div class="form-group col-md-6">
+	    {# Génération du label. #}
+	    {{ form_label(form.prenom, "Prenom du tuteur") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.prenom) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(form.prenom, {'attr': {'class': 'form-control','placeholder':'prenom du tuteur'}}) }}
+    </div>
+    <div class="form-group col-md-6">
+	    {# Génération du label. #}
+	    {{ form_label(form.telephone, "Téléphone du tuteur") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.telephone) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(form.telephone, {'attr': {'class': 'form-control','placeholder':'Téléphone du tuteur'}}) }}
+    </div>
+    <div class="form-group col-md-6">
+	    {# Génération du label. #}
+	    {{ form_label(form.email, "Email du tuteur") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.email) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(form.email, {'attr': {'class': 'form-control','placeholder':'Email du tuteur'}}) }}
+    </div>
+    <div class="form-group col-md-12">
+	    {# Génération du label. #}
+	    {{ form_label(form.adresse, "adresse du tuteur") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(form.adresse) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(form.adresse, {'attr': {'class': 'form-control','placeholder':'adresse du tuteur'}}) }}
+    </div>
+    <div class="form-group">
+  	<input type="submit" value="Ajouter" class="btn btn-primary btn">
+  <input type="reset" value="Annuler" class="btn btn-default btn">
+
+  </div>
+  
+  {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(form) }}
+									{%else%}
+
+									<table class="table-condensed ">
+								<tr>
+									<td>
+										<span class="badge">Nom : </span>
+									</td>
+									<td> <strong>{{tut.nom}}</strong> </td>
+									
+								</tr>
+								<tr>
+									<td>
+										<span class="badge">Prenom : </span>
+									</td>
+									<td> <strong>{{tut.prenom}}</strong> </td>
+								</tr>
+								
+								<tr>
+									<td>
+										<span class="badge">Email : </span>
+									</td>
+									<td> <strong>{{tut.email}}</strong> </td>
+								</tr>
+								
+								<tr>
+									<td>
+										<span class="badge">Téléphone : </span>
+									</td>
+									<td> <strong>{{tut.telephone}}</strong> </td>
+								</tr>
+								<tr>
+									<td>
+										<span class="badge">Adresse : </span>
+									</td>
+									<td> <strong>{{tut.adresse}}</strong> </td>
+								</tr>
+								</table>
+									{%endif%}
+								
 							</div>
 							<div class="tab-pane" id="urgence">
-								Informations sur le tuteur à contacter en cas d'urgence
+								{%set tut = etudiant.contacturgent %}
+									{%if tut is null%}
+										
+<h2>Veuillez renseigner le contact en cas d'urgence</h2>
+									{{ form_start(formu, {'attr': {'role':'form'}}) }}
+    {{ form_errors(formu) }}
+
+    <div class="form-group col-md-6">
+	    {# Génération du label. #}
+	    {{ form_label(formu.nom, "Nom du tuteur") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(formu.nom) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(formu.nom, {'attr': {'class': 'form-control','placeholder':'Nom du tuteur'}}) }}
+    </div>
+    <div class="form-group col-md-6">
+	    {# Génération du label. #}
+	    {{ form_label(formu.prenom, "Prenom du tuteur") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(formu.prenom) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(formu.prenom, {'attr': {'class': 'form-control','placeholder':'prenom du tuteur'}}) }}
+    </div>
+    <div class="form-group col-md-6">
+	    {# Génération du label. #}
+	    {{ form_label(formu.telephone, "Téléphone du tuteur") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(formu.telephone) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(formu.telephone, {'attr': {'class': 'form-control','placeholder':'Téléphone du tuteur'}}) }}
+    </div>
+    <div class="form-group col-md-6">
+	    {# Génération du label. #}
+	    {{ form_label(formu.email, "Email du tuteur") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(formu.email) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(formu.email, {'attr': {'class': 'form-control','placeholder':'Email du tuteur'}}) }}
+    </div>
+    <div class="form-group col-md-12">
+	    {# Génération du label. #}
+	    {{ form_label(formu.adresse, "adresse du tuteur") }}
+
+	    {# Affichage des erreurs pour ce champ précis. #}
+	    {{ form_errors(formu.adresse) }}
+
+	    {# Génération de l'input. #}
+	    {{ form_widget(formu.adresse, {'attr': {'class': 'form-control','placeholder':'adresse du tuteur'}}) }}
+    </div>
+    <div class="form-group">
+  	<input type="submit" value="Ajouter" class="btn btn-primary btn">
+  <input type="reset" value="Annuler" class="btn btn-default btn">
+
+  </div>
+  
+  {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(formu) }}
+									{%else%}
+
+									<table class="table-condensed ">
+								<tr>
+									<td>
+										<span class="badge">Nom : </span>
+									</td>
+									<td> <strong>{{tut.nom}}</strong> </td>
+									
+								</tr>
+								<tr>
+									<td>
+										<span class="badge">Prenom : </span>
+									</td>
+									<td> <strong>{{tut.prenom}}</strong> </td>
+								</tr>
+								
+								<tr>
+									<td>
+										<span class="badge">Email : </span>
+									</td>
+									<td> <strong>{{tut.email}}</strong> </td>
+								</tr>
+								
+								<tr>
+									<td>
+										<span class="badge">Téléphone : </span>
+									</td>
+									<td> <strong>{{tut.telephone}}</strong> </td>
+								</tr>
+								<tr>
+									<td>
+										<span class="badge">Adresse : </span>
+									</td>
+									<td> <strong>{{tut.adresse}}</strong> </td>
+								</tr>
+								
+								</table>
+									{%endif%}
 							</div>
 
 

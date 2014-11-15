@@ -181,19 +181,57 @@ class __TwigTemplate_44048aceb79074206698a954d316dd0ec613b3be80e0ec0c6d46ead2e27
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "telephone", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Le telephone du professeur")));
         echo "
     </div>
+    <div class=\"form-group col-md-3\">
+      ";
+        // line 80
+        echo "      ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "genre", array()), 'label', array("label" => "Le genre du professeur"));
+        echo "
+
+      ";
+        // line 83
+        echo "      ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "genre", array()), 'errors');
+        echo "
+
+      ";
+        // line 86
+        echo "      ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "genre", array()), 'widget', array("attr" => array("class" => "form-control")));
+        echo "
+    </div>
+    <div class=\"form-group col-md-9\">
+      ";
+        // line 90
+        echo "      ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "adresse", array()), 'label', array("label" => "Le adresse du professeur"));
+        echo "
+
+      ";
+        // line 93
+        echo "      ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "adresse", array()), 'errors');
+        echo "
+
+      ";
+        // line 96
+        echo "      ";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "adresse", array()), 'widget', array("attr" => array("class" => "form-control")));
+        echo "
+    </div>
 
   
 
   ";
-        // line 84
+        // line 104
         echo "  ";
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'rest');
         echo "
   
   ";
-        // line 87
+        // line 107
         echo "  ";
-        // line 88
+        // line 108
         echo "  <!-- <div class=\"col-md-12\">
   \t<label for=\"creer-compte\">Créer le compte : </label>
   \t<label for=\"creer-compte-oui\"> oui :
@@ -204,14 +242,18 @@ class __TwigTemplate_44048aceb79074206698a954d316dd0ec613b3be80e0ec0c6d46ead2e27
   \t</label>
   \t
   </div> -->
-  <div class=\"\">
-  \t<input type=\"submit\" value=\"Ajouter\" class=\"btn btn-primary btn-xs\">
-  <input type=\"reset\" value=\"Annuler\" class=\"btn btn-default btn-xs\">
+  <div class=\"row\">
+   <div class=\"col-md-12\">
+      <input type=\"submit\" value=\"Ajouter\" class=\"btn btn-primary \">
+  <input type=\"reset\" value=\"Annuler\" class=\"btn btn-default \">
+   </div>
 
   </div>
+
+  <div></div>
   
   ";
-        // line 105
+        // line 129
         echo "  ";
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         echo "
@@ -231,6 +273,6 @@ class __TwigTemplate_44048aceb79074206698a954d316dd0ec613b3be80e0ec0c6d46ead2e27
 
     public function getDebugInfo()
     {
-        return array (  215 => 105,  197 => 88,  195 => 87,  189 => 84,  180 => 76,  174 => 73,  168 => 70,  161 => 66,  155 => 63,  149 => 60,  142 => 56,  136 => 53,  130 => 50,  123 => 46,  117 => 43,  111 => 40,  104 => 36,  98 => 33,  92 => 30,  84 => 25,  78 => 22,  72 => 19,  65 => 15,  60 => 12,  54 => 8,  45 => 6,  41 => 5,  38 => 4,  35 => 3,  29 => 2,);
+        return array (  257 => 129,  235 => 108,  233 => 107,  227 => 104,  218 => 96,  212 => 93,  206 => 90,  199 => 86,  193 => 83,  187 => 80,  180 => 76,  174 => 73,  168 => 70,  161 => 66,  155 => 63,  149 => 60,  142 => 56,  136 => 53,  130 => 50,  123 => 46,  117 => 43,  111 => 40,  104 => 36,  98 => 33,  92 => 30,  84 => 25,  78 => 22,  72 => 19,  65 => 15,  60 => 12,  54 => 8,  45 => 6,  41 => 5,  38 => 4,  35 => 3,  29 => 2,);
     }
 }

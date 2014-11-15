@@ -1,0 +1,43 @@
+{% extends "IntranetAdminBundle::layout.html.twig" %}
+{%block title%}{{professeur.prenom}} {{professeur.nom}} | affectation de matière{%endblock%}
+{%block body%}
+ 
+ <div class="row">
+ 	<div class="col-md-2 col-sm-3 image-profil">
+			<div>
+				{%if professeur.compte is not null %}		
+				<img  class="thumbnail" src=" {{asset('img/profil/')}}{{professeur.compte.image}}">
+				{%else%}
+					<img  class="thumbnail" src=" {{asset('img/profil/default-no.png')}}">
+					<a class="btn btn-success btn-xs" href=" {{path('intranet_admin_ajout_compte_professeur',{id:professeur.id})}} ">Ajouter un compte</a>
+				{%endif%}
+			</div>
+			</div>
+			<div class="col-md-8">
+				<h2>{{professeur.prenom}} {{professeur.nom}}</h2>
+			</div>
+ </div>
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<h2>Affectation de matière(s)</h2>
+		<form role="form" method="post">
+			
+			{%for mat in matieres %}
+
+				
+
+				<div class="form-group col-md-4">
+					<label for="id{{mat.id}}">{{mat.nom}}</label>
+					<input type="checkbox" name="matieres{{mat.id}}" value="{{mat.id}}" id="id{{mat.id}}">
+				</div>
+
+				
+						
+			{%endfor%}
+			<div class="form-group col-lg-12">
+				<input type="submit" value="Affecter" class="btn btn-primary">
+			</div>
+		</form>
+	</div>
+</div>
+{%endblock%}

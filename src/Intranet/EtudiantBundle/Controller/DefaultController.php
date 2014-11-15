@@ -120,6 +120,8 @@ class DefaultController extends Controller
                 ));
     }
     public function messageAction(Request $request){
+
+     
       
         $data = array();
 
@@ -151,8 +153,24 @@ class DefaultController extends Controller
             $rubrique = 'boite-reception';
         }
        // die('');
-        
-        
+        /*
+        $transport = \Swift_SmtpTransport::newInstance('smtp.googlemail.com', 465, 'ssl')
+          ->setUsername('kwsyaby@gmail.com')
+          ->setPassword('dieumerci'); 
+
+           $message = \Swift_Message::newInstance($transport)
+        ->setSubject('Hello Email')
+        ->setFrom('kwsyaby@gmail.com')
+        ->setTo('k.leon.aby@gmail.com')
+        ->setBody($this->renderView('IntranetEtudiantBundle:Default:message.html.twig', 
+            array(
+                'user' => $user,
+                'rubrique'=>$rubrique,
+                'etudiant'=>$etudiant,
+                'data'=>$data
+                )));
+        $this->get('mailer')->send($message);
+        //*/
         return $this->render('IntranetEtudiantBundle:Default:message.html.twig', 
             array(
                 'user' => $user,

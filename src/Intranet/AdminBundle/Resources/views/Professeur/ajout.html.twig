@@ -75,6 +75,26 @@
 	    {# Génération de l'input. #}
 	    {{ form_widget(form.telephone, {'attr': {'class': 'form-control','placeholder':"Le telephone du professeur"}}) }}
     </div>
+    <div class="form-group col-md-3">
+      {# Génération du label. #}
+      {{ form_label(form.genre, "Le genre du professeur") }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.genre) }}
+
+      {# Génération de l'input. #}
+      {{ form_widget(form.genre, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group col-md-9">
+      {# Génération du label. #}
+      {{ form_label(form.adresse, "Le adresse du professeur") }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.adresse) }}
+
+      {# Génération de l'input. #}
+      {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+    </div>
 
   
 
@@ -95,11 +115,15 @@
   	</label>
   	
   </div> -->
-  <div class="">
-  	<input type="submit" value="Ajouter" class="btn btn-primary btn-xs">
-  <input type="reset" value="Annuler" class="btn btn-default btn-xs">
+  <div class="row">
+   <div class="col-md-12">
+      <input type="submit" value="Ajouter" class="btn btn-primary ">
+  <input type="reset" value="Annuler" class="btn btn-default ">
+   </div>
 
   </div>
+
+  <div></div>
   
   {# Fermeture de la balise <form> du formulaire HTML #}
   {{ form_end(form) }}

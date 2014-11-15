@@ -165,7 +165,10 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
         // line 109
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery-1.11.0.js"), "html", null, true);
         echo "\"></script>
-
+    <script src=\"";
+        // line 110
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/app-intranet.js"), "html", null, true);
+        echo "\"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src=\"";
         // line 112
@@ -199,7 +202,10 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
         // line 122
         $this->displayBlock('script', $context, $blocks);
         // line 124
-        echo "</body>
+        echo "
+
+
+</body>
 
 </html>
 ";
@@ -255,6 +261,6 @@ class __TwigTemplate_6efb59ea8fac23e6f95b28856f271ae17f89496ebe0ca45aed38038e668
 
     public function getDebugInfo()
     {
-        return array (  242 => 122,  237 => 97,  232 => 73,  225 => 67,  222 => 66,  219 => 65,  214 => 26,  209 => 12,  202 => 124,  200 => 122,  196 => 121,  192 => 120,  186 => 117,  182 => 116,  178 => 115,  172 => 112,  166 => 109,  153 => 98,  151 => 97,  126 => 74,  124 => 73,  119 => 70,  117 => 65,  110 => 61,  75 => 28,  73 => 26,  69 => 25,  63 => 22,  57 => 19,  53 => 18,  47 => 15,  41 => 12,  37 => 11,  25 => 1,);
+        return array (  248 => 122,  243 => 97,  238 => 73,  231 => 67,  228 => 66,  225 => 65,  220 => 26,  215 => 12,  205 => 124,  203 => 122,  199 => 121,  195 => 120,  189 => 117,  185 => 116,  181 => 115,  175 => 112,  170 => 110,  166 => 109,  153 => 98,  151 => 97,  126 => 74,  124 => 73,  119 => 70,  117 => 65,  110 => 61,  75 => 28,  73 => 26,  69 => 25,  63 => 22,  57 => 19,  53 => 18,  47 => 15,  41 => 12,  37 => 11,  25 => 1,);
     }
 }

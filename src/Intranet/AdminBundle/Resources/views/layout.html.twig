@@ -88,6 +88,29 @@
                         </li>
                     </ul>
                 </li>
+               
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gears"></i> Réglage <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-users"></i> Gérer comptes</a>
+                        </li>
+                        
+                        <li>
+                            <a href=" {{path('intranet_admin_ajout_filière')}} "><i class="fa fa-fw fa-cubes"></i> Filières</a>
+                        </li>
+                        <li>
+                            <a href=" {{path('intranet_admin_ajout_matiere')}} "><i class="fa fa-fw fa-book"></i> Matières</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href=" {{path('intranet_admin_parametage')}} "><i class="fa fa-fw fa-gears"></i> Parametrage</a>
+                        </li>
+                       
+                    </ul>
+                </li>
+
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ app.user.username }} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -97,9 +120,7 @@
                         <li>
                             <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
+                        
                         <li class="divider"></li>
                         <li>
                             <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
@@ -190,6 +211,19 @@
                                 <span class="details">Voir les détails des classes</span>
                                 </a>
                             </li>
+                           <!--  cours dans class -->
+                            <li >
+                                <a href="javascript:;" data-toggle="collapse" data-target="#coursBlock"><i class="fa fa-fw fa-book"></i> Cours <i class="fa fa-fw fa-caret-down"></i></a>
+                                <ul id="coursBlock" class="collapse">
+                                    <li>
+                                        <a href="#"> <i class="fa fa-fw fa-plus"></i> Nouveau cours</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> <i class="fa fa-fw fa-list"></i> liste cours</a>
+                                    </li>
+                                </ul>
+                            </li>
+                           <!--  end cours in classes -->
                         </ul>
                     </li>
 
@@ -208,50 +242,8 @@
 <span class="details">Liste des professeurs</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href=""> <i class="fa fa-fw fa-bookmark"></i> type évaluations</a>
-                            </li>
                         </ul>
                     </li>
-                     <li >
-                        <a href="javascript:;" data-toggle="collapse" data-target="#coursBlock"><i class="fa fa-fw fa-book"></i> Cours <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="coursBlock" class="collapse">
-                        	<li>
-                                <a href="#"> <i class="fa fa-fw fa-plus"></i> Nouveau cours</a>
-                            </li>
-                            <li>
-                                <a href="#"> <i class="fa fa-fw fa-list"></i> liste cours</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li >
-                        <a href="javascript:;" data-toggle="collapse" data-target="#evaluationBlock"><i class="fa fa-fw fa-edit"></i> Evaluations <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="evaluationBlock" class="collapse">
-                        	<li>
-                                <a href="#"> <i class="fa fa-fw fa-plus"></i> Nouvelle évaluation</a>
-                            </li>
-                            <li>
-                                <a href="#"> <i class="fa fa-fw fa-list"></i> liste évaluations</a>
-                            </li>
-                            <li>
-                                <a href="#"> <i class="fa fa-fw fa-bookmark"></i> type évaluations</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- <li >
-                        <a href="javascript:;" data-toggle="collapse" data-target="#emploidetempsBlock"><i class="fa fa-fw fa-calendar"></i> Emplois de temps <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="emploidetempsBlock" class="collapse">
-                        	<li>
-                                <a href="#"> <i class="fa fa-fw fa-plus-circle"></i> Nouvelle évaluation</a>
-                            </li>
-                            <li>
-                                <a href="#"> <i class="fa fa-fw fa-list"></i> liste évaluations</a>
-                            </li>
-                            <li>
-                                <a href="#"> <i class="fa fa-fw fa-bookmark"></i> type évaluations</a>
-                            </li>
-                        </ul>
-                    </li> -->
                     <li >
                         <a href="javascript:;" data-toggle="collapse" data-target="#comptabiliteBlock"><i class="fa fa-fw fa-money"></i> Comptabilité <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="comptabiliteBlock" class="collapse">
@@ -266,36 +258,28 @@
                             </li>
                         </ul>
                     </li>
-                    <li >
-                        <a href="javascript:;" data-toggle="collapse" data-target="#librairieBlock"><i class="fa fa-fw fa-bank"></i> Librairie <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="librairieBlock" class="collapse">
-                        	<li>
-                                <a href="#"> <i class="fa fa-fw fa-plus"></i> Nouvelle évaluation</a>
+                    
+                     <li >
+                        <a href="javascript:;" data-toggle="collapse" data-target="#centredeformation"><i class="fa fa-fw fa-graduation-cap"></i> CFC
+                         <i class="fa fa-fw fa-caret-down"></i>
+                        <span class="details">
+                            Centre de Formation Continue
+                        </span>
+                        </a>
+                        <ul id="centredeformation" class="collapse">
+                            <li>
+                                <a href="#"> <i class="fa fa-fw fa-plus"></i> 
+                                    Ajouter un stagiaire
+                                    <span class="details">Nom,Prenoms,...</span>
+                                </a>
                             </li>
                             <li>
-                                <a href="#"> <i class="fa fa-fw fa-list"></i> liste évaluations</a>
-                            </li>
-                            <li>
-                                <a href="#"> <i class="fa fa-fw fa-bookmark"></i> type évaluations</a>
+                                <a href="#"> <i class="fa fa-fw fa-list"></i> 
+                                Ajouter un module
+                                    <span class="details">Informations du module</span>
+                                </a>
                             </li>
                         </ul>
-                    </li>
-                    <li >
-                        <a href="javascript:;" data-toggle="collapse" data-target="#gerercompteblock"><i class="fa fa-fw fa-users"></i> Gérer compte <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="gerercompteblock" class="collapse">
-                        	<li>
-                                <a href="#"> <i class="fa fa-fw fa-plus-square"></i> Nouvelle évaluation</a>
-                            </li>
-                            <li>
-                                <a href="#"> <i class="fa fa-fw fa-list"></i> liste évaluations</a>
-                            </li>
-                            <li>
-                                <a href="#"> <i class="fa fa-fw fa-bookmark"></i> type évaluations</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href=" {{path('intranet_admin_parametage')}} "><i class="fa fa-fw fa-gears"></i> Parametrage</a>
                     </li>
                     <li>
                         <a href="blank-page.html"><i class="fa fa-fw fa-comments-o"></i> Forum</a>

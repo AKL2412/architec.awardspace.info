@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Intranet\AdminBundle\Entity\Classe;
 use Intranet\AdminBundle\Form\ClasseType;
 use Intranet\AdminBundle\Entity\Planning;
+use Intranet\AdminBundle\Entity\Seance;
 use OC\UserBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -124,7 +125,7 @@ class ClasseController extends Controller{
     	
     	$planning->setClasse($classe);
 		$planning->setCreated(new \Datetime());
-
+		$planning->setComplet(false);
 		$formBuilder = $this->get('form.factory')->createBuilder('form', $planning);
 
 		$formBuilder
@@ -157,6 +158,7 @@ class ClasseController extends Controller{
     	
 		    $em = $this->getDoctrine()
 								->getManager();
+			$action = 'ajout-contenu';
 		    $repoplan = $em->getRepository('IntranetAdminBundle:Planning');
 			$plan = $repoplan->find($id);
 
@@ -165,10 +167,18 @@ class ClasseController extends Controller{
 		      throw new NotFoundHttpException("L'emploi de temps d'Identifiant : [id : ".$id."] n'existe pas");
 		    }
 
-		    $return = array('planning'=>$plan);
-		    if(!$plan->getComplet()){
-		    	$jours = array('Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi');
-			    $horaires = array('8h-10h','10h-12h','14h-16h','16h-18h');
+		    $jours = $plan->lesjours();
+			$horaires = $plan->leshoraires();
+
+			
+		    
+		    if(!empty($request->query->get('action')))
+		    	$action = $request->query->get('action');
+		    if($plan->getComplet()) $action = 'visionner';
+
+		    $return = array('planning'=>$plan,'em'=>$em,'action'=>$action);
+		    if(!$plan->getComplet() || $action == 'ajout-contenu'){
+		    	
 			    $return = 	array(
 			      'planning'=>$plan,
 			      'professeurs'=>$em->getRepository('IntranetAdminBundle:Professeur')
@@ -177,14 +187,74 @@ class ClasseController extends Controller{
 			      					->findAll(),
 			      'matieres'=>$em->getRepository('IntranetAdminBundle:Matiere')
 			      					->findAll(),
-			      'jours'=>$jours,
-			      'heures'=>$horaires
+			      					'em'=>$em,'action'=>$action
 		    );
 		    }
+		    
 		    
 
 		    return $this->render('IntranetAdminBundle:Classe:planning-content.html.twig', 
     		$return);	
+	}
+
+	public function professeurMatiereAction($id,Request $request){
+
+		
+
+		return $this->render('IntranetAdminBundle:Classe:prof-de-matiere.html.twig', 
+    		array(
+    			"matiere"=>$this->getDoctrine()
+								->getManager()
+								->getRepository('IntranetAdminBundle:Matiere')
+								->find($id)
+    			));
+	}
+
+	public function saveContenuPlanningAction($id,Request $request){
+
+		$em = $this->getDoctrine()
+								->getManager();
+		$planning = $em->getRepository('IntranetAdminBundle:Planning')
+						->find($id);
+		
+		if(!empty($request->request->all())){
+
+			
+			
+			try {
+				$seance = new Seance();
+			$seance->setPlanning($planning);
+			$seance->setMatiere(
+					$em->getRepository('IntranetAdminBundle:Matiere')
+					->find($request->request->get('matiere'))
+					);
+			$seance->setJour($request->request->get('jour'));
+			$seance->setHoraire($request->request->get('heure'));
+			if(!empty($request->request->get('salle')))
+				$seance->setSalle(
+					$em->getRepository('IntranetAdminBundle:Salle')
+					->find($request->request->get('salle'))
+					);
+			if(!empty($request->request->get('professeur')))
+				$seance->setProfesseur(
+					$em->getRepository('IntranetAdminBundle:Professeur')
+					->find($request->request->get('professeur'))
+					);
+			$em->persist($seance);
+			$em->flush();
+			echo 'ok';
+			} catch (Exception $e) {
+				echo $e->getMessage();
+			}
+			
+		}else{
+			
+			 throw $this->createNotFoundException(
+            "Method inappropriée !! "
+        	);
+		}
+
+		return new Response('');
 	}
 
 }

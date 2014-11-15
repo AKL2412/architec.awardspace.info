@@ -5,9 +5,13 @@ namespace Intranet\AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Intranet\AdminBundle\Entity\Anneescolaire;
-
+use Intranet\AdminBundle\Entity\Filiere;
+use Intranet\AdminBundle\Entity\Matiere;
+use Intranet\AdminBundle\Form\MatiereType;
+use Intranet\AdminBundle\Form\FiliereType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class DefaultController extends Controller
 {
 	
@@ -188,5 +192,137 @@ inexistant.');
     
 
         return $this->render('IntranetAdminBundle:Default:auteur.html.twig');
+    }
+
+    public function ajoutmatiereAction(Request $request){
+
+        $em = $this->getDoctrine()->getManager();
+        $matiere = new Matiere();
+        $form = $this->get('form.factory')->create(new MatiereType(),$matiere);
+        if($form->handleRequest($request)->isValid()){
+            $em->persist($matiere);
+            $em->flush();
+            $request->getSession()->getFlashBag()->add('info',"La classe a été enregistrée avec succès");
+            return $this->redirect($this->generateUrl('intranet_admin_ajout_matiere'));
+        }
+     return $this->render('IntranetAdminBundle:Default:ajoutmatiere.html.twig',
+        array(
+            'matieres' =>$em->getRepository('IntranetAdminBundle:Matiere')->findAll(),
+            'form'=>$form->createView()
+            ));   
+    }
+     public function ajoutfiliereAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $filiere = new Filiere();
+
+        $filiere->setDate(new \Datetime());
+
+        $form = $this->get('form.factory')
+                                ->create(new FiliereType(), $filiere);
+
+        if ($form->handleRequest($request)->isValid()) {
+              $em->persist($filiere);
+              $em->flush();
+              $request->getSession()->getFlashBag()->add('info', 'Filière bien enregistrée.');
+
+              // On redirige vers la page de visualisation de l'annonce nouvellement créée
+              return $this->redirect($this->generateUrl('intranet_admin_ajout_filière'));
+            }
+
+
+     return $this->render('IntranetAdminBundle:Default:ajoutfiliere.html.twig',
+        array(
+            'filieres' =>$em->getRepository('IntranetAdminBundle:Filiere')->findAll(),
+            'form'=>$form->createView()
+            )
+        );   
+    }
+
+    public function voirfiliereAction($id,Request $request){
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        $filiere = $em->getRepository('IntranetAdminBundle:Filiere')
+                        ->find($id);
+        if($filiere == null){
+            throw new NotFoundHttpException('Identifiant incorrect');
+        }
+
+        $matieres = array();
+
+        if(!empty($request->request->all())){
+
+            foreach($request->request->all() as $req){
+
+                $m = $em->getRepository('IntranetAdminBundle:Matiere')->find($req);
+                $m->removeFiliere($filiere);
+
+            }
+           $em->flush();
+            
+
+            return $this->redirect($this->generateUrl('intranet_admin_voir_filière', 
+                array('id' => $filiere->getId())));
+        }
+
+
+        foreach ($em->getRepository('IntranetAdminBundle:Matiere')
+                        ->findAll() as $key => $mat) {
+            if($mat->estFiliere($filiere))
+                $matieres[] = $mat;
+        }
+        
+
+        return $this->render('IntranetAdminBundle:Default:voirfiliere.html.twig',
+        array(
+            'filiere' =>$filiere,
+            'matieres'=>$matieres
+            )
+        );
+    }
+
+      public function voirmatiereAction($id,Request $request){
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        $matiere = $em->getRepository('IntranetAdminBundle:Matiere')
+                        ->find($id);
+        if($matiere == null){
+            throw new NotFoundHttpException('Identifiant incorrect');
+        }
+
+        $filieres = array();
+
+        if(!empty($request->request->all())){
+
+            foreach($request->request->all() as $req){
+
+                $m = $em->getRepository('IntranetAdminBundle:Filiere')->find($req);
+                $matiere->addFiliere($m);
+
+            }
+           $em->flush();
+            
+
+            return $this->redirect($this->generateUrl('intranet_admin_voir_matiere', 
+                array('id' => $matiere->getId())));
+        }
+
+
+        foreach ($em->getRepository('IntranetAdminBundle:Filiere')
+                        ->findAll() as $key => $fil) {
+            if(!$matiere->estFiliere($fil))
+                $filieres[] = $fil;
+        }
+        
+
+        return $this->render('IntranetAdminBundle:Default:voirmatiere.html.twig',
+        array(
+            'matiere' =>$matiere,
+            'filieres'=>$filieres
+            )
+        );
     }
 }

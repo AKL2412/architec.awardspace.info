@@ -125,9 +125,41 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                         </li>
                     </ul>
                 </li>
+               
+                <li class=\"dropdown\">
+                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-gears\"></i> Réglage <b class=\"caret\"></b></a>
+                    <ul class=\"dropdown-menu\">
+                        <li>
+                            <a href=\"#\"><i class=\"fa fa-fw fa-users\"></i> Gérer comptes</a>
+                        </li>
+                        
+                        <li>
+                            <a href=\" ";
+            // line 100
+            echo $this->env->getExtension('routing')->getPath("intranet_admin_ajout_filière");
+            echo " \"><i class=\"fa fa-fw fa-cubes\"></i> Filières</a>
+                        </li>
+                        <li>
+                            <a href=\" ";
+            // line 103
+            echo $this->env->getExtension('routing')->getPath("intranet_admin_ajout_matiere");
+            echo " \"><i class=\"fa fa-fw fa-book\"></i> Matières</a>
+                        </li>
+                        <li class=\"divider\"></li>
+                        <li>
+                            <a href=\" ";
+            // line 107
+            echo $this->env->getExtension('routing')->getPath("intranet_admin_parametage");
+            echo " \"><i class=\"fa fa-fw fa-gears\"></i> Parametrage</a>
+                        </li>
+                       
+                    </ul>
+                </li>
+
+
                 <li class=\"dropdown\">
                     <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> ";
-            // line 92
+            // line 115
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array()), "html", null, true);
             echo " <b class=\"caret\"></b></a>
                     <ul class=\"dropdown-menu\">
@@ -137,13 +169,11 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                         <li>
                             <a href=\"#\"><i class=\"fa fa-fw fa-envelope\"></i> Inbox</a>
                         </li>
-                        <li>
-                            <a href=\"#\"><i class=\"fa fa-fw fa-gear\"></i> Settings</a>
-                        </li>
+                        
                         <li class=\"divider\"></li>
                         <li>
                             <a href=\"";
-            // line 105
+            // line 126
             echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
             echo "\">Déconnexion</a>
                         </li>
@@ -155,27 +185,27 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
 
 ";
         } else {
-            // line 114
+            // line 135
             echo "<ul class=\"nav navbar-right top-nav\">
 <li><a href=\"";
-            // line 115
+            // line 136
             echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
             echo "\">Connexion</a></li>
 </ul>
     
 ";
         }
-        // line 119
+        // line 140
         echo "
    
 
 ";
     }
 
-    // line 125
+    // line 146
     public function block_menu($context, array $blocks = array())
     {
-        // line 126
+        // line 147
         echo "
 <div class=\"collapse navbar-collapse navbar-ex1-collapse\">
    
@@ -187,7 +217,7 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
   
     
      <form role=\"form\" method=\"get\" action=\" ";
-        // line 136
+        // line 157
         echo $this->env->getExtension('routing')->getPath("intranet_admin_recherche");
         echo " \">
         <div class=\"input-group\">
@@ -203,7 +233,7 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                     </li>
                     <li >
                         <a href=\" ";
-        // line 149
+        // line 170
         echo $this->env->getExtension('routing')->getPath("intranet_admin_accueil");
         echo " \"><i class=\"fa fa-fw fa-home\"></i> Home </a>
                     </li>
@@ -214,7 +244,7 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                         <ul id=\"etudiantsBlock\" class=\"collapse\">
                         <li>
                                 <a href=\" ";
-        // line 157
+        // line 178
         echo $this->env->getExtension('routing')->getPath("intranet_admin_stat_etudiant");
         echo " \"> 
                                 <i class=\"fa fa-fw fa-bar-chart-o\"></i> Détails étudiants
@@ -224,7 +254,7 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                             </li>
                         \t<li>
                                 <a href=\" ";
-        // line 164
+        // line 185
         echo $this->env->getExtension('routing')->getPath("intranet_admin_ajout_etudiant");
         echo " \"> 
                                 <i class=\"fa fa-fw fa-plus\"></i> Nouvel étudiant
@@ -234,7 +264,7 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                             </li>
                             <li class=\"active\">
                                 <a href=\" ";
-        // line 171
+        // line 192
         echo $this->env->getExtension('routing')->getPath("intranet_admin_liste_etudiant");
         echo " \"> <i class=\"fa fa-fw fa-list\"></i> liste étudiants
                                 <span class=\"details\">Voir les détails des étudiants</span>
@@ -248,7 +278,7 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                         <ul id=\"classBlock\" class=\"collapse\">
                             <li>
                                 <a href=\" ";
-        // line 182
+        // line 203
         echo $this->env->getExtension('routing')->getPath("intranet_admin_ajout_classe");
         echo " \"> 
                                 <i class=\"fa fa-fw fa-plus\"></i> Nouvelle classe
@@ -258,12 +288,25 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                             </li>
                             <li class=\"active\">
                                 <a href=\" ";
-        // line 189
+        // line 210
         echo $this->env->getExtension('routing')->getPath("intranet_admin_liste_classe");
         echo " \"> <i class=\"fa fa-fw fa-list\"></i> liste des classe
                                 <span class=\"details\">Voir les détails des classes</span>
                                 </a>
                             </li>
+                           <!--  cours dans class -->
+                            <li >
+                                <a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#coursBlock\"><i class=\"fa fa-fw fa-book\"></i> Cours <i class=\"fa fa-fw fa-caret-down\"></i></a>
+                                <ul id=\"coursBlock\" class=\"collapse\">
+                                    <li>
+                                        <a href=\"#\"> <i class=\"fa fa-fw fa-plus\"></i> Nouveau cours</a>
+                                    </li>
+                                    <li>
+                                        <a href=\"#\"> <i class=\"fa fa-fw fa-list\"></i> liste cours</a>
+                                    </li>
+                                </ul>
+                            </li>
+                           <!--  end cours in classes -->
                         </ul>
                     </li>
 
@@ -272,7 +315,7 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                         <ul id=\"professeurBlock\" class=\"collapse\">
                         \t<li>
                                 <a href=\" ";
-        // line 200
+        // line 234
         echo $this->env->getExtension('routing')->getPath("intranet_admin_ajout_professeur");
         echo " \">
                                  <i class=\"fa fa-fw fa-plus\"></i> Nouveau professeur
@@ -281,57 +324,15 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                             </li>
                             <li>
                                 <a href=\"";
-        // line 206
+        // line 240
         echo $this->env->getExtension('routing')->getPath("intranet_admin_liste_professeur");
         echo "\"> 
                                 <i class=\"fa fa-fw fa-list\"></i> liste des professeurs
 <span class=\"details\">Liste des professeurs</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href=\"\"> <i class=\"fa fa-fw fa-bookmark\"></i> type évaluations</a>
-                            </li>
                         </ul>
                     </li>
-                     <li >
-                        <a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#coursBlock\"><i class=\"fa fa-fw fa-book\"></i> Cours <i class=\"fa fa-fw fa-caret-down\"></i></a>
-                        <ul id=\"coursBlock\" class=\"collapse\">
-                        \t<li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-plus\"></i> Nouveau cours</a>
-                            </li>
-                            <li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-list\"></i> liste cours</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li >
-                        <a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#evaluationBlock\"><i class=\"fa fa-fw fa-edit\"></i> Evaluations <i class=\"fa fa-fw fa-caret-down\"></i></a>
-                        <ul id=\"evaluationBlock\" class=\"collapse\">
-                        \t<li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-plus\"></i> Nouvelle évaluation</a>
-                            </li>
-                            <li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-list\"></i> liste évaluations</a>
-                            </li>
-                            <li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-bookmark\"></i> type évaluations</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- <li >
-                        <a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#emploidetempsBlock\"><i class=\"fa fa-fw fa-calendar\"></i> Emplois de temps <i class=\"fa fa-fw fa-caret-down\"></i></a>
-                        <ul id=\"emploidetempsBlock\" class=\"collapse\">
-                        \t<li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-plus-circle\"></i> Nouvelle évaluation</a>
-                            </li>
-                            <li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-list\"></i> liste évaluations</a>
-                            </li>
-                            <li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-bookmark\"></i> type évaluations</a>
-                            </li>
-                        </ul>
-                    </li> -->
                     <li >
                         <a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#comptabiliteBlock\"><i class=\"fa fa-fw fa-money\"></i> Comptabilité <i class=\"fa fa-fw fa-caret-down\"></i></a>
                         <ul id=\"comptabiliteBlock\" class=\"collapse\">
@@ -346,39 +347,28 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
                             </li>
                         </ul>
                     </li>
-                    <li >
-                        <a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#librairieBlock\"><i class=\"fa fa-fw fa-bank\"></i> Librairie <i class=\"fa fa-fw fa-caret-down\"></i></a>
-                        <ul id=\"librairieBlock\" class=\"collapse\">
-                        \t<li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-plus\"></i> Nouvelle évaluation</a>
+                    
+                     <li >
+                        <a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#centredeformation\"><i class=\"fa fa-fw fa-graduation-cap\"></i> CFC
+                         <i class=\"fa fa-fw fa-caret-down\"></i>
+                        <span class=\"details\">
+                            Centre de Formation Continue
+                        </span>
+                        </a>
+                        <ul id=\"centredeformation\" class=\"collapse\">
+                            <li>
+                                <a href=\"#\"> <i class=\"fa fa-fw fa-plus\"></i> 
+                                    Ajouter un stagiaire
+                                    <span class=\"details\">Nom,Prenoms,...</span>
+                                </a>
                             </li>
                             <li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-list\"></i> liste évaluations</a>
-                            </li>
-                            <li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-bookmark\"></i> type évaluations</a>
+                                <a href=\"#\"> <i class=\"fa fa-fw fa-list\"></i> 
+                                Ajouter un module
+                                    <span class=\"details\">Informations du module</span>
+                                </a>
                             </li>
                         </ul>
-                    </li>
-                    <li >
-                        <a href=\"javascript:;\" data-toggle=\"collapse\" data-target=\"#gerercompteblock\"><i class=\"fa fa-fw fa-users\"></i> Gérer compte <i class=\"fa fa-fw fa-caret-down\"></i></a>
-                        <ul id=\"gerercompteblock\" class=\"collapse\">
-                        \t<li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-plus-square\"></i> Nouvelle évaluation</a>
-                            </li>
-                            <li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-list\"></i> liste évaluations</a>
-                            </li>
-                            <li>
-                                <a href=\"#\"> <i class=\"fa fa-fw fa-bookmark\"></i> type évaluations</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href=\" ";
-        // line 298
-        echo $this->env->getExtension('routing')->getPath("intranet_admin_parametage");
-        echo " \"><i class=\"fa fa-fw fa-gears\"></i> Parametrage</a>
                     </li>
                     <li>
                         <a href=\"blank-page.html\"><i class=\"fa fa-fw fa-comments-o\"></i> Forum</a>
@@ -400,6 +390,6 @@ class __TwigTemplate_e9dfb0f5704c42fde99a26e4bc6f0e31243c9531de00b758a9b5d50d951
 
     public function getDebugInfo()
     {
-        return array (  380 => 298,  285 => 206,  276 => 200,  262 => 189,  252 => 182,  238 => 171,  228 => 164,  218 => 157,  207 => 149,  191 => 136,  179 => 126,  176 => 125,  169 => 119,  162 => 115,  159 => 114,  147 => 105,  131 => 92,  44 => 7,  42 => 6,  39 => 5,  36 => 4,  30 => 2,);
+        return array (  328 => 240,  319 => 234,  292 => 210,  282 => 203,  268 => 192,  258 => 185,  248 => 178,  237 => 170,  221 => 157,  209 => 147,  206 => 146,  199 => 140,  192 => 136,  189 => 135,  177 => 126,  163 => 115,  152 => 107,  145 => 103,  139 => 100,  44 => 7,  42 => 6,  39 => 5,  36 => 4,  30 => 2,);
     }
 }

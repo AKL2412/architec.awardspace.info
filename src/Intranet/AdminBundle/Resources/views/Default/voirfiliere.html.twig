@@ -1,0 +1,44 @@
+{% extends "IntranetAdminBundle::layout.html.twig" %}
+{%block title%}
+	{{filiere.nom}} | Filière
+{%endblock %}
+{%block body%}
+<h1> <i class="fa-cube fa"></i> {{filiere.nom}}</h1>
+<div class="row">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			Description
+		</div>
+		<div class="panel-body">
+			{{filiere.description}}
+		</div>
+	</div>
+</div>
+<div class="row">
+	
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3> <i class="fa-cubes fa"></i> Les matières  </h3>
+		</div>
+		<form method="post" role="form">
+			<div class="panel-body">
+					{%for mat in matieres %}
+
+				<div class="col-md-3 form-group">
+					<label for="mat{{mat.id}}">{{mat.nom}}</label>
+					<input type="checkbox" name="mat{{mat.id}}" id="mat{{mat.id}}" value="{{mat.id}}">
+				</div>
+
+			{%endfor%}
+			</div>
+			<div class="panel-footer">
+				<input type="submit" class="btn btn-success" value="supprimer">
+				<input type="reset" class="btn btn-default" value="Annuler">
+			</div>
+		</form>
+		
+	</div>
+</div>
+
+{%endblock %}

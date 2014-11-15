@@ -1,0 +1,97 @@
+{% extends "IntranetAdminBundle::layout.html.twig" %}
+{%block title%}
+	{{matiere.nom}} | Matière
+{%endblock %}
+{%block body%}
+<h1> <i class="fa-cube fa"></i> {{matiere.nom}}</h1>
+<div class="row">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			Description
+		</div>
+		<div class="panel-body">
+			{{matiere.description}}
+		</div>
+	</div>
+</div>
+<div class="row">
+	
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3> <i class="fa-cubes fa"></i> Les Filières étudiant la matière </h3>
+		</div>
+		
+			<div class="panel-body">
+					{%for fil in matiere.filieres %}
+
+				<div class="col-md-3 form-group">
+					<a href="{{path('intranet_admin_voir_filière',{id:fil.id})}} ">
+						<label>{{fil.nom}}</label>
+					</a>
+				</div>
+
+			{%endfor%}
+			</div>
+			
+		
+	</div>
+</div>
+{%if filieres|length > 0 %}
+
+<div class="row">
+	
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3> <i class="fa-plus-square fa"></i> Affecter à d'autres filières  </h3>
+		</div>
+		<form method="post" role="form">
+			<div class="panel-body">
+					{%for fil in filieres %}
+
+				<div class="col-md-3 form-group">
+					<label for="fil{{fil.id}}">{{fil.nom}}</label>
+					<input type="checkbox" name="fil{{fil.id}}" id="fil{{fil.id}}" value="{{fil.id}}">
+				</div>
+
+			{%endfor%}
+			</div>
+			<div class="panel-footer">
+				<input type="submit" class="btn btn-success" value="Ajouter">
+				<input type="reset" class="btn btn-default" value="Annuler">
+			</div>
+		</form>
+		
+	</div>
+</div>
+
+<div class="row">
+	<div class="panel ">
+		<div class="panel-heading">
+		<h2>
+			<i class="fa-users fa"></i>
+		le(s) professeur(s) enseignant la matière [{{matiere.professeurs|length}}]
+		</h2>
+		</div>
+		<div class="panel-body">
+			{%for ce in matiere.professeurs %}
+				{%set etud = ce.professeur %}
+				<div class="col-md-3">
+					<div class="col-md-5 image-profil">
+						<img  class="thumbnail" src=" {{asset('img/profil/')}}{{etud.compte.image}}">
+					</div>
+					<div class="col-md-7">
+						<a href="{{path('intranet_admin_voir_professeur',{id:etud.id})}} ">
+							{{etud.prenom}} {{etud.nom}}
+						</a>
+					</div>
+				</div>
+			{%endfor%}
+		</div>
+	</div>
+</div>
+
+{%endif%}
+
+{%endblock %}

@@ -6,55 +6,123 @@ body {
   	*/
 }
 /* line 4, ../pCss/sass/app.scss */
-body .image-profil img {
-  width: 110px;
+body #notificationBox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
-/* line 9, ../pCss/sass/app.scss */
+/* line 11, ../pCss/sass/app.scss */
+body #notificationBox .back {
+  position: absolute;
+  background-color: #000;
+  opacity: 0.7;
+  width: 100%;
+  height: 100%;
+}
+/* line 18, ../pCss/sass/app.scss */
+body #notificationBox .main-g, body #notificationBox .main-p {
+  padding-top: 15px;
+}
+/* line 20, ../pCss/sass/app.scss */
+body #notificationBox .main-g i.fa-times, body #notificationBox .main-p i.fa-times {
+  float: right;
+  margin: -10px 8px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+/* line 25, ../pCss/sass/app.scss */
+body #notificationBox .main-g i.fa-times:hover, body #notificationBox .main-p i.fa-times:hover {
+  opacity: 1;
+}
+/* line 29, ../pCss/sass/app.scss */
+body #notificationBox .main-g .contenu, body #notificationBox .main-p .contenu {
+  padding: 15px;
+}
+/* line 33, ../pCss/sass/app.scss */
+body #notificationBox .main-p {
+  position: absolute;
+  width: 50%;
+  background-color: #ffffff;
+  height: 20%;
+  margin: 13% 25%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 41, ../pCss/sass/app.scss */
+body #notificationBox .main-g {
+  position: absolute;
+  width: 50%;
+  background-color: #ffffff;
+  min-height: 80%;
+  margin: 5% 25%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 51, ../pCss/sass/app.scss */
+body .image-profil img {
+  display: inline-block;
+  width: 100%;
+}
+/* line 57, ../pCss/sass/app.scss */
 body .contenu-profil {
   border-left: 1px solid rgba(0, 0, 0, 0.2);
 }
-/* line 11, ../pCss/sass/app.scss */
+/* line 59, ../pCss/sass/app.scss */
 body .contenu-profil .pre-nom {
   font-weight: bolder;
   font-size: 1.5em;
 }
-/* line 15, ../pCss/sass/app.scss */
+/* line 63, ../pCss/sass/app.scss */
 body .contenu-profil .pre-nom .nom {
   text-transform: uppercase;
 }
-/* line 26, ../pCss/sass/app.scss */
+/* line 74, ../pCss/sass/app.scss */
 body .bloc-message .menu {
   padding: 0;
+  background-color: #f9f9f9;
+  min-height: 400px;
 }
-/* line 28, ../pCss/sass/app.scss */
+/* line 78, ../pCss/sass/app.scss */
 body .bloc-message .menu ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-/* line 32, ../pCss/sass/app.scss */
-body .bloc-message .menu ul li {
+/* line 82, ../pCss/sass/app.scss */
+body .bloc-message .menu ul li.ul {
   margin: 4px 0;
   display: inline-block;
   width: 100%;
   text-indent: 10px;
 }
-/* line 38, ../pCss/sass/app.scss */
+/* line 87, ../pCss/sass/app.scss */
+body .bloc-message .menu ul li.ul a {
+  color: rgba(0, 0, 0, 0.7);
+}
+/* line 91, ../pCss/sass/app.scss */
 body .bloc-message .menu ul li.active {
   border-left: 4px solid #d36563;
 }
-/* line 41, ../pCss/sass/app.scss */
+/* line 94, ../pCss/sass/app.scss */
 body .bloc-message .menu ul li.active a {
   color: #d36563;
   font-weight: bolder;
 }
-/* line 48, ../pCss/sass/app.scss */
+/* line 101, ../pCss/sass/app.scss */
 body .bloc-message .contenu {
   border-left: 0px solid rgba(0, 0, 0, 0.3);
-  background-color: #f9f9f9;
-  min-height: 400px;
 }
-/* line 56, ../pCss/sass/app.scss */
+/* line 109, ../pCss/sass/app.scss */
 body #notification {
   position: fixed;
   top: 4%;
@@ -65,22 +133,22 @@ body #notification {
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
   z-index: 10000;
 }
-/* line 65, ../pCss/sass/app.scss */
+/* line 118, ../pCss/sass/app.scss */
 body .image-profil-change form {
   position: absolute;
   margin-top: -35px;
 }
-/* line 69, ../pCss/sass/app.scss */
+/* line 122, ../pCss/sass/app.scss */
 body .image-profil-change form label i {
   cursor: pointer;
   text-align: center;
   display: none;
 }
-/* line 74, ../pCss/sass/app.scss */
+/* line 127, ../pCss/sass/app.scss */
 body .image-profil-change form input {
   display: none;
 }
-/* line 79, ../pCss/sass/app.scss */
+/* line 132, ../pCss/sass/app.scss */
 body .image-profil-change:hover form label i {
   display: inline-block;
 }

@@ -191,6 +191,17 @@ class Filiere extends \Intranet\AdminBundle\Entity\Filiere implements \Doctrine\
     /**
      * {@inheritDoc}
      */
+    public function matieres($em)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'matieres', array($em));
+
+        return parent::matieres($em);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function setNom($nom)
     {
 
@@ -235,7 +246,7 @@ class Filiere extends \Intranet\AdminBundle\Entity\Filiere implements \Doctrine\
     /**
      * {@inheritDoc}
      */
-    public function setDate(\DateTime $date)
+    public function setDate($date)
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDate', array($date));

@@ -68,6 +68,13 @@ class Planning
 private $cases;
     
 
+    public function lesjours(){
+        return array('Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi');
+    }
+    public function leshoraires(){
+        return array('8h-10h','10h-12h','14h-16h','16h-18h');
+    }
+
     /**
      * Get id
      *

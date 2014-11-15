@@ -64,10 +64,10 @@ class Etudiant extends \Intranet\AdminBundle\Entity\Etudiant implements \Doctrin
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'id', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'nom', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'sexe', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'prenom', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'datenaissance', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'date', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'matricule', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'email', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'telephone', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'compte', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'anneescolaire', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'classes');
+            return array('__isInitialized__', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'id', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'nom', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'sexe', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'prenom', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'datenaissance', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'date', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'matricule', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'email', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'telephone', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'compte', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'tuteur', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'contacturgent', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'anneescolaire', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'classes');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'id', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'nom', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'sexe', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'prenom', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'datenaissance', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'date', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'matricule', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'email', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'telephone', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'compte', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'anneescolaire', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'classes');
+        return array('__isInitialized__', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'id', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'nom', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'sexe', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'prenom', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'datenaissance', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'date', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'matricule', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'email', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'telephone', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'compte', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'tuteur', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'contacturgent', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'anneescolaire', '' . "\0" . 'Intranet\\AdminBundle\\Entity\\Etudiant' . "\0" . 'classes');
     }
 
     /**
@@ -450,6 +450,50 @@ class Etudiant extends \Intranet\AdminBundle\Entity\Etudiant implements \Doctrin
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSexe', array());
 
         return parent::getSexe();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setTuteur(\Intranet\AdminBundle\Entity\Tuteur $tuteur = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTuteur', array($tuteur));
+
+        return parent::setTuteur($tuteur);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getTuteur()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTuteur', array());
+
+        return parent::getTuteur();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setContacturgent(\Intranet\AdminBundle\Entity\Tuteur $contacturgent = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContacturgent', array($contacturgent));
+
+        return parent::setContacturgent($contacturgent);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getContacturgent()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContacturgent', array());
+
+        return parent::getContacturgent();
     }
 
 }

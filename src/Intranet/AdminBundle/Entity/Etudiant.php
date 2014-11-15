@@ -83,6 +83,18 @@ class Etudiant
       */
     private $compte;
 
+    /**
+      * @ORM\OneToOne(targetEntity="Intranet\AdminBundle\Entity\Tuteur", cascade={"persist"})
+      * @ORM\JoinColumn(nullable=true)
+      */
+    private $tuteur;
+
+    /**
+      * @ORM\OneToOne(targetEntity="Intranet\AdminBundle\Entity\Tuteur", cascade={"persist"})
+      * @ORM\JoinColumn(nullable=true)
+      */
+    private $contacturgent;
+
 
 
     /**
@@ -110,11 +122,12 @@ private $classes;
      */
   public function classeActuelle(){
         foreach ($this->classes as $key => $classe) {
-            if($classe->getActive() && $classe->getClasse()->actuelle()) return $classe;
+            if($classe->getActive() ) return $classe;
         }
         return null;
   }
-    
+
+  
 
     /**
      * Get id
@@ -387,5 +400,51 @@ private $classes;
     public function getSexe()
     {
         return $this->sexe;
+    }
+
+    /**
+     * Set tuteur
+     *
+     * @param \Intranet\AdminBundle\Entity\Tuteur $tuteur
+     * @return Etudiant
+     */
+    public function setTuteur(\Intranet\AdminBundle\Entity\Tuteur $tuteur = null)
+    {
+        $this->tuteur = $tuteur;
+
+        return $this;
+    }
+
+    /**
+     * Get tuteur
+     *
+     * @return \Intranet\AdminBundle\Entity\Tuteur 
+     */
+    public function getTuteur()
+    {
+        return $this->tuteur;
+    }
+
+    /**
+     * Set contacturgent
+     *
+     * @param \Intranet\AdminBundle\Entity\Tuteur $contacturgent
+     * @return Etudiant
+     */
+    public function setContacturgent(\Intranet\AdminBundle\Entity\Tuteur $contacturgent = null)
+    {
+        $this->contacturgent = $contacturgent;
+
+        return $this;
+    }
+
+    /**
+     * Get contacturgent
+     *
+     * @return \Intranet\AdminBundle\Entity\Tuteur 
+     */
+    public function getContacturgent()
+    {
+        return $this->contacturgent;
     }
 }

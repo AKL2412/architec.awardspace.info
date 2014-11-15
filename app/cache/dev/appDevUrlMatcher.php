@@ -230,6 +230,26 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::rechercheAction',  '_route' => 'intranet_admin_recherche',);
             }
 
+            // intranet_admin_ajout_matiere
+            if ($pathinfo === '/admin/ajout-de-matières') {
+                return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::ajoutmatiereAction',  '_route' => 'intranet_admin_ajout_matiere',);
+            }
+
+            // intranet_admin_voir_matiere
+            if (0 === strpos($pathinfo, '/admin/voir-matière') && preg_match('#^/admin/voir\\-matière/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'intranet_admin_voir_matiere')), array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::voirmatiereAction',));
+            }
+
+            // intranet_admin_ajout_filière
+            if ($pathinfo === '/admin/ajout-de-filières') {
+                return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::ajoutfiliereAction',  '_route' => 'intranet_admin_ajout_filière',);
+            }
+
+            // intranet_admin_voir_filière
+            if (0 === strpos($pathinfo, '/admin/voir-filière') && preg_match('#^/admin/voir\\-filière/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'intranet_admin_voir_filière')), array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::voirfiliereAction',));
+            }
+
             // intranet_admin_parametage
             if ($pathinfo === '/admin/paramtrage') {
                 return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\DefaultController::paramtereAction',  '_route' => 'intranet_admin_parametage',);
@@ -305,9 +325,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\ProfesseurController::listAction',  '_route' => 'intranet_admin_liste_professeur',);
             }
 
-            // intranet_admin_ajout_classe
-            if ($pathinfo === '/admin/ajout-classe') {
-                return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\ClasseController::ajoutAction',  '_route' => 'intranet_admin_ajout_classe',);
+            if (0 === strpos($pathinfo, '/admin/a')) {
+                // intranet_admin_affecter_matiere
+                if (0 === strpos($pathinfo, '/admin/affecter-matière/$') && preg_match('#^/admin/affecter\\-matière/\\$(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'intranet_admin_affecter_matiere')), array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\ProfesseurController::affectermatiereAction',));
+                }
+
+                // intranet_admin_ajout_classe
+                if ($pathinfo === '/admin/ajout-classe') {
+                    return array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\ClasseController::ajoutAction',  '_route' => 'intranet_admin_ajout_classe',);
+                }
+
             }
 
             // intranet_admin_voir_classe
@@ -323,6 +351,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             // intranet_admin_modifier_classe
             if (0 === strpos($pathinfo, '/admin/modifier-classe') && preg_match('#^/admin/modifier\\-classe/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'intranet_admin_modifier_classe')), array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\ClasseController::modifierAction',));
+            }
+
+            // intranet_admin_professeur_de_matiere
+            if (0 === strpos($pathinfo, '/admin/les-professeurs-de-la-matiere') && preg_match('#^/admin/les\\-professeurs\\-de\\-la\\-matiere/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'intranet_admin_professeur_de_matiere')), array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\ClasseController::professeurMatiereAction',));
+            }
+
+            // intranet_admin_enregistrer_contenu_planning
+            if (0 === strpos($pathinfo, '/admin/enregistrer-contenu-planning') && preg_match('#^/admin/enregistrer\\-contenu\\-planning/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'intranet_admin_enregistrer_contenu_planning')), array (  '_controller' => 'Intranet\\AdminBundle\\Controller\\ClasseController::saveContenuPlanningAction',));
             }
 
             if (0 === strpos($pathinfo, '/admin/ajouter-emploi-de-temps')) {

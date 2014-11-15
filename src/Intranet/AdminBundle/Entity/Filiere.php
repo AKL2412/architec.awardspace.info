@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Filiere
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Intranet\AdminBundle\Entity\FiliereRepository")
  */
 class Filiere
 {
@@ -38,12 +38,10 @@ class Filiere
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime", length=255)
+     * @ORM\Column(name="date", type="datetime")
      */
     private $date;
 
-
-    
 
     /**
      * Get id
@@ -55,6 +53,16 @@ class Filiere
         return $this->id;
     }
 
+    public function matieres($em){
+        $matieres = array();
+
+         foreach ($em->getRepository('IntranetAdminBundle:Matiere')
+                        ->findAll() as $key => $mat) {
+            if($mat->estFiliere($this))
+                $matieres[] = $mat;
+        }
+        return $matieres;
+    }
     /**
      * Set nom
      *
@@ -104,10 +112,10 @@ class Filiere
     /**
      * Set date
      *
-     * @param \dateTime $date
+     * @param \DateTime $date
      * @return Filiere
      */
-    public function setDate(\dateTime $date)
+    public function setDate($date)
     {
         $this->date = $date;
 
@@ -117,7 +125,7 @@ class Filiere
     /**
      * Get date
      *
-     * @return \dateTime 
+     * @return \DateTime 
      */
     public function getDate()
     {

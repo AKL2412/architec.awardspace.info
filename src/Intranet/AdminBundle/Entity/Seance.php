@@ -44,7 +44,7 @@ class Seance
 
     /**
       * @ORM\ManyToOne(targetEntity="Intranet\AdminBundle\Entity\Planning", cascade={"persist"})
-      * @ORM\JoinColumn(nullable=true)
+      * @ORM\JoinColumn(nullable=false)
       */
     private $planning;
 
@@ -56,7 +56,7 @@ class Seance
 
     /**
       * @ORM\ManyToOne(targetEntity="Intranet\AdminBundle\Entity\Matiere", cascade={"persist"})
-      * @ORM\JoinColumn(nullable=true)
+      * @ORM\JoinColumn(nullable=false)
       */
     private $matiere;
 
@@ -65,6 +65,12 @@ class Seance
       * @ORM\JoinColumn(nullable=true)
       */
     private $professeur;
+
+  public function __construct()
+  {
+    $this->date = new \Datetime();
+
+  }
 
 
     /**

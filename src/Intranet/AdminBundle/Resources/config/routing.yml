@@ -11,6 +11,21 @@ intranet_admin_upload:
 intranet_admin_recherche:
     path:     /search
     defaults: { _controller: IntranetAdminBundle:Default:recherche }
+
+intranet_admin_ajout_matiere:
+    path:     /ajout-de-matières
+    defaults: { _controller: IntranetAdminBundle:Default:ajoutmatiere }
+
+intranet_admin_voir_matiere:
+    path:     /voir-matière/{id}
+    defaults: { _controller: IntranetAdminBundle:Default:voirmatiere }
+
+intranet_admin_ajout_filière:
+    path:     /ajout-de-filières
+    defaults: { _controller: IntranetAdminBundle:Default:ajoutfiliere }
+intranet_admin_voir_filière:
+    path:     /voir-filière/{id}
+    defaults: { _controller: IntranetAdminBundle:Default:voirfiliere }
 #******************* PARAMETRAGE ******************************
 intranet_admin_parametage:
     path:     /paramtrage
@@ -77,6 +92,10 @@ intranet_admin_liste_professeur:
     path:     /lister-professeur
     defaults: { _controller: IntranetAdminBundle:Professeur:list }
 
+intranet_admin_affecter_matiere:
+    path:     /affecter-matière/${id}
+    defaults: { _controller: IntranetAdminBundle:Professeur:affectermatiere }
+
 # ----------------------------------------------------------
 #           FIN GESION ETUDIANT
 #----------------------------------------------------------
@@ -96,6 +115,14 @@ intranet_admin_liste_classe:
 intranet_admin_modifier_classe:
     path:     /modifier-classe/{id}
     defaults: { _controller: IntranetAdminBundle:Classe:modifier }
+
+intranet_admin_professeur_de_matiere:
+    path:     /les-professeurs-de-la-matiere/{id}
+    defaults: { _controller: IntranetAdminBundle:Classe:professeurMatiere }
+
+intranet_admin_enregistrer_contenu_planning:
+    path:     /enregistrer-contenu-planning/{id}
+    defaults: { _controller: IntranetAdminBundle:Classe:saveContenuPlanning }
 
 #-------------------------------
 #       EMPLOI DE TEMPS
